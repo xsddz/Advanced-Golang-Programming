@@ -53,9 +53,12 @@ func main() {
 			break
 		}
 		text = strings.TrimRight(text, "\n")
+		if len(text) == 0 {
+			continue
+		}
 
 		n, err := common.WriteMessage(conn, text)
-		fmt.Printf("Send message: %v,%v\n", n, err)
+		fmt.Printf("Send message: %v,%v,%v\n", text, n, err)
 		if err != nil {
 			log.Fatal("Borken connetion.")
 		}
