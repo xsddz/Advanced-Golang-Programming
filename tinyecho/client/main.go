@@ -17,6 +17,8 @@ var (
 	port    string
 
 	addresses string
+
+	idname string
 )
 
 func init() {
@@ -36,21 +38,30 @@ func main() {
 	defer conn.Close()
 	fmt.Printf("Connected to <%v> by <%v>: \n", conn.RemoteAddr().String(), conn.LocalAddr().String())
 
-	// Receive message
+	// Parse welcome message and get client idname
+	playload, err := common.ReadMessagePlayload(conn)
+	idname = string(playload)
+	idname = idname[strings.Index(idname, "<")+1 : strings.Index(idname, ">")]
+
+	// Receive message loop
 	go func() {
-		playload, err := common.ReadMessagePlayload(conn)
-		fmt.Printf("Receive message: %v\n", string(playload))
-		if err != nil {
-			log.Fatal("Borken connetion.")
+		for {
+			playload, err := common.ReadMessagePlayload(conn)
+			fmt.Printf("Receive message: %v\n", string(playload))
+			if err != nil {
+				log.Fatal("Read connection error:", err)
+			}
 		}
 	}()
 
-	// Send message
+	// Send message loop
 	reader := bufio.NewReader(os.Stdin)
 	for {
+		fmt.Printf("<%v> ", idname)
+
 		text, err := reader.ReadString('\n')
 		if err != nil {
-			break
+			log.Fatal("Read input error:", err)
 		}
 		text = strings.TrimRight(text, "\n")
 		if len(text) == 0 {
@@ -60,8 +71,7 @@ func main() {
 		n, err := common.WriteMessage(conn, text)
 		fmt.Printf("Send message: %v,%v,%v\n", text, n, err)
 		if err != nil {
-			log.Fatal("Borken connetion.")
+			log.Fatal("Write connetion error:", err)
 		}
 	}
-
 }

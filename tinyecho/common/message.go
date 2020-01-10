@@ -21,7 +21,7 @@ const (
 	messageVersion1 = 1
 
 	// messageMaxLen message max length
-	messageMaxLen = 4096
+	messageMaxLen = 9999
 )
 
 var (
