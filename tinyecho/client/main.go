@@ -69,8 +69,8 @@ func main() {
 			continue
 		}
 
-		n, err := common.WriteMessage(conn, text)
-		fmt.Printf("Send message: %v,%v,%v\n", text, n, err)
+		_, err = common.WriteMessage(conn, text)
+		// fmt.Printf("Send message: %v,%v,%v\n", text, n, err)
 		if err != nil {
 			log.Fatal("Write connetion error:", err)
 		}
