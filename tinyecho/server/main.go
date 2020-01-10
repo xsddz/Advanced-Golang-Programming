@@ -67,13 +67,13 @@ func handleClientConn(c net.Conn) {
 
 	// Send welcome message
 	welcomeDetail := fmt.Sprintf("Welcome, your name is <%v>.", ci.name)
-	n, err := common.WriteMessage(ci.conn, welcomeDetail)
+	n, err := common.WriteData(ci.conn, welcomeDetail)
 	fmt.Printf("Send message to <%v>: %v,%v,%v\n", ci.addresses, welcomeDetail, n, err)
 
 	for {
 		// Receive message from client
-		playload, err := common.ReadMessagePlayload(ci.conn)
-		recvDetail := fmt.Sprintf("%v... %v", ci.name, string(playload))
+		msg, err := common.ReadMessage(ci.conn)
+		recvDetail := fmt.Sprintf("%v... %v", ci.name, string(msg))
 		if err != nil {
 			fmt.Printf("\nRead connection error: %v,%v\n", err, recvDetail)
 			break
@@ -84,7 +84,7 @@ func handleClientConn(c net.Conn) {
 		clientConnMap.Range(func(key, value interface{}) bool {
 			sci := value.(*clientInfo)
 			if sci.conn != ci.conn {
-				n, err := common.WriteMessage(sci.conn, recvDetail)
+				n, err := common.WriteData(sci.conn, recvDetail)
 				fmt.Printf("Send message to <%v>: %v,%v,%v\n", sci.name, recvDetail, n, err)
 			}
 

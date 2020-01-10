@@ -7,63 +7,61 @@ import (
 	"strconv"
 )
 
-// dataProto data protocol format
-// a data transmit on network shoule format to string based on this proto,
-// and convert to []byte. a version 1 data on network should like:
-//    010013hello, world!
-//    010018你好，世界。
-type dataProto struct {
-	version    [2]byte // max 99
-	messageLen [4]byte // max 9999
-	message    messageProto
-	// checksum   int64
-}
-
-// messageProto message protocol format
-type messageProto struct {
-	user  []byte
-	sep   byte
-	words []byte
-}
+// data protocol format:
+//     <version><playload><checkSum>
+//     - version: 2 byte, max version number is 99
+//     - playload: n byte
+//     - checkSum: for feature
+//
+// and a version 1 protocol playload shoule
+//     <messageLen><message>
+//     - messageLen: 4 byte, max message length is 9999
+//     - message: messageLen byte
+//
+//     eg:
+//         010013hello, world!
+//         010018你好，世界。
 
 const (
-	// messageMaxLen message max length
-	messageMaxLen = 9999
+	// protocolVersion1 protocol version 1 number
+	protocolVersion1 = 1
+	// v1ProtoMessageMaxLen protocol version 1 message max length
+	v1ProtoMessageMaxLen = 9999
 )
 
 var (
-	errMessageVersion = errors.New("wrong message version")
+	errMessageVersion = errors.New("message version not support")
 	errMessageToLarge = errors.New("to large message")
 )
 
-func makeV1Message(playload string) []byte {
-	return []byte(fmt.Sprintf("%02d", 1) + fmt.Sprintf("%04d", len(playload)) + playload)
+func makeV1ProtoData(playload string) []byte {
+	return []byte(fmt.Sprintf("%02d", protocolVersion1) + fmt.Sprintf("%04d", len(playload)) + playload)
 }
 
-// WriteMessage write messge to io writer
-func WriteMessage(w io.Writer, playload string) (n int, err error) {
-	if len(playload) > messageMaxLen {
+// WriteData write data to io writer
+func WriteData(w io.Writer, playload string) (n int, err error) {
+	if len(playload) > v1ProtoMessageMaxLen {
 		err = errMessageToLarge
 		return
 	}
 
-	n, err = w.Write(makeV1Message(playload))
+	n, err = w.Write(makeV1ProtoData(playload))
 
 	return
 }
 
-// ReadMessagePlayload read message from io reader
-func ReadMessagePlayload(r io.Reader) (buf []byte, err error) {
+// ReadMessage read message from io reader
+func ReadMessage(r io.Reader) (buf []byte, err error) {
 	// Read message version
-	version, err := readMessageVersion(r)
+	version, err := readProtoVersion(r)
 	if err != nil {
 		return
 	}
 
 	switch version {
-	case messageVersion1:
+	case protocolVersion1:
 		// Read message
-		buf, err = readV1MessagePlayload(r)
+		buf, err = readV1Message(r)
 	default:
 		err = errMessageVersion
 	}
@@ -71,7 +69,7 @@ func ReadMessagePlayload(r io.Reader) (buf []byte, err error) {
 	return
 }
 
-func readMessageVersion(r io.Reader) (version int64, err error) {
+func readProtoVersion(r io.Reader) (version int64, err error) {
 	buf := make([]byte, 2)
 	_, err = r.Read(buf)
 	if err != nil {
@@ -82,7 +80,7 @@ func readMessageVersion(r io.Reader) (version int64, err error) {
 	return
 }
 
-func readV1MessagePlayload(r io.Reader) (buf []byte, err error) {
+func readV1Message(r io.Reader) (buf []byte, err error) {
 	buf = make([]byte, 4)
 	_, err = r.Read(buf)
 	if err != nil {

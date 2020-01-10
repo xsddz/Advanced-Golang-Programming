@@ -39,16 +39,16 @@ func main() {
 	fmt.Printf("Connected to <%v> by <%v>: \n", conn.RemoteAddr().String(), conn.LocalAddr().String())
 
 	// Parse welcome message and get client idname
-	playload, err := common.ReadMessagePlayload(conn)
-	welcomeMsg := string(playload)
-	fmt.Printf("%v\n\n", welcomeMsg)
+	msg, err := common.ReadMessage(conn)
+	welcomeMsg := string(msg)
 	idname = welcomeMsg[strings.Index(welcomeMsg, "<")+1 : strings.Index(welcomeMsg, ">")]
+	fmt.Printf("%v\n\n", welcomeMsg)
 
 	// Receive message loop
 	go func() {
 		for {
-			playload, err := common.ReadMessagePlayload(conn)
-			fmt.Printf("\033[1E%v\n", string(playload))
+			msg, err := common.ReadMessage(conn)
+			fmt.Printf("\033[1E%v\n", string(msg)) // display in next line
 			if err != nil {
 				log.Fatal("Read connection error:", err)
 			}
@@ -69,7 +69,7 @@ func main() {
 			continue
 		}
 
-		_, err = common.WriteMessage(conn, text)
+		_, err = common.WriteData(conn, text)
 		// fmt.Printf("Send message: %v,%v,%v\n", text, n, err)
 		if err != nil {
 			log.Fatal("Write connetion error:", err)
