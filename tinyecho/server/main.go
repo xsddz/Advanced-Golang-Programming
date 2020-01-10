@@ -73,7 +73,7 @@ func handleClientConn(c net.Conn) {
 	for {
 		// Receive message from client
 		playload, err := common.ReadMessagePlayload(ci.conn)
-		recvDetail := fmt.Sprintf("<%v># %v", ci.name, string(playload))
+		recvDetail := fmt.Sprintf("%v... %v", common.GreenString(ci.name), string(playload))
 		if err != nil {
 			fmt.Printf("\nRead connection error: %v,%v\n", err, recvDetail)
 			break
