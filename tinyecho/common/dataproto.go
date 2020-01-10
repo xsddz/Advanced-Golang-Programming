@@ -7,19 +7,26 @@ import (
 	"strconv"
 )
 
-const (
-	// messageVersion1 a version 1 message should like
-	//     <version num><message len><message><check sum>
-	//     - version num: two byte
-	//     - message len: four byte
-	//     - message: <message len> byte
-	//     - check sum: for feature
-	//
-	//     eg:
-	//         010013hello, world!
-	//         010018你好，世界。
-	messageVersion1 = 1
+// dataProto data protocol format
+// a data transmit on network shoule format to string based on this proto,
+// and convert to []byte. a version 1 data on network should like:
+//    010013hello, world!
+//    010018你好，世界。
+type dataProto struct {
+	version    [2]byte // max 99
+	messageLen [4]byte // max 9999
+	message    messageProto
+	// checksum   int64
+}
 
+// messageProto message protocol format
+type messageProto struct {
+	user  []byte
+	sep   byte
+	words []byte
+}
+
+const (
 	// messageMaxLen message max length
 	messageMaxLen = 9999
 )
@@ -30,7 +37,7 @@ var (
 )
 
 func makeV1Message(playload string) []byte {
-	return []byte(fmt.Sprintf("%02d", messageVersion1) + fmt.Sprintf("%04d", len(playload)) + playload)
+	return []byte(fmt.Sprintf("%02d", 1) + fmt.Sprintf("%04d", len(playload)) + playload)
 }
 
 // WriteMessage write messge to io writer
