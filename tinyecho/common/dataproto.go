@@ -7,16 +7,12 @@ import (
 	"strconv"
 )
 
-// data protocol format:
-//     <version><playload><checkSum>
+// version 1 data protocol format:
+//     <version><messageLen><message><checkSum>
 //     - version: 2 byte, max version number is 99
-//     - playload: n byte
-//     - checkSum: for feature
-//
-// and a version 1 protocol playload shoule
-//     <messageLen><message>
-//     - messageLen: 4 byte, max message length is 9999
+//     - messageLen: 4 byte, max message length value is 4096-2-4=4090
 //     - message: messageLen byte
+//     - checkSum: for feature
 //
 //     eg:
 //         010013hello, world!
@@ -25,8 +21,10 @@ import (
 const (
 	// protocolVersion1 protocol version 1 number
 	protocolVersion1 = 1
+	// v1ProtoDataMaxLen protocol version 1 data max length
+	v1ProtoDataMaxLen = 4096
 	// v1ProtoMessageMaxLen protocol version 1 message max length
-	v1ProtoMessageMaxLen = 9999
+	v1ProtoMessageMaxLen = 4090
 )
 
 var (
@@ -34,7 +32,8 @@ var (
 	errMessageToLarge = errors.New("to large message")
 )
 
-func makeV1ProtoData(playload string) []byte {
+// MakeV1ProtoData MakeV1ProtoData
+func MakeV1ProtoData(playload string) []byte {
 	return []byte(fmt.Sprintf("%02d", protocolVersion1) + fmt.Sprintf("%04d", len(playload)) + playload)
 }
 
@@ -45,7 +44,7 @@ func WriteData(w io.Writer, playload string) (n int, err error) {
 		return
 	}
 
-	n, err = w.Write(makeV1ProtoData(playload))
+	n, err = w.Write(MakeV1ProtoData(playload))
 
 	return
 }
