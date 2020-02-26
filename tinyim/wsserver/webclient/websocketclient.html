@@ -62,9 +62,9 @@
                 Log("准备连接到聊天服务器 ...");
                 try {
                     if ("WebSocket" in window) {
-                        ws = new WebSocket("ws://" + document.getElementById("Connection").value);
+                        ws = new WebSocket("ws://" + document.getElementById("Connection").value + "&room=" + document.getElementById("RoomNo").value);
                     } else if("MozWebSocket" in window) {
-                        ws = new MozWebSocket("ws://" + document.getElementById("Connection").value);
+                        ws = new MozWebSocket("ws://" + document.getElementById("Connection").value + "&room=" + document.getElementById("RoomNo").value);
                     }
                     
                     SocketCreated = true;
@@ -140,7 +140,8 @@
             if (WebSocketsExist) {
                 Log("您的浏览器支持WebSocket. 您可以尝试连接到聊天服务器!", "OK");
 
-                document.getElementById("Connection").value = window.location.host + "/chat?room=258EAFA5&authorization=2W8EAFNSUPY8EY5";
+                document.getElementById("Connection").value = window.location.host + "/chat?authorization=2W8EAFNSUPY8EY5";
+                document.getElementById("RoomNo").value = "258EAFA5";
             } else {
                 Log("您的浏览器不支持WebSocket。请选择其他的浏览器再尝试连接服务器。", "ERROR");
                 document.getElementById("ToggleConnection").disabled = true;
@@ -164,9 +165,13 @@
         <div>
             按下连接按钮，会通过WebSocket发起一个到聊天浏览器的连接。
         </div>
-        服务器地址: <input type="text" id="Connection" /> 用户名： <input type="text" id="txtName" value="徐天""/>
-        <button id='ToggleConnection' type="button" onclick='ToggleConnectionClicked();'>连接</button>
         <br />
+        <div>
+            服务器地址：<input type="text" id="Connection" />
+            房间号：<input type="text" id="RoomNo" />
+            用户名：<input type="text" id="txtName" value="徐天""/>
+            <button id='ToggleConnection' type="button" onclick='ToggleConnectionClicked();'>连接</button>
+        </div>
         <br />
         <div id='LogContainer' class='container'></div>
         <br />

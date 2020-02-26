@@ -20,6 +20,7 @@ import (
 
 var (
 	wsaddr    string // param
+	roomNo    string // param
 	clientNum int    // param
 
 	clientMap     sync.Map            // saved connected client
@@ -30,9 +31,13 @@ var (
 )
 
 func init() {
-	flag.StringVar(&wsaddr, "wsaddr", "ws://127.0.0.1:8070/chat?room=258EAFA5&authorization=2W8EAFNSUPY8EY5", "websocket address")
+	flag.StringVar(&wsaddr, "wsaddr", "ws://127.0.0.1:8070/chat?authorization=2W8EAFNSUPY8EY5", "websocket address")
+	flag.StringVar(&roomNo, "roomNo", "258EAFA5", "room number")
 	flag.IntVar(&clientNum, "clientNum", 20, "client number")
 	flag.Parse()
+
+	// add room number to wsaddr
+	wsaddr = fmt.Sprintf("%s&room=%s", wsaddr, roomNo)
 }
 
 func main() {
@@ -86,7 +91,7 @@ func initClient() {
 }
 
 func cleanClient() {
-	fmt.Println("=======begin cleanclient:")
+	fmt.Println("\n=======begin cleanclient:")
 	count := 0
 	clientMap.Range(func(k, v interface{}) bool {
 		clientNo := k.(string)
