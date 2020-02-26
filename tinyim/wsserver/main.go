@@ -16,7 +16,12 @@ import (
 )
 
 var (
-	port string
+	port string // param
+
+	clientsChannelMap      = make(map[string]map[string]net.Conn)
+	clientsChannelMapMutex sync.RWMutex
+
+	broadcast = make(chan msg.Message)
 )
 
 func init() {
@@ -31,13 +36,6 @@ func init() {
 		}
 	}
 }
-
-var (
-	clientsChannelMap      = make(map[string]map[string]net.Conn)
-	clientsChannelMapMutex sync.RWMutex
-
-	broadcast = make(chan msg.Message)
-)
 
 func registerClient(client *auth.ClientInfo, conn net.Conn) {
 	clientsChannelMapMutex.Lock()
