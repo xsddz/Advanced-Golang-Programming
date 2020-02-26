@@ -139,7 +139,8 @@
 
             if (WebSocketsExist) {
                 Log("您的浏览器支持WebSocket. 您可以尝试连接到聊天服务器!", "OK");
-                document.getElementById("Connection").value = "127.0.0.1:8070/chat?room=258EAFA5&authorization=2W8EAFNSUPY8EY5";
+
+                document.getElementById("Connection").value = window.location.host + "/chat?room=258EAFA5&authorization=2W8EAFNSUPY8EY5";
             } else {
                 Log("您的浏览器不支持WebSocket。请选择其他的浏览器再尝试连接服务器。", "ERROR");
                 document.getElementById("ToggleConnection").disabled = true;

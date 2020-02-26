@@ -53,6 +53,7 @@ func unregisterClient(client *auth.ClientInfo) {
 	conn := clientsChannelMap[client.Channel][client.UserID]
 	delete(clientsChannelMap[client.Channel], client.UserID)
 	conn.Close()
+	fmt.Println("close client:", client.UserID)
 	clientsChannelMapMutex.Unlock()
 }
 
@@ -103,7 +104,7 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 		data, err := wsutil.ReadClientText(conn)
 		if err != nil {
 			// handle error
-			log.Println("ReadClientText error:", err)
+			// log.Println("ReadClientText error:", err)
 			break
 		}
 		fmt.Println("ReadClientText:", string(data), err)
