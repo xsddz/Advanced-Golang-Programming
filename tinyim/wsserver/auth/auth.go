@@ -1,17 +1,12 @@
 package auth
 
 import (
+	"Advanced-Golang-Programming/tinyim/wsserver/client"
 	"net/http"
 )
 
-// ClientInfo 客户端信息
-type ClientInfo struct {
-	Channel string
-	UserID  string
-}
-
 // Login 认证请求
-func Login(r *http.Request) (*ClientInfo, bool) {
+func Login(r *http.Request) (client.UserInfo, bool) {
 	// fmt.Println("============ begin authorization request ================")
 
 	// fmt.Println("method:\t", r.Method)
@@ -26,7 +21,7 @@ func Login(r *http.Request) (*ClientInfo, bool) {
 
 	// fmt.Println("============ end authorization request ================")
 
-	return &ClientInfo{
+	return client.UserInfo{
 		Channel: r.URL.Query().Get("room"),
 		UserID:  r.RemoteAddr,
 	}, true

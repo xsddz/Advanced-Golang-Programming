@@ -3,13 +3,14 @@ package main
 import (
 	"Advanced-Golang-Programming/tinyim/wsserver/asset"
 	"Advanced-Golang-Programming/tinyim/wsserver/auth"
+	"Advanced-Golang-Programming/tinyim/wsserver/client"
 	"Advanced-Golang-Programming/tinyim/wsserver/msg"
 	"flag"
 	"fmt"
 	"log"
 	"net"
 	"net/http"
-	"sync"
+	"time"
 
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
@@ -18,10 +19,7 @@ import (
 var (
 	port string // param
 
-	clientsChannelMap      = make(map[string]map[string]net.Conn)
-	clientsChannelMapMutex sync.RWMutex
-
-	broadcast = make(chan msg.Message)
+	broadcast = make(chan msg.Message, 4096)
 )
 
 func init() {
@@ -35,24 +33,6 @@ func init() {
 			break
 		}
 	}
-}
-
-func registerClient(client *auth.ClientInfo, conn net.Conn) {
-	clientsChannelMapMutex.Lock()
-	if _, exist := clientsChannelMap[client.Channel]; !exist {
-		clientsChannelMap[client.Channel] = make(map[string]net.Conn)
-	}
-	clientsChannelMap[client.Channel][client.UserID] = conn
-	clientsChannelMapMutex.Unlock()
-}
-
-func unregisterClient(client *auth.ClientInfo) {
-	clientsChannelMapMutex.Lock()
-	conn := clientsChannelMap[client.Channel][client.UserID]
-	delete(clientsChannelMap[client.Channel], client.UserID)
-	conn.Close()
-	fmt.Println("close client:", client.UserID)
-	clientsChannelMapMutex.Unlock()
 }
 
 func main() {
@@ -75,10 +55,10 @@ func main() {
 func handleConnections(w http.ResponseWriter, r *http.Request) {
 	// step1:
 	// Authorization
-	client, ok := auth.Login(r)
+	userInfo, ok := auth.Login(r)
 	if !ok {
 		// handle authorization fail
-		fmt.Println("authorization fial.")
+		log.Println("authorization fail.")
 		return
 	}
 
@@ -87,14 +67,15 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 	conn, _, _, err := ws.UpgradeHTTP(r, w)
 	if err != nil {
 		// handle error
-		fmt.Println(err)
+		log.Println(err)
+		return
 	}
 
 	// step3:
 	// Register new client
 	// Make sure we close the connection when the function returns
-	registerClient(client, conn)
-	defer unregisterClient(client)
+	client.RegisterClientConn(userInfo, conn)
+	defer client.CleanClientConn(userInfo)
 
 	// step4:
 	// Receive message loop
@@ -110,30 +91,34 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 		// step5:
 		// Report the newly received message to the broadcast channel
 		broadcast <- msg.Message{
-			Client: client,
-			Data:   data,
+			Channel: userInfo.Channel,
+			Data:    data,
 		}
 	}
 }
 
 func deliverMessages() {
 	for {
+		select {
+		// Every 1 minutes send a keepalive message
+		case <-time.After(60 * time.Second):
+			client.WalkChannel(func(ch string) {
+				broadcast <- msg.Message{
+					Channel: ch,
+					Data:    []byte("system: " + time.Now().Format("2006/01/02 15:04:05")),
+				}
+			})
+
 		// Grab the next message from the broadcast channel
 		// Send it out to every client that is currently connected
-		chmsg := <-broadcast
-
-		count := 0
-
-		clients := clientsChannelMap[chmsg.Client.Channel]
-		for u, c := range clients {
-			count++
-
-			err := wsutil.WriteServerText(c, chmsg.Data)
-			if err != nil {
-				fmt.Println("\tWriteServerText to:", u, "\t[FAIL]")
-			}
+		case chmsg := <-broadcast:
+			fmt.Println("deliverMessages:", string(chmsg.Data))
+			client.WalkChannelClient(chmsg.Channel, func(userID string, conn net.Conn) {
+				err := wsutil.WriteServerText(conn, chmsg.Data)
+				if err != nil {
+					fmt.Printf("\tWriteServerText: %s,%s [FAIL]\n", chmsg.Channel, userID)
+				}
+			})
 		}
-
-		fmt.Println("\tmsg:", string(chmsg.Data), ", send to channel:", chmsg.Client.Channel, ", send to client number:", count)
 	}
 }
