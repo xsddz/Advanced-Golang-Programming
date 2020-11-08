@@ -39,14 +39,16 @@ func main() {
 	// Start deliver for incoming chat messages
 	go deliverMessages()
 
+	mux := http.NewServeMux()
 	// Configure websocket client page
-	http.Handle("/", http.FileServer(http.Dir("./webclient/")))
+	mux.Handle("/", http.FileServer(http.Dir("./webclient/")))
 	// Configure websocket route
-	http.HandleFunc("/chat", handleConnections)
+	mux.HandleFunc("/chat/", handleConnections)
+
 	// Start the server on localhost port
 	address := fmt.Sprintf(":%s", port)
 	log.Println("http server started on:", address)
-	err := http.ListenAndServe(address, nil)
+	err := http.ListenAndServe(address, mux)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
@@ -55,7 +57,7 @@ func main() {
 func handleConnections(w http.ResponseWriter, r *http.Request) {
 	// step1:
 	// Authorization
-	userInfo, ok := auth.Login(r)
+	clientInfo, ok := auth.Login(r)
 	if !ok {
 		// handle authorization fail
 		log.Println("authorization fail.")
@@ -74,8 +76,8 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 	// step3:
 	// Register new client
 	// Make sure we close the connection when the function returns
-	client.RegisterClientConn(userInfo, conn)
-	defer client.CleanClientConn(userInfo)
+	client.RegisterClientConn(clientInfo, conn)
+	defer client.CleanClientConn(clientInfo)
 
 	// step4:
 	// Receive message loop
@@ -91,7 +93,7 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 		// step5:
 		// Report the newly received message to the broadcast channel
 		broadcast <- msg.Message{
-			Channel: userInfo.Channel,
+			Channel: clientInfo.Channel,
 			Data:    data,
 		}
 	}
