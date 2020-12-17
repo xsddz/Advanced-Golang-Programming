@@ -6,4 +6,4 @@
 + tinysearch: a search syetem demo
 + tinylib: collection of some programming utils
 + tap: golang traps and pitfalls
-
++ tinyassembler: assembler for 16-computer build in [notes.nand2tetris](https://github.com/xsddz/notes.nand2tetris)
