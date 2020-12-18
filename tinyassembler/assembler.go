@@ -6,14 +6,17 @@ package tinyassembler
 type CommandT int8
 
 const (
-	_         CommandT = iota //
-	A_COMMAND                 // A指令：0 v v v  v  v  v  v   v  v  v  v   v  v  v  v
-	C_COMMAND                 // C指令：1 1 1 a  c1 c2 c3 c4  c5 c6 d1 d2  d3 j1 j2 j3
-	L_COMMAND                 // 伪指令：(Xxx)，Xxx为符号
+	_ CommandT = iota //
+	// ACommand A指令：0 v v v  v  v  v  v   v  v  v  v   v  v  v  v
+	ACommand
+	// CCommand C指令：1 1 1 a  c1 c2 c3 c4  c5 c6 d1 d2  d3 j1 j2 j3
+	CCommand
+	// LCommand 伪指令：(Xxx)，Xxx为符号
+	LCommand
 )
 
 // PredefinedSymbols -
-var PredefinedSymbols = map[string]int16{
+var PredefinedSymbols = map[string]int{
 	"SP":     0,
 	"LCL":    1,
 	"ARG":    2,

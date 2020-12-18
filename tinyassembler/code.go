@@ -4,7 +4,7 @@ package tinyassembler
 
 // Code -
 type Code interface {
-	Dest() string
-	Comp() string
-	Jump() string
+	Dest(string) string
+	Comp(string) string
+	Jump(string) string
 }
