@@ -2,20 +2,71 @@
 
 package tinyassembler
 
+import (
+	"fmt"
+	"os"
+)
+
 // CommandT - 指令类型
 type CommandT int8
 
 const (
-	_ CommandT = iota //
+	_ CommandT = iota
 	// ACommand A指令：0 v v v  v  v  v  v   v  v  v  v   v  v  v  v
 	ACommand
 	// CCommand C指令：1 1 1 a  c1 c2 c3 c4  c5 c6 d1 d2  d3 j1 j2 j3
 	CCommand
-	// LCommand 伪指令：(Xxx)，Xxx为符号
+	// LCommand 伪指令：(XXX)，XXX为符号
 	LCommand
 )
 
-// PredefinedSymbols -
+// MnemonicDest - CCommand中dest助记符
+var MnemonicDest = map[string]string{
+	"null": "000",
+	"M":    "001",
+	"D":    "010",
+	"MD":   "011",
+	"A":    "100",
+	"AM":   "101",
+	"AD":   "110",
+	"AMD":  "111",
+}
+
+// MnemonicComp - CCommand中comp助记符
+var MnemonicComp = map[string]string{
+	"0":  "0101010",
+	"1":  "0111111",
+	"-1": "0111010",
+	"D":  "0001100",
+	"A":  "0110000", "M": "1110000",
+	"!D": "0001101",
+	"!A": "0110001", "!M": "1110001",
+	"-D": "0001111",
+	"-A": "0110011", "-M": "1110011",
+	"D+1": "0011111",
+	"A+1": "0110111", "M+1": "1110111",
+	"D-1": "0001110",
+	"A-1": "0110010", "M-1": "1110010",
+	"D+A": "0000010", "D+M": "1000010",
+	"D-A": "0010011", "D-M": "1010011",
+	"A-D": "0000111", "M-D": "1000111",
+	"D&A": "0000000", "D&M": "1000000",
+	"D|A": "0010101", "D|M": "1010101",
+}
+
+// MnemonicJump - CCommand中Jump助记符
+var MnemonicJump = map[string]string{
+	"null": "000",
+	"JGT":  "001",
+	"JEQ":  "010",
+	"JGE":  "011",
+	"JLT":  "100",
+	"JNE":  "101",
+	"JLE":  "110",
+	"JMP":  "111",
+}
+
+// PredefinedSymbols - 预定义符号
 var PredefinedSymbols = map[string]int{
 	"SP":     0,
 	"LCL":    1,
@@ -40,4 +91,40 @@ var PredefinedSymbols = map[string]int{
 	"R15":    15,
 	"SCREEN": 16384,
 	"KBD":    24576,
+}
+
+// Run -
+func Run() {
+	// symbol table
+	st := NewTSymbolTable()
+	for symbol, address := range PredefinedSymbols {
+		st.AddEntry(symbol, address)
+	}
+	fmt.Println("symbol table:", st)
+
+	// code
+	code := NewTCode()
+	fmt.Println("dest:", code.Dest("A"))
+	fmt.Println("comp:", code.Comp("A+1"))
+	fmt.Println("jump:", code.Jump("JEQ"))
+
+	// parser
+	f, err := os.Open("./test_asm/Add.asm")
+	if err != nil {
+		fmt.Println("open file err:", err)
+		return
+	}
+	defer f.Close()
+	parser := NewTParser(f)
+	for {
+		hasMore := parser.HasMoreCommands()
+		fmt.Println("has more:", hasMore)
+		if !hasMore {
+			break
+		}
+
+		parser.Advance()
+		fmt.Println("parser:", parser)
+	}
+
 }

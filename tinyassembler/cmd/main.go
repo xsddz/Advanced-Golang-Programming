@@ -1,12 +1,7 @@
 package main
 
-import (
-	"fmt"
-	"os"
-)
+import "Advanced-Golang-Programming/tinyassembler"
 
 func main() {
-	fmt.Println("Assembler!")
-
-	os.Open()
+	tinyassembler.Run()
 }
