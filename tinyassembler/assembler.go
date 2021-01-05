@@ -5,6 +5,7 @@ package tinyassembler
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
 // CommandT - 指令类型
@@ -54,6 +55,9 @@ var MnemonicComp = map[string]string{
 	"D|A": "0010101", "D|M": "1010101",
 }
 
+// GlobalVariableAddress -
+var GlobalVariableAddress = 16
+
 // MnemonicJump - CCommand中Jump助记符
 var MnemonicJump = map[string]string{
 	"null": "000",
@@ -94,37 +98,84 @@ var PredefinedSymbols = map[string]int{
 }
 
 // Run -
-func Run() {
+func Run(source string, target string) {
 	// symbol table
 	st := NewTSymbolTable()
 	for symbol, address := range PredefinedSymbols {
 		st.AddEntry(symbol, address)
 	}
-	fmt.Println("symbol table:", st)
 
 	// code
 	code := NewTCode()
-	fmt.Println("dest:", code.Dest("A"))
-	fmt.Println("comp:", code.Comp("A+1"))
-	fmt.Println("jump:", code.Jump("JEQ"))
 
-	// parser
-	f, err := os.Open("./test_asm/Add.asm")
+	// source/target file init
+	sf, err := os.Open(source)
 	if err != nil {
-		fmt.Println("open file err:", err)
+		fmt.Println("open source file err:", err)
 		return
 	}
-	defer f.Close()
-	parser := NewTParser(f)
+	defer sf.Close()
+	tf, err := os.OpenFile(target, os.O_RDWR|os.O_CREATE, 0755)
+	if err != nil {
+		fmt.Println("create target file err:", err)
+		return
+	}
+	defer tf.Close()
+
+	// first parser
+	parser := NewTParser(sf)
 	for {
 		hasMore := parser.HasMoreCommands()
-		fmt.Println("has more:", hasMore)
 		if !hasMore {
 			break
 		}
 
 		parser.Advance()
-		fmt.Println("parser:", parser)
+
+		ct := parser.CommandType()
+		if ct == LCommand {
+			st.AddEntry(parser.Symbol(), parser.commandCount)
+		}
 	}
 
+	// second parser
+	_, err = sf.Seek(0, 0)
+	if err != nil {
+		fmt.Println("second parser err:", err)
+		return
+	}
+	parser = NewTParser(sf)
+	for {
+		hasMore := parser.HasMoreCommands()
+		if !hasMore {
+			break
+		}
+
+		parser.Advance()
+
+		ct := parser.CommandType()
+		if ct == LCommand {
+			continue
+		}
+		if ct == ACommand {
+			symbol := parser.Symbol()
+			if symbol[0] >= '0' && symbol[0] <= '9' {
+				value, _ := strconv.Atoi(symbol)
+				tf.WriteString(fmt.Sprintf("%016b\n", value))
+				continue
+			}
+
+			if !st.Contains(symbol) {
+				st.AddEntry(symbol, GlobalVariableAddress)
+				GlobalVariableAddress++
+			}
+
+			tf.WriteString(fmt.Sprintf("%016b\n", st.GetAddress(symbol)))
+			continue
+		}
+		if ct == CCommand {
+			tf.WriteString("111" + code.Comp(parser.Comp()) + code.Dest(parser.Dest()) + code.Jump(parser.Jump()) + "\n")
+			continue
+		}
+	}
 }

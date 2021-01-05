@@ -43,9 +43,13 @@ type Parser interface {
 
 // TParser -
 type TParser struct {
-	file           *os.File
-	currentCommand string
-	commandBuf     string
+	file *os.File
+
+	currentCommand    string
+	currentCommandLen int
+	commandCount      int
+
+	commandBuf string
 }
 
 // NewTParser -
@@ -57,37 +61,52 @@ func NewTParser(file *os.File) *TParser {
 
 // HasMoreCommands -
 func (p *TParser) HasMoreCommands() bool {
+	// 从文件中读取一行进行解析，跳过空白行，注释行，行尾注释，行内空白符，直到遇到一行真正的指令
 	for {
 		line, err := readline(p.file)
-		if err != nil && err != io.EOF {
+		if err != nil && err != io.EOF { // 读取出错
 			return false
 		}
 
-		// 注释行
-		if len(line) >= 2 && string(line[:2]) == "//" {
-			if err == io.EOF {
-				return false
+		charCount := 0
+		mayComment := false
+		for _, c := range line {
+			// 去除注释：注释行或行尾注释
+			if c == '/' {
+				if mayComment {
+					charCount = charCount - 1
+					break
+				}
+				mayComment = true
+			} else {
+				mayComment = false
 			}
-			continue
+
+			// 去除空格
+			if c == ' ' {
+				continue
+			}
+
+			line[charCount] = c
+			charCount = charCount + 1
 		}
 
 		// 空白行
-		if string(line) == "" {
+		if charCount == 0 {
 			if err == io.EOF {
 				return false
 			}
-
 			continue
 		}
 
-		p.commandBuf = string(line)
+		// 缓存解析出来的指令代码
+		p.commandBuf = string(line[:charCount])
 		break
 	}
-
 	return true
 }
 
-// readline - 从打开的文件中读取一行并返回
+// readline - 从打开的文件中读取一行
 func readline(f *os.File) (line []byte, err error) {
 	var data [1]byte
 	for {
@@ -96,6 +115,11 @@ func readline(f *os.File) (line []byte, err error) {
 			break
 		}
 		if data[0] == '\n' {
+			// remove char \r before char \n
+			lineLen := len(line)
+			if lineLen > 0 && line[lineLen-1] == '\r' {
+				line = line[:lineLen-1]
+			}
 			break
 		}
 		line = append(line, data[:]...)
@@ -106,29 +130,71 @@ func readline(f *os.File) (line []byte, err error) {
 // Advance -
 func (p *TParser) Advance() {
 	p.currentCommand = p.commandBuf
+	p.currentCommandLen = len(p.currentCommand)
 }
 
 // CommandType -
 func (p *TParser) CommandType() CommandT {
-	return ACommand
+	if p.currentCommand[0] == '@' {
+		p.commandCount++
+		return ACommand
+	} else if p.currentCommand[0] == '(' && p.currentCommand[p.currentCommandLen-1] == ')' {
+		return LCommand
+	} else {
+		p.commandCount++
+		return CCommand
+	}
 }
 
 // Symbol -
 func (p *TParser) Symbol() string {
-	return ""
+	// ACommand
+	if p.currentCommand[0] == '@' {
+		return p.currentCommand[1:]
+	}
+	// LCommand
+	return p.currentCommand[1 : p.currentCommandLen-1]
 }
 
 // Dest -
 func (p *TParser) Dest() string {
-	return ""
+	destEndIndex := -1
+	for i, c := range p.currentCommand {
+		if c == '=' {
+			destEndIndex = i - 1
+		}
+	}
+	if destEndIndex == -1 {
+		return "null"
+	}
+	return p.currentCommand[:destEndIndex+1]
 }
 
 // Comp -
 func (p *TParser) Comp() string {
-	return ""
+	compBeginIndex := 0
+	compEndIndex := p.currentCommandLen - 1
+	for i, c := range p.currentCommand {
+		if c == '=' {
+			compBeginIndex = i + 1
+		}
+		if c == ';' {
+			compEndIndex = i - 1
+		}
+	}
+	return p.currentCommand[compBeginIndex : compEndIndex+1]
 }
 
 // Jump -
 func (p *TParser) Jump() string {
-	return ""
+	jumpBeginIndex := -1
+	for i, c := range p.currentCommand {
+		if c == ';' {
+			jumpBeginIndex = i + 1
+		}
+	}
+	if jumpBeginIndex == -1 {
+		return "null"
+	}
+	return p.currentCommand[jumpBeginIndex:]
 }
