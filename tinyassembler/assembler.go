@@ -21,8 +21,8 @@ const (
 	LCommand
 )
 
-// MnemonicDest - CCommand中dest助记符
-var MnemonicDest = map[string]string{
+// MnemonicDestTable - CCommand中dest助记符
+var MnemonicDestTable = map[string]string{
 	"null": "000",
 	"M":    "001",
 	"D":    "010",
@@ -33,8 +33,8 @@ var MnemonicDest = map[string]string{
 	"AMD":  "111",
 }
 
-// MnemonicComp - CCommand中comp助记符
-var MnemonicComp = map[string]string{
+// MnemonicCompTable - CCommand中comp助记符
+var MnemonicCompTable = map[string]string{
 	"0":  "0101010",
 	"1":  "0111111",
 	"-1": "0111010",
@@ -55,11 +55,8 @@ var MnemonicComp = map[string]string{
 	"D|A": "0010101", "D|M": "1010101",
 }
 
-// GlobalVariableAddress -
-var GlobalVariableAddress = 16
-
-// MnemonicJump - CCommand中Jump助记符
-var MnemonicJump = map[string]string{
+// MnemonicJumpTable - CCommand中Jump助记符
+var MnemonicJumpTable = map[string]string{
 	"null": "000",
 	"JGT":  "001",
 	"JEQ":  "010",
@@ -97,18 +94,21 @@ var PredefinedSymbols = map[string]int{
 	"KBD":    24576,
 }
 
+// NextSymbolAddress - 符号地址从16开始分配
+var NextSymbolAddress = 16
+
 // Run -
 func Run(source string, target string) {
-	// symbol table
+	// init symbol table
 	st := NewTSymbolTable()
 	for symbol, address := range PredefinedSymbols {
 		st.AddEntry(symbol, address)
 	}
 
-	// code
+	// init code
 	code := NewTCode()
 
-	// source/target file init
+	// init source/target file
 	sf, err := os.Open(source)
 	if err != nil {
 		fmt.Println("open source file err:", err)
@@ -123,6 +123,7 @@ func Run(source string, target string) {
 	defer tf.Close()
 
 	// first parser
+	commandAddressCounter := -1
 	parser := NewTParser(sf)
 	for {
 		hasMore := parser.HasMoreCommands()
@@ -133,8 +134,11 @@ func Run(source string, target string) {
 		parser.Advance()
 
 		ct := parser.CommandType()
-		if ct == LCommand {
-			st.AddEntry(parser.Symbol(), parser.commandCount)
+		if ct == ACommand || ct == CCommand { // A指令和C指令会被加载至指令内存
+			commandAddressCounter++
+		}
+		if ct == LCommand { // 伪指令符号地址值为下一条指令地址，不会被加载至指令内存
+			st.AddEntry(parser.Symbol(), commandAddressCounter+1)
 		}
 	}
 
@@ -166,10 +170,9 @@ func Run(source string, target string) {
 			}
 
 			if !st.Contains(symbol) {
-				st.AddEntry(symbol, GlobalVariableAddress)
-				GlobalVariableAddress++
+				st.AddEntry(symbol, NextSymbolAddress)
+				NextSymbolAddress++
 			}
-
 			tf.WriteString(fmt.Sprintf("%016b\n", st.GetAddress(symbol)))
 			continue
 		}

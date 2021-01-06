@@ -1,4 +1,4 @@
-// code - 编码，将所有汇编命令助记符翻译为对应的二进制码
+// code - 编码器，将所有汇编命令助记符翻译为对应的二进制码
 
 package tinyassembler
 
@@ -29,15 +29,15 @@ func (c *TCode) unpackCode(mnemonic string, mnemonicTable map[string]string) str
 
 // Dest -
 func (c *TCode) Dest(dest string) string {
-	return c.unpackCode(dest, MnemonicDest)
+	return c.unpackCode(dest, MnemonicDestTable)
 }
 
 // Comp -
 func (c *TCode) Comp(comp string) string {
-	return c.unpackCode(comp, MnemonicComp)
+	return c.unpackCode(comp, MnemonicCompTable)
 }
 
 // Jump -
 func (c *TCode) Jump(jump string) string {
-	return c.unpackCode(jump, MnemonicJump)
+	return c.unpackCode(jump, MnemonicJumpTable)
 }

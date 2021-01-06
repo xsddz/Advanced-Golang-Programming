@@ -47,7 +47,6 @@ type TParser struct {
 
 	currentCommand    string
 	currentCommandLen int
-	commandCount      int
 
 	commandBuf string
 }
@@ -59,54 +58,7 @@ func NewTParser(file *os.File) *TParser {
 	}
 }
 
-// HasMoreCommands -
-func (p *TParser) HasMoreCommands() bool {
-	// 从文件中读取一行进行解析，跳过空白行，注释行，行尾注释，行内空白符，直到遇到一行真正的指令
-	for {
-		line, err := readline(p.file)
-		if err != nil && err != io.EOF { // 读取出错
-			return false
-		}
-
-		charCount := 0
-		mayComment := false
-		for _, c := range line {
-			// 去除注释：注释行或行尾注释
-			if c == '/' {
-				if mayComment {
-					charCount = charCount - 1
-					break
-				}
-				mayComment = true
-			} else {
-				mayComment = false
-			}
-
-			// 去除空格
-			if c == ' ' {
-				continue
-			}
-
-			line[charCount] = c
-			charCount = charCount + 1
-		}
-
-		// 空白行
-		if charCount == 0 {
-			if err == io.EOF {
-				return false
-			}
-			continue
-		}
-
-		// 缓存解析出来的指令代码
-		p.commandBuf = string(line[:charCount])
-		break
-	}
-	return true
-}
-
-// readline - 从打开的文件中读取一行
+// readline - 从打开的文件中读取一行文本
 func readline(f *os.File) (line []byte, err error) {
 	var data [1]byte
 	for {
@@ -122,9 +74,61 @@ func readline(f *os.File) (line []byte, err error) {
 			}
 			break
 		}
-		line = append(line, data[:]...)
+		line = append(line, data[0])
 	}
 	return line, err
+}
+
+// HasMoreCommands -
+func (p *TParser) HasMoreCommands() bool {
+	// 直到遇到一行指令或文件结束为止
+	for {
+		// 从文件中读取一行进行
+		line, err := readline(p.file)
+		if err != nil && err != io.EOF { // 读取出错
+			return false
+		}
+
+		// 解析读取行
+		charCount := 0
+		mayComment := false
+		for _, c := range line {
+			// 去除注释：
+			// - 跳过注释行
+			// - 忽略行尾注释
+			if c == '/' {
+				if mayComment {
+					charCount = charCount - 1
+					break
+				}
+				mayComment = true
+			} else {
+				mayComment = false
+			}
+
+			// 去除空格：
+			// - 忽略行内空白符
+			if c == ' ' {
+				continue
+			}
+
+			line[charCount] = c
+			charCount = charCount + 1
+		}
+
+		// 跳过空白行
+		if charCount == 0 {
+			if err == io.EOF {
+				return false
+			}
+			continue
+		}
+
+		// 缓存解析出来的汇编指令
+		p.commandBuf = string(line[:charCount])
+		break
+	}
+	return true
 }
 
 // Advance -
@@ -136,12 +140,10 @@ func (p *TParser) Advance() {
 // CommandType -
 func (p *TParser) CommandType() CommandT {
 	if p.currentCommand[0] == '@' {
-		p.commandCount++
 		return ACommand
 	} else if p.currentCommand[0] == '(' && p.currentCommand[p.currentCommandLen-1] == ')' {
 		return LCommand
 	} else {
-		p.commandCount++
 		return CCommand
 	}
 }
