@@ -165,19 +165,19 @@ func Run(source string, target string) {
 			symbol := parser.Symbol()
 			if symbol[0] >= '0' && symbol[0] <= '9' {
 				value, _ := strconv.Atoi(symbol)
-				tf.WriteString(fmt.Sprintf("%016b\n", value))
+				tf.WriteString(fmt.Sprintf("%016b\n", value)) // 将A指令翻译为二进制指令
 				continue
 			}
 
-			if !st.Contains(symbol) {
+			if !st.Contains(symbol) { // 分配新符号的RAM地址
 				st.AddEntry(symbol, NextSymbolAddress)
 				NextSymbolAddress++
 			}
-			tf.WriteString(fmt.Sprintf("%016b\n", st.GetAddress(symbol)))
+			tf.WriteString(fmt.Sprintf("%016b\n", st.GetAddress(symbol))) // 将A指令翻译为二进制指令
 			continue
 		}
 		if ct == CCommand {
-			tf.WriteString("111" + code.Comp(parser.Comp()) + code.Dest(parser.Dest()) + code.Jump(parser.Jump()) + "\n")
+			tf.WriteString("111" + code.Comp(parser.Comp()) + code.Dest(parser.Dest()) + code.Jump(parser.Jump()) + "\n") // 将C指令翻译为二进制指令
 			continue
 		}
 	}
