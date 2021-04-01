@@ -9,7 +9,7 @@ import (
 // MaxSleep -
 const MaxSleep = 20
 
-// ConnectRetry -
+// ConnectRetry try to connect with exponential backoff
 func ConnectRetry(network string, address string) (conn net.Conn, err error) {
 	for numsec := 1; numsec <= MaxSleep; numsec <<= 1 {
 		fmt.Printf("[ConnectRetry]connect to [%s]%s ", network, address)
