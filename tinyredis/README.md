@@ -1,0 +1,2 @@
+
+record redis design Philosophy
