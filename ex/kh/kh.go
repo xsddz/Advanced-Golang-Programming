@@ -14,6 +14,10 @@ import (
 	"fmt"
 )
 
+func init() {
+	fmt.Println("init:kh")
+}
+
 type Stack struct {
 	data []int
 	len  int

@@ -2,6 +2,10 @@ package theBugs
 
 import "fmt"
 
+func init() {
+	fmt.Println("init:theBugs")
+}
+
 /*
  * 在线网站：https://c.runoob.com/compile/21
  * 下面这段golang程序，大部分情况没有输出

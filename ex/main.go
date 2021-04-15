@@ -1,10 +1,15 @@
 package main
 
 import (
-	"Advanced-Golang-Programming/ex/kh"
+	"fmt"
 )
+
+func init() {
+	fmt.Println("init:main")
+}
 
 func main() {
 	// theBugs.Run()
-	kh.Run()
+	// foobar.Sort([]int{1, 2})
+	// kh.Run()
 }

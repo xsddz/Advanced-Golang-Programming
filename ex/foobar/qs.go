@@ -1,4 +1,10 @@
-package boobar
+package foobar
+
+import "fmt"
+
+func init() {
+	fmt.Println("init:foobar")
+}
 
 func sortProc(data []int, l int, r int) (mid int) {
 	midVal := data[r]
