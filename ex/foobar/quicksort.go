@@ -12,13 +12,10 @@ func sortProc(data []int, l int, r int) (mid int) {
 	for j := i + 1; j < r; j++ {
 		if data[j] < midVal {
 			i++
-			temp := data[j]
-			data[j] = data[i]
-			data[i] = temp
+			data[i], data[j] = data[j], data[i]
 		}
 	}
-	data[r] = data[i+1]
-	data[i+1] = midVal
+	data[r], data[i+1] = data[i+1], midVal
 	return i + 1
 }
 
