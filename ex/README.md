@@ -1,3 +1,3 @@
 
-solution code demo for some problem
+solution code demo for practice
 

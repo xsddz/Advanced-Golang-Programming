@@ -1,1 +1,2 @@
-collection of some programming utils
+
+collection of some programming thought
