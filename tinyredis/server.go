@@ -1,4 +1,8 @@
-package tinyredis
+package main
+
+import (
+	"Advanced-Golang-Programming/tinyredis/rdb"
+)
 
 type redisServer struct {
 	supervised bool // int supervised; /* 1 if supervised, 0 otherwise. */
@@ -56,6 +60,8 @@ func initServer() {
 
 func loadDataFromDisk() {
 	// rdbLoad(server.rdb_filename,&rsi) == C_OK
+
+	rdb.RDBLoad("data/dump.rdb")
 }
 
 func main() {
