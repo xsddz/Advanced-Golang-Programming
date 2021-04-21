@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Advanced-Golang-Programming/ex/subcollect"
 	"fmt"
 )
 
@@ -11,6 +12,8 @@ func init() {
 func main() {
 	// theBugs.Run()
 	// kh.Run()
+
+	subcollect.Run()
 
 	// fmt.Println("123 + 0 = ", foobar.BigAdder("123", "0"))
 	// fmt.Println("123 + 2 = ", foobar.BigAdder("123", "2"))
