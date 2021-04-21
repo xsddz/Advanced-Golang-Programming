@@ -4,6 +4,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"os"
+	"strconv"
 )
 
 const (
@@ -117,6 +118,7 @@ func rdbLoadRio(rdb *rio) {
 		return
 	}
 	rdbConvertPrint("green", buf, fmt.Sprintf("=> [rdbLoadRio] magic string and rdb version: %v", string(buf)))
+	rdbver, _ := strconv.Atoi(string(buf[6:]))
 
 	for {
 		// read opcode
@@ -162,6 +164,16 @@ func rdbLoadRio(rdb *rio) {
 
 		rdbLoadStringObject(rdb)   // read key
 		rdbLoadObject(opcode, rdb) // read obj
+	}
+
+	if rdbver > 5 {
+		buf := make([]byte, 8)
+		err = rioRead(rdb, buf)
+		if err != nil {
+			fmt.Println("[rdbLoadRio] read rdb file err:", err)
+			return
+		}
+		rdbConvertPrint("green", buf, fmt.Sprintf("=> [rdbLoadRio] CRC 64 checksum: %08b", buf))
 	}
 }
 
