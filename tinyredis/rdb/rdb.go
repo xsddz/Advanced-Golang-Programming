@@ -173,7 +173,7 @@ func rdbLoadRio(rdb *rio) {
 			fmt.Println("[rdbLoadRio] read rdb file err:", err)
 			return
 		}
-		rdbConvertPrint("green", buf, fmt.Sprintf("=> [rdbLoadRio] CRC 64 checksum: %08b", buf))
+		rdbConvertPrint("green", buf, fmt.Sprintf("=> [rdbLoadRio] rdbver:%d, CRC 64 checksum: %08b", rdbver, buf))
 	}
 }
 
