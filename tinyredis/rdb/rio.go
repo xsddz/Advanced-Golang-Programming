@@ -7,20 +7,43 @@ import (
 	"strconv"
 )
 
+/*------------------------------------------------------------------------------
+ * 标准定义如下
+ * ---------------------------------------------------------------------------*/
+
+type rioI interface {
+	// 从rdb文件最多读取buf大小的byte数据
+	rioRead(buf []byte) error
+
+	// 从rdb文件头读取 magic string 和 rdb version
+	rdbLoadMagicString() (magic string, ver int)
+
+	// 读取类型操作编码
+	rdbLoadType() (opType byte, err error)
+	// 读取长度编码
+	rdbLoadLen() (len uint64, isEnc bool, err error)
+	// 读取对象
+	rdbLoadStringObject() (val interface{})
+	rdbLoadEncodedStringObject() (val interface{})
+	rdbGenericLoadStringObject(flags int) interface{}
+	rdbLoadIntegerObject(enctype int, flags int) (val interface{})
+	rdbLoadLzfStringObject(flags int) interface{}
+	rdbLoadObject(vType byte) interface{}
+
+	// 从rdb文件尾读取校验和
+	rdbLoadCRC64Checksum(rdbver int)
+}
+
+/*------------------------------------------------------------------------------
+ * 实现如下
+ * ---------------------------------------------------------------------------*/
+
 const (
 	/* rdbLoad...() functions flags. */
-	RDB_LOAD_NONE  int = 0
-	RDB_LOAD_ENC       = (1 << 0)
-	RDB_LOAD_PLAIN     = (1 << 1)
-	RDB_LOAD_SDS       = (1 << 2)
-
-	/* When a length of a string object stored on disk has the first two bits
-	 * set, the remaining six bits specify a special encoding for the object
-	 * accordingly to the following defines: */
-	RDB_ENC_INT8  uint64 = 0 /* 8 bit signed integer */
-	RDB_ENC_INT16        = 1 /* 16 bit signed integer */
-	RDB_ENC_INT32        = 2 /* 32 bit signed integer */
-	RDB_ENC_LZF          = 3 /* string compressed with FASTLZ */
+	RDB_LOAD_NONE  = 0
+	RDB_LOAD_ENC   = (1 << 0)
+	RDB_LOAD_PLAIN = (1 << 1)
+	RDB_LOAD_SDS   = (1 << 2)
 
 	/* Defines related to the dump file format. To store 32 bits lengths for short
 	 * keys requires a lot of space, so we check the most significant 2 bits of
@@ -36,12 +59,20 @@ const (
 	 *
 	 * Lengths up to 63 are stored using a single byte, most DB keys, and may
 	 * values, will fit inside. */
-	RDB_6BITLEN  byte = 0
-	RDB_14BITLEN      = 1
-	RDB_32BITLEN      = 0x80
-	RDB_64BITLEN      = 0x81
-	RDB_ENCVAL        = 3
+	RDB_6BITLEN  = 0
+	RDB_14BITLEN = 1
+	RDB_32BITLEN = 0x80
+	RDB_64BITLEN = 0x81
+	RDB_ENCVAL   = 3
 	// RDB_LENERR   = UINT64_MAX
+
+	/* When a length of a string object stored on disk has the first two bits
+	 * set, the remaining six bits specify a special encoding for the object
+	 * accordingly to the following defines: */
+	RDB_ENC_INT8  = 0 /* 8 bit signed integer */
+	RDB_ENC_INT16 = 1 /* 16 bit signed integer */
+	RDB_ENC_INT32 = 2 /* 32 bit signed integer */
+	RDB_ENC_LZF   = 3 /* string compressed with FASTLZ */
 )
 
 type rio struct {
@@ -83,7 +114,7 @@ func (r *rio) rdbLoadMagicString() (magic string, ver int) {
 	if err != nil {
 		panic(fmt.Sprintln("[rdbLoadMagicString] read rdb file err:", err))
 	}
-	rdbConvertPrint("green", buf, fmt.Sprintf("=> [rdbLoadMagicString] magic string and rdb version: %v", string(buf)))
+	rdbConvertPrint("cyan", buf, fmt.Sprintf("=> [rdbLoadMagicString] magic string and rdb version: %v", string(buf)))
 
 	magic = string(buf[:6])
 	ver, _ = strconv.Atoi(string(buf[6:]))
@@ -109,60 +140,20 @@ func (r *rio) rdbLoadEncodedStringObject() interface{} {
 }
 
 func (r *rio) rdbGenericLoadStringObject(flags int) interface{} {
-	// encode := flags & RDB_LOAD_ENC
-	// plain := flags & RDB_LOAD_PLAIN
-	// sds := flags & RDB_LOAD_SDS
-
 	len, isEnc, err := r.rdbLoadLen()
 	if err != nil {
 		panic(fmt.Sprintln("[rdbGenericLoadStringObject] rdbLoadLen() err:", err))
 	}
 
 	if isEnc {
-		buf := make([]byte, 4)
-		if len == RDB_ENC_INT8 {
-			err = r.rioRead(buf[:1])
-			if err != nil {
-				panic(fmt.Sprintln("[rdbGenericLoadStringObject] rdbLoadLen() err:", err))
-			}
-			val := int(buf[0])
-			rdbConvertPrint("", buf[:1], fmt.Sprintf("=> [rdbGenericLoadStringObject] encode int8: %08b, %v", buf[:1], val))
-			return val
-		} else if len == RDB_ENC_INT16 {
-			err = r.rioRead(buf[:2])
-			if err != nil {
-				panic(fmt.Sprintln("[rdbGenericLoadStringObject] rdbLoadLen() err:", err))
-			}
-			val := int16(buf[0]) | (int16(buf[1]) << 8)
-			rdbConvertPrint("", buf[:2], fmt.Sprintf("=> [rdbGenericLoadStringObject] encode int16: %08b, %v", buf[:2], val))
-			return val
-		} else if len == RDB_ENC_INT32 {
-			err = r.rioRead(buf)
-			if err != nil {
-				panic(fmt.Sprintln("[rdbGenericLoadStringObject] rdbLoadLen() err:", err))
-			}
-			val := int32(buf[0]) | (int32(buf[1]) << 8) | (int32(buf[2]) << 16) | (int32(buf[3]) << 24)
-			rdbConvertPrint("", buf, fmt.Sprintf("=> [rdbGenericLoadStringObject] encode int32: %08b, %v", buf, val))
-			return val
+		if len == RDB_ENC_INT8 ||
+			len == RDB_ENC_INT16 ||
+			len == RDB_ENC_INT32 {
+			return r.rdbLoadIntegerObject(int(len), flags)
 		} else if len == RDB_ENC_LZF {
-			clen, _, err := r.rdbLoadLen()
-			if err != nil {
-				panic(fmt.Sprintln("[rdbGenericLoadStringObject] rdbLoadLen() err:", err))
-			}
-			len, _, err := r.rdbLoadLen()
-			if err != nil {
-				panic(fmt.Sprintln("[rdbGenericLoadStringObject] rdbLoadLen() err:", err))
-			}
-			buf := make([]byte, clen)
-			err = r.rioRead(buf)
-			if err != nil {
-				panic(fmt.Sprintln("[rdbGenericLoadStringObject] rdbLoadLen() err:", err))
-			}
-			val := string(buf)
-			rdbConvertPrint("", buf, fmt.Sprintf("=> [rdbGenericLoadStringObject] encode LZF compressed string: %d, %v, %v", len, buf, string(buf)))
-			return val
+			return r.rdbLoadLzfStringObject(flags)
 		} else {
-			panic(fmt.Sprintln("[rdbGenericLoadStringObject] unknown RDB string encoding type %d", len))
+			panic(fmt.Sprintf("[rdbGenericLoadStringObject] unknown RDB string encoding type %d\n", len))
 		}
 	}
 
@@ -172,7 +163,7 @@ func (r *rio) rdbGenericLoadStringObject(flags int) interface{} {
 		panic(fmt.Sprintln("[rdbGenericLoadStringObject] read rdb file err:", err))
 	}
 	val := string(buf)
-	rdbConvertPrint("", buf, fmt.Sprintf("=> [rdbGenericLoadStringObject]: %v", string(buf)))
+	rdbConvertPrint("", buf, fmt.Sprintf("=> [rdbGenericLoadStringObject]: %v", val))
 	return val
 }
 
@@ -236,6 +227,59 @@ func (r *rio) rdbLoadLen() (len uint64, isEnc bool, err error) {
 	}
 }
 
+func (r *rio) rdbLoadIntegerObject(enctype int, flags int) (val interface{}) {
+	buf := make([]byte, 4)
+	if enctype == RDB_ENC_INT8 {
+		err := r.rioRead(buf[:1])
+		if err != nil {
+			panic(fmt.Sprintln("[rdbLoadIntegerObject] rdbLoadLen() err:", err))
+		}
+		val = int(buf[0])
+		rdbConvertPrint("", buf[:1], fmt.Sprintf("=> [rdbLoadIntegerObject] encode int8: %08b, %v", buf[:1], val))
+		return
+	} else if enctype == RDB_ENC_INT16 {
+		err := r.rioRead(buf[:2])
+		if err != nil {
+			panic(fmt.Sprintln("[rdbLoadIntegerObject] rdbLoadLen() err:", err))
+		}
+		val = int16(buf[0]) | (int16(buf[1]) << 8)
+		rdbConvertPrint("", buf[:2], fmt.Sprintf("=> [rdbLoadIntegerObject] encode int16: %08b, %v", buf[:2], val))
+		return
+	} else if enctype == RDB_ENC_INT32 {
+		err := r.rioRead(buf)
+		if err != nil {
+			panic(fmt.Sprintln("[rdbLoadIntegerObject] rdbLoadLen() err:", err))
+		}
+		val = int32(buf[0]) | (int32(buf[1]) << 8) | (int32(buf[2]) << 16) | (int32(buf[3]) << 24)
+		rdbConvertPrint("", buf, fmt.Sprintf("=> [rdbLoadIntegerObject] encode int32: %08b, %v", buf, val))
+		return
+	} else {
+		panic(fmt.Sprintf("[rdbLoadIntegerObject] unknown RDB integer encoding type %d\n", enctype))
+	}
+}
+
+func (r *rio) rdbLoadLzfStringObject(flags int) interface{} {
+	clen, _, err := r.rdbLoadLen()
+	if err != nil {
+		panic(fmt.Sprintln("[rdbLoadLzfStringObject] rdbLoadLen() err:", err))
+	}
+	len, _, err := r.rdbLoadLen()
+	if err != nil {
+		panic(fmt.Sprintln("[rdbLoadLzfStringObject] rdbLoadLen() err:", err))
+	}
+
+	buf := make([]byte, clen)
+	err = r.rioRead(buf)
+	if err != nil {
+		panic(fmt.Sprintln("[rdbLoadLzfStringObject] rdbLoadLen() err:", err))
+	}
+
+	val := string(buf)
+	// todo:: lzf_decompress()
+	rdbConvertPrint("", buf, fmt.Sprintf("=> [rdbLoadLzfStringObject] encode LZF compressed string: %d, %v, %v", len, buf, string(buf)))
+	return val
+}
+
 func (r *rio) rdbLoadObject(vType byte) interface{} {
 	if vType == RDB_TYPE_STRING {
 		return r.rdbLoadEncodedStringObject()
@@ -261,5 +305,5 @@ func (r *rio) rdbLoadCRC64Checksum(rdbver int) {
 	if err != nil {
 		panic(fmt.Sprintln("[rdbLoadCRC64Checksum] read rdb file err:", err))
 	}
-	rdbConvertPrint("green", buf, fmt.Sprintf("=> [rdbLoadCRC64Checksum] rdbver:%d, CRC 64 checksum: %08b", rdbver, buf))
+	rdbConvertPrint("cyan", buf, fmt.Sprintf("=> [rdbLoadCRC64Checksum] rdbver:%d, CRC 64 checksum: %08b", rdbver, buf))
 }
