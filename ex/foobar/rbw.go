@@ -25,13 +25,13 @@ func RWB(a []int) {
 			i++
 			continue
 		}
-		if a[i] == 1 {
-			i++
-		}
 		if a[i] == 2 {
 			bi--
 			a[bi], a[i] = a[i], a[bi]
 			continue
+		}
+		if a[i] == 1 {
+			i++
 		}
 	}
 }
