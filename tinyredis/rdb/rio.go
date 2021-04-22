@@ -27,8 +27,11 @@ type rioI interface {
 	rdbLoadEncodedStringObject() (val interface{})
 	rdbGenericLoadStringObject(flags int) interface{}
 	rdbLoadIntegerObject(enctype int, flags int) (val interface{})
-	rdbLoadLzfStringObject(flags int) interface{}
-	rdbLoadObject(vType byte) interface{}
+	rdbLoadLzfStringObject(flags int) (val interface{})
+	rdbLoadObject(vType byte) (val interface{})
+
+	rdbLoadTime() (t uint32)
+	rdbLoadMillisecondTime(rdbver int) (t uint64)
 
 	// 从rdb文件尾读取校验和
 	rdbLoadCRC64Checksum(rdbver int)
@@ -286,21 +289,48 @@ func (r *rio) rdbLoadLzfStringObject(flags int) interface{} {
 
 func (r *rio) rdbLoadObject(vType int) interface{} {
 	if vType == RDB_TYPE_STRING {
+		/* Read string value */
 		return r.rdbLoadEncodedStringObject()
 	} else if vType == RDB_TYPE_LIST {
+		/* Read list value */
 		len, _, err := r.rdbLoadLen()
 		if err != nil {
 			panic(fmt.Sprintln("[rdbLoadObject] rdbLoadLen() err:", err))
 		}
 		vals := []interface{}{}
-		for ; len > 0; len-- {
+		for i := uint64(0); i < len; i++ {
 			vals = append(vals, r.rdbLoadEncodedStringObject())
 		}
 		return vals
 	} else if vType == RDB_TYPE_SET {
-		panic(fmt.Sprintln("can't handle RDB_TYPE_SET type object."))
+		/* Read Set value */
+		len, _, err := r.rdbLoadLen()
+		if err != nil {
+			panic(fmt.Sprintln("[rdbLoadObject] rdbLoadLen() err:", err))
+		}
+		vals := []interface{}{}
+		for i := uint64(0); i < len; i++ {
+			vals = append(vals, r.rdbGenericLoadStringObject(RDB_LOAD_SDS))
+		}
+		return vals
 	} else if vType == RDB_TYPE_ZSET_2 || vType == RDB_TYPE_ZSET {
-		panic(fmt.Sprintln("can't handle RDB_TYPE_ZSET_2|RDB_TYPE_ZSET type object."))
+		/* Read list/set value. */
+		len, _, err := r.rdbLoadLen()
+		if err != nil {
+			panic(fmt.Sprintln("[rdbLoadObject] rdbLoadLen() err:", err))
+		}
+		vals := []interface{}{}
+		for i := uint64(0); i < len; i++ {
+			val := r.rdbGenericLoadStringObject(RDB_LOAD_SDS)
+			var score interface{}
+			if vType == RDB_TYPE_ZSET_2 {
+				score = r.rdbLoadBinaryDoubleValue()
+			} else {
+				score = r.rdbLoadDoubleValue()
+			}
+			vals = append(vals, fmt.Sprintf("%v:%v", val, score))
+		}
+		return vals
 	} else if vType == RDB_TYPE_HASH {
 		panic(fmt.Sprintln("can't handle RDB_TYPE_HASH type object."))
 	} else if vType == RDB_TYPE_LIST_QUICKLIST {
@@ -308,11 +338,11 @@ func (r *rio) rdbLoadObject(vType int) interface{} {
 		if err != nil {
 			panic(fmt.Sprintln("[rdbLoadObject] rdbLoadLen() err:", err))
 		}
-		values := []interface{}{}
-		for ; len > 0; len-- {
-			values = append(values, r.rdbGenericLoadStringObject(RDB_LOAD_PLAIN))
+		vals := []interface{}{}
+		for i := uint64(0); i < len; i++ {
+			vals = append(vals, r.rdbGenericLoadStringObject(RDB_LOAD_PLAIN))
 		}
-		return values
+		return vals
 	} else if vType == RDB_TYPE_HASH_ZIPMAP ||
 		vType == RDB_TYPE_LIST_ZIPLIST ||
 		vType == RDB_TYPE_SET_INTSET ||
@@ -329,6 +359,37 @@ func (r *rio) rdbLoadObject(vType int) interface{} {
 	} else {
 		panic(fmt.Sprintf("[rdbLoadObject] unknown RDB encoding type %08b, %d\n", vType, vType))
 	}
+}
+
+func (r *rio) rdbLoadDoubleValue() interface{} {
+	len := make([]byte, 1)
+	err := r.rioRead(len)
+	if err != nil {
+		panic(fmt.Sprintln("[rdbLoadBinaryDoubleValue] rioRead() err:", err))
+	}
+	if len[0] == 255 {
+		return "R_NegInf"
+	} else if len[0] == 254 {
+		return "R_PosInf"
+	} else if len[0] == 253 {
+		return "R_Nan"
+	} else {
+		buf := make([]byte, int(len[0]))
+		err = r.rioRead(buf)
+		if err != nil {
+			panic(fmt.Sprintln("[rdbLoadBinaryDoubleValue] rioRead() err:", err))
+		}
+		return string(buf)
+	}
+}
+
+func (r *rio) rdbLoadBinaryDoubleValue() interface{} {
+	buf := make([]byte, 8)
+	err := r.rioRead(buf)
+	if err != nil {
+		panic(fmt.Sprintln("[rdbLoadBinaryDoubleValue] rioRead() err:", err))
+	}
+	return string(buf)
 }
 
 /* This is only used to load old databases stored with the RDB_OPCODE_EXPIRETIME
