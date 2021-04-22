@@ -64,7 +64,6 @@ const (
 	RDB_32BITLEN = 0x80
 	RDB_64BITLEN = 0x81
 	RDB_ENCVAL   = 3
-	// RDB_LENERR   = UINT64_MAX
 
 	/* When a length of a string object stored on disk has the first two bits
 	 * set, the remaining six bits specify a special encoding for the object
@@ -76,7 +75,8 @@ const (
 )
 
 type rio struct {
-	fp *os.File
+	rdbver int
+	fp     *os.File
 }
 
 func newRio(filename string) *rio {
@@ -92,6 +92,10 @@ func newRio(filename string) *rio {
 
 func (r *rio) releaseRio() {
 	r.fp.Close()
+}
+
+func (r *rio) rioSetRDBVersion(ver int) {
+	r.rdbver = ver
 }
 
 func (r *rio) rioRead(buf []byte) error {
@@ -127,7 +131,7 @@ func (r *rio) rdbLoadType() (byte, error) {
 	if err != nil {
 		panic(fmt.Sprintln("[rdbLoadType] read rdb file err:", err))
 	}
-	rdbConvertPrint("red", buf, fmt.Sprintf("=> [rdbLoadType] rdb opcode: %X, %d", buf[0], buf[0]))
+	rdbConvertPrint("red", buf, fmt.Sprintf("=> [rdbLoadType] rdb optype: %X, %d", buf[0], buf[0]))
 	return buf[0], nil
 }
 
@@ -280,17 +284,87 @@ func (r *rio) rdbLoadLzfStringObject(flags int) interface{} {
 	return val
 }
 
-func (r *rio) rdbLoadObject(vType byte) interface{} {
+func (r *rio) rdbLoadObject(vType int) interface{} {
 	if vType == RDB_TYPE_STRING {
 		return r.rdbLoadEncodedStringObject()
 	} else if vType == RDB_TYPE_LIST {
+		len, _, err := r.rdbLoadLen()
+		if err != nil {
+			panic(fmt.Sprintln("[rdbLoadObject] rdbLoadLen() err:", err))
+		}
+		vals := []interface{}{}
+		for ; len > 0; len-- {
+			vals = append(vals, r.rdbLoadEncodedStringObject())
+		}
+		return vals
 	} else if vType == RDB_TYPE_SET {
+		panic(fmt.Sprintln("can't handle RDB_TYPE_SET type object."))
 	} else if vType == RDB_TYPE_ZSET_2 || vType == RDB_TYPE_ZSET {
+		panic(fmt.Sprintln("can't handle RDB_TYPE_ZSET_2|RDB_TYPE_ZSET type object."))
 	} else if vType == RDB_TYPE_HASH {
+		panic(fmt.Sprintln("can't handle RDB_TYPE_HASH type object."))
+	} else if vType == RDB_TYPE_LIST_QUICKLIST {
+		len, _, err := r.rdbLoadLen()
+		if err != nil {
+			panic(fmt.Sprintln("[rdbLoadObject] rdbLoadLen() err:", err))
+		}
+		values := []interface{}{}
+		for ; len > 0; len-- {
+			values = append(values, r.rdbGenericLoadStringObject(RDB_LOAD_PLAIN))
+		}
+		return values
+	} else if vType == RDB_TYPE_HASH_ZIPMAP ||
+		vType == RDB_TYPE_LIST_ZIPLIST ||
+		vType == RDB_TYPE_SET_INTSET ||
+		vType == RDB_TYPE_ZSET_ZIPLIST ||
+		vType == RDB_TYPE_HASH_ZIPLIST {
+		val := r.rdbGenericLoadStringObject(RDB_LOAD_PLAIN)
+		// handle val ....
+		return val
+	} else if vType == RDB_TYPE_STREAM_LISTPACKS {
+		panic(fmt.Sprintln("can't handle RDB_TYPE_STREAM_LISTPACKS type object."))
+	} else if vType == RDB_TYPE_MODULE ||
+		vType == RDB_TYPE_MODULE_2 {
+		panic(fmt.Sprintln("can't handle RDB_TYPE_MODULE|RDB_TYPE_MODULE_2 type object."))
 	} else {
 		panic(fmt.Sprintf("[rdbLoadObject] unknown RDB encoding type %08b, %d\n", vType, vType))
 	}
-	return nil
+}
+
+/* This is only used to load old databases stored with the RDB_OPCODE_EXPIRETIME
+ * opcode. New versions of Redis store using the RDB_OPCODE_EXPIRETIME_MS
+ * opcode. */
+func (r *rio) rdbLoadTime() uint32 {
+	buf := make([]byte, 4)
+	err := r.rioRead(buf)
+	if err != nil {
+		panic(fmt.Sprintln("[rdbLoadTime] rioRead() err:", err))
+	}
+	return binary.BigEndian.Uint32(buf)
+}
+
+/* This function loads a time from the RDB file. It gets the version of the
+ * RDB because, unfortunately, before Redis 5 (RDB version 9), the function
+ * failed to convert data to/from little endian, so RDB files with keys having
+ * expires could not be shared between big endian and little endian systems
+ * (because the expire time will be totally wrong). The fix for this is just
+ * to call memrev64ifbe(), however if we fix this for all the RDB versions,
+ * this call will introduce an incompatibility for big endian systems:
+ * after upgrading to Redis version 5 they will no longer be able to load their
+ * own old RDB files. Because of that, we instead fix the function only for new
+ * RDB versions, and load older RDB versions as we used to do in the past,
+ * allowing big endian systems to load their own old RDB files. */
+func (r *rio) rdbLoadMillisecondTime(rdbver int) uint64 {
+	buf := make([]byte, 8)
+	err := r.rioRead(buf)
+	if err != nil {
+		panic(fmt.Sprintln("[rdbLoadMillisecondTime] rioRead() err:", err))
+	}
+	if rdbver > 9 { /* Convert in big endian if the system is BE. */
+		return binary.BigEndian.Uint64(buf)
+	}
+	// little endian order
+	return binary.LittleEndian.Uint64(buf)
 }
 
 func (r *rio) rdbLoadCRC64Checksum(rdbver int) {
@@ -303,7 +377,7 @@ func (r *rio) rdbLoadCRC64Checksum(rdbver int) {
 	buf := make([]byte, 8)
 	err := r.rioRead(buf)
 	if err != nil {
-		panic(fmt.Sprintln("[rdbLoadCRC64Checksum] read rdb file err:", err))
+		panic(fmt.Sprintln("[rdbLoadCRC64Checksum] rioRead() err:", err))
 	}
 	rdbConvertPrint("cyan", buf, fmt.Sprintf("=> [rdbLoadCRC64Checksum] rdbver:%d, CRC 64 checksum: %08b", rdbver, buf))
 }

@@ -20,6 +20,7 @@ func rdbLoadRio(rdb *rio) {
 	// segment:: magic string
 	rdbSegmentPrint()
 	_, rdbver := rdb.rdbLoadMagicString()
+	rdb.rioSetRDBVersion(rdbver)
 
 	// segment:: data
 	rdbSegmentPrint()
@@ -30,18 +31,20 @@ func rdbLoadRio(rdb *rio) {
 			panic(fmt.Sprintln("[rdbLoadRio] rdbLoadType err:", err))
 		}
 
-		// find a handler and excute
-		handler, exist := opTypeHandlerMap[optype]
-		if !exist {
-			panic(fmt.Sprintln("[rdbLoadRio] rdbLoadType err:", err))
-		}
-		err = handler(rdb)
-		if err != nil { // include io.EOF
-			if err != io.EOF {
-				panic(fmt.Sprintln("[rdbLoadRio] handler() err:", err))
+		// find a segment handler and excute it
+		if handler, exist := opcodeHandlerMap[optype]; exist {
+			err = handler(rdb)
+			if err != nil { // include io.EOF
+				if err != io.EOF {
+					panic(fmt.Sprintln("[rdbLoadRio] handler() err:", err))
+				}
+				break
 			}
-			break
+			continue
 		}
+
+		// no segment handler found, then read rdbtype data
+		rdbTypeHandler(rdb, int(optype))
 	}
 
 	// segment:: crc 64 checksum

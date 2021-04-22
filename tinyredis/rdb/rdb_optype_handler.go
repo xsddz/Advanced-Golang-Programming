@@ -20,7 +20,18 @@ const (
 	RDB_TYPE_HASH     = 4
 	RDB_TYPE_ZSET_2   = 5 /* ZSET version 2 with doubles stored in binary. */
 	RDB_TYPE_MODULE   = 6
-	RDB_TYPE_MODULE_2 = 7 /* Module value with annotations for parsing without the generating module being loaded. */
+	RDB_TYPE_MODULE_2 = 7 /* Module value with annotations for parsing without
+	   the generating module being loaded. */
+	/* NOTE: WHEN ADDING NEW RDB TYPE, UPDATE rdbIsObjectType() BELOW */
+
+	/* Object types for encoded objects. */
+	RDB_TYPE_HASH_ZIPMAP      = 9
+	RDB_TYPE_LIST_ZIPLIST     = 10
+	RDB_TYPE_SET_INTSET       = 11
+	RDB_TYPE_ZSET_ZIPLIST     = 12
+	RDB_TYPE_HASH_ZIPLIST     = 13
+	RDB_TYPE_LIST_QUICKLIST   = 14
+	RDB_TYPE_STREAM_LISTPACKS = 15
 	/* NOTE: WHEN ADDING NEW RDB TYPE, UPDATE rdbIsObjectType() BELOW */
 
 	/* Special RDB opcodes (saved/loaded with rdbSaveType/rdbLoadType). */
@@ -36,27 +47,51 @@ const (
 
 )
 
-type opTypeHandler func(*rio) error
+type opcodeHandler func(*rio) error
 
-var opTypeHandlerMap = map[byte]opTypeHandler{
-	// segment optype
-	RDB_OPCODE_EOF:      opcodeHandlerEOF,
-	RDB_OPCODE_AUX:      opcodeHandlerAux,
-	RDB_OPCODE_SELECTDB: opcodeHandlerSelectDB,
-	RDB_OPCODE_RESIZEDB: opcodeHandlerResizeDB,
-
-	// data optype
-	RDB_TYPE_STRING: rdbTypeHandlerString,
+var opcodeHandlerMap = map[byte]opcodeHandler{
+	RDB_OPCODE_MODULE_AUX:    opcodeHandlerDefault,
+	RDB_OPCODE_IDLE:          opcodeHandlerDefault,
+	RDB_OPCODE_FREQ:          opcodeHandlerDefault,
+	RDB_OPCODE_AUX:           opcodeHandlerAux,
+	RDB_OPCODE_RESIZEDB:      opcodeHandlerResizeDB,
+	RDB_OPCODE_EXPIRETIME_MS: opcodeHandlerExpiretimeMS,
+	RDB_OPCODE_EXPIRETIME:    opcodeHandlerExpiretime,
+	RDB_OPCODE_SELECTDB:      opcodeHandlerSelectDB,
+	RDB_OPCODE_EOF:           opcodeHandlerEOF,
 }
 
 /*------------------------------------------------------------------------------
- * 每种类型的处理器实现如下
+ * 每种opcode类型的处理器实现如下
  * ---------------------------------------------------------------------------*/
+
+func opcodeHandlerDefault(rdb *rio) error {
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerDefault] unsupported opcode!"))
+	return fmt.Errorf("not impl")
+}
 
 func opcodeHandlerEOF(rdb *rio) error {
 	/* EOF: End of file, exit the main loop. */
 	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerEOF] end of data."))
 	return io.EOF
+}
+
+func opcodeHandlerExpiretimeMS(rdb *rio) error {
+	/* EXPIRETIME_MS: milliseconds precision expire times introduced
+	 * with RDB v3. Like EXPIRETIME but no with more precision. */
+	val := rdb.rdbLoadMillisecondTime(rdb.rdbver)
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerExpiretimeMS] expiretime ms: %v", val))
+	return nil
+}
+
+func opcodeHandlerExpiretime(rdb *rio) error {
+	/* EXPIRETIME: load an expire associated with the next key
+	 * to load. Note that after loading an expire we need to
+	 * load the actual type, and continue. */
+	val := rdb.rdbLoadTime()
+	val *= 1000
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerExpiretime] expiretime: %v", val))
+	return nil
 }
 
 func opcodeHandlerAux(rdb *rio) error {
@@ -96,9 +131,13 @@ func opcodeHandlerResizeDB(rdb *rio) error {
 	return nil
 }
 
-func rdbTypeHandlerString(rdb *rio) error {
-	key := rdb.rdbLoadStringObject()          // read key
-	val := rdb.rdbLoadObject(RDB_TYPE_STRING) // read obj
-	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[rdbTypeHandlerString] key: %v, val: %v", key, val))
+/*------------------------------------------------------------------------------
+ * RDB_TYPE_... 类型数据处理器实现如下
+ * ---------------------------------------------------------------------------*/
+
+func rdbTypeHandler(rdb *rio, rdbType int) error {
+	key := rdb.rdbLoadStringObject()       // read key
+	val := rdb.rdbLoadObject(int(rdbType)) // read obj
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[rdbTypeHandler] key: %v, val: %v", key, val))
 	return nil
 }
