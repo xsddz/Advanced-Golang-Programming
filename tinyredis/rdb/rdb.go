@@ -35,16 +35,16 @@ func rdbLoadRio(rdb *rio) {
 		if handler, exist := opcodeHandlerMap[optype]; exist {
 			err = handler(rdb)
 			if err != nil { // include io.EOF
-				if err != io.EOF {
-					panic(fmt.Sprintln("[rdbLoadRio] handler() err:", err))
+				if err == io.EOF {
+					break
 				}
-				break
+				panic(fmt.Sprintln("[rdbLoadRio] opcode:", optype, " => handler() err:", err))
 			}
 			continue
 		}
 
 		// no segment handler found, then read rdbtype data
-		rdbTypeHandler(rdb, int(optype))
+		rdbTypeCommonHandler(rdb, int(optype))
 	}
 
 	// segment:: crc 64 checksum

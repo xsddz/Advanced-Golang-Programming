@@ -62,7 +62,8 @@ func loadDataFromDisk() {
 	// rdbLoad(server.rdb_filename,&rsi) == C_OK
 
 	// rdb.RDBLoad("data/dump.rdb")
-	rdb.RDBLoad("data/dump_2.rdb")
+	// rdb.RDBLoad("data/dump_2.rdb")
+	rdb.RDBLoad("data/dump_3.rdb")
 }
 
 func main() {

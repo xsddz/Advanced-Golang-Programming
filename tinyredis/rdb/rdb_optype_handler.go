@@ -51,8 +51,8 @@ type opcodeHandler func(*rio) error
 
 var opcodeHandlerMap = map[byte]opcodeHandler{
 	RDB_OPCODE_MODULE_AUX:    opcodeHandlerDefault,
-	RDB_OPCODE_IDLE:          opcodeHandlerDefault,
-	RDB_OPCODE_FREQ:          opcodeHandlerDefault,
+	RDB_OPCODE_IDLE:          opcodeHandlerIDLE,
+	RDB_OPCODE_FREQ:          opcodeHandlerFreq,
 	RDB_OPCODE_AUX:           opcodeHandlerAux,
 	RDB_OPCODE_RESIZEDB:      opcodeHandlerResizeDB,
 	RDB_OPCODE_EXPIRETIME_MS: opcodeHandlerExpiretimeMS,
@@ -67,43 +67,52 @@ var opcodeHandlerMap = map[byte]opcodeHandler{
 
 func opcodeHandlerDefault(rdb *rio) error {
 	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerDefault] unsupported opcode!"))
-	return fmt.Errorf("not impl")
-}
-
-func opcodeHandlerEOF(rdb *rio) error {
-	/* EOF: End of file, exit the main loop. */
-	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerEOF] end of data."))
-	return io.EOF
-}
-
-func opcodeHandlerExpiretimeMS(rdb *rio) error {
-	/* EXPIRETIME_MS: milliseconds precision expire times introduced
-	 * with RDB v3. Like EXPIRETIME but no with more precision. */
-	val := rdb.rdbLoadMillisecondTime(rdb.rdbver)
-	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerExpiretimeMS] expiretime ms: %v", val))
-	return nil
+	return fmt.Errorf("[opcodeHandlerDefault] no opcode handler")
 }
 
 func opcodeHandlerExpiretime(rdb *rio) error {
 	/* EXPIRETIME: load an expire associated with the next key
 	 * to load. Note that after loading an expire we need to
 	 * load the actual type, and continue. */
-	val := rdb.rdbLoadTime()
-	val *= 1000
-	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerExpiretime] expiretime: %v", val))
+	expire := rdb.rdbLoadTime() * 1000
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerExpiretime] expiretime: %v", expire))
 	return nil
 }
 
-func opcodeHandlerAux(rdb *rio) error {
-	/* AUX: generic string-string fields. Use to add state to RDB
-	 * which is backward compatible. Implementations of RDB loading
-	 * are requierd to skip AUX fields they don't understand.
-	 *
-	 * An AUX field is composed of two strings: key and value. */
-	key := rdb.rdbLoadStringObject() // read key
-	val := rdb.rdbLoadStringObject() // read val
-	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerAux] key: %v, val: %v", key, val))
+func opcodeHandlerExpiretimeMS(rdb *rio) error {
+	/* EXPIRETIME_MS: milliseconds precision expire times introduced
+	 * with RDB v3. Like EXPIRETIME but no with more precision. */
+	expire := rdb.rdbLoadMillisecondTime(rdb.rdbver)
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerExpiretimeMS] expiretime(milliseconds): %v", expire))
 	return nil
+}
+
+func opcodeHandlerFreq(rdb *rio) error {
+	/* FREQ: LFU frequency. */
+	buf := make([]byte, 1)
+	err := rdb.rioRead(buf)
+	if err != nil {
+		return err
+	}
+	lfuFreq := int(buf[0])
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerFreq] LFU frequency: %v", lfuFreq))
+	return nil
+}
+
+func opcodeHandlerIDLE(rdb *rio) error {
+	/* IDLE: LRU idle time. */
+	lruIDLE, _, err := rdb.rdbLoadLen()
+	if err != nil {
+		return err
+	}
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerIDLE] LRU idle time: %v", lruIDLE))
+	return nil
+}
+
+func opcodeHandlerEOF(rdb *rio) error {
+	/* EOF: End of file, exit the main loop. */
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerEOF] end of data."))
+	return io.EOF
 }
 
 func opcodeHandlerSelectDB(rdb *rio) error {
@@ -123,21 +132,53 @@ func opcodeHandlerResizeDB(rdb *rio) error {
 	if err != nil {
 		return err
 	}
-	expireSize, _, err := rdb.rdbLoadLen()
+	expiresSize, _, err := rdb.rdbLoadLen()
 	if err != nil {
 		return err
 	}
-	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerResizeDB] db_size:%v, expire_size: %v", dbSize, expireSize))
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerResizeDB] db_size:%v, expire_size: %v", dbSize, expiresSize))
 	return nil
+}
+
+func opcodeHandlerAux(rdb *rio) error {
+	/* AUX: generic string-string fields. Use to add state to RDB
+	 * which is backward compatible. Implementations of RDB loading
+	 * are required to skip AUX fields they don't understand.
+	 *
+	 * An AUX field is composed of two strings: key and value. */
+	key := rdb.rdbLoadStringObject() // read key
+	val := rdb.rdbLoadStringObject() // read val
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerAux] key: %v, val: %v", key, val))
+	return nil
+}
+
+func opcodeHandlerModuleAux(rdb *rio) error {
+	/* Load module data that is not related to the Redis key space.
+	 * Such data can be potentially be stored both before and after the
+	 * RDB keys-values section. */
+	moduleid, _, err := rdb.rdbLoadLen()
+	if err != nil {
+		return err
+	}
+	whenOpcode, _, err := rdb.rdbLoadLen()
+	if err != nil {
+		return err
+	}
+	when, _, err := rdb.rdbLoadLen()
+	if err != nil {
+		return err
+	}
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[opcodeHandlerModuleAux] moduleid: %v, when_opcode: %v, when: %v", moduleid, whenOpcode, when))
+	return fmt.Errorf("[opcodeHandlerModuleAux] need more check ... ")
 }
 
 /*------------------------------------------------------------------------------
  * RDB_TYPE_... 类型数据处理器实现如下
  * ---------------------------------------------------------------------------*/
 
-func rdbTypeHandler(rdb *rio, rdbType int) error {
-	key := rdb.rdbLoadStringObject()       // read key
-	val := rdb.rdbLoadObject(int(rdbType)) // read obj
-	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[rdbTypeHandler] key: %v, val: %v", key, val))
+func rdbTypeCommonHandler(rdb *rio, rdbType int) error {
+	key := rdb.rdbGenericLoadStringObject(RDB_LOAD_SDS) // read key
+	val := rdb.rdbLoadObject(int(rdbType))              // read obj
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[rdbTypeCommonHandler] keyType: %v, key: %v, val: %v", rdbType, key, val))
 	return nil
 }
