@@ -1,12 +1,12 @@
 
-redis rdb database file convter.
+redis rdb database file convertor.
 
 ```
 # usage:
-$ rdbconvter -d path/to/name.rdb
+$ rdbconvertor -d path/to/name.rdb
 
 # eg:
-$ rdbconvter -d ../tinyredislib/data/dump.rdb
+$ rdbconvertor -d ../tinyredislib/data/dump.rdb
 convert file: /path/to/tinyredislib/data/dump.rdb
 --------------------------------------------------------------------------------
 rdb raw in hex                            means                                   
@@ -75,15 +75,15 @@ FF                                        => [rdbLoadType] rdb optype: FF, 255
 Mac 下编译 Linux 和 Windows 64位可执行程序
 
 ```
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o rdbconvter main.go
-CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o rdbconvter main.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o rdbconvertor main.go
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o rdbconvertor main.go
 ```
 
 Linux 下编译 Mac 和 Windows 64位可执行程序
 
 ```
-CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o rdbconvter main.go
-CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o rdbconvter main.go
+CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o rdbconvertor main.go
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o rdbconvertor main.go
 ```
 
 编译选项说明：
