@@ -179,6 +179,6 @@ func opcodeHandlerModuleAux(rdb *rio) error {
 func rdbTypeCommonHandler(rdb *rio, rdbType int) error {
 	key := rdb.rdbGenericLoadStringObject(RDB_LOAD_SDS) // read key
 	val := rdb.rdbLoadObject(int(rdbType))              // read obj
-	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[rdbTypeCommonHandler] keyType: %v, key: %v, val: %v", rdbType, key, val))
+	rdbConvertPrint("green", []byte{}, fmt.Sprintf("[rdbTypeCommonHandler] key: %v, valType: %v, val: %v", key, rdbType, val))
 	return nil
 }
