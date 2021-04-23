@@ -7,13 +7,15 @@ import (
 
 // RDBLoad -
 func RDBLoad(filename string) {
-	rdb := newRio(filename)
-	defer rdb.releaseRio()
+	var rdb rioI
+
+	rdb = newRio(filename)
+	defer rdb.releaseRio() // recover panic in this
 
 	rdbLoadRio(rdb)
 }
 
-func rdbLoadRio(rdb *rio) {
+func rdbLoadRio(rdb rioI) {
 	rdbSegmentPrint()
 	rdbConvertHeaderPrint()
 
@@ -26,14 +28,11 @@ func rdbLoadRio(rdb *rio) {
 	rdbSegmentPrint()
 	for {
 		// read type of operation
-		optype, err := rdb.rdbLoadType()
-		if err != nil {
-			panic(fmt.Sprintln("[rdbLoadRio] rdbLoadType err:", err))
-		}
+		optype := rdb.rdbLoadType()
 
 		// find a segment handler and excute it
 		if handler, exist := opcodeHandlerMap[optype]; exist {
-			err = handler(rdb)
+			err := handler(rdb)
 			if err != nil { // include io.EOF
 				if err == io.EOF {
 					break
