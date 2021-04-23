@@ -1,5 +1,5 @@
 
-记录阅读 redis 源码过程中的思考，分析 redis 的设计思想（design Philosophy）。
+redis 源码的阅读笔记，复刻 redis 各个模块功能，记录源码阅读过程中的思考，分析 redis 的设计思想（design Philosophy）。
 
 目录说明：
 
