@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Advanced-Golang-Programming/tinyredis/rdb"
+	"Advanced-Golang-Programming/tinyredislib/rdb"
 )
 
 type redisServer struct {
@@ -61,9 +61,9 @@ func initServer() {
 func loadDataFromDisk() {
 	// rdbLoad(server.rdb_filename,&rsi) == C_OK
 
-	// rdb.RDBLoad("data/dump.rdb")
-	// rdb.RDBLoad("data/dump_2.rdb")
-	rdb.RDBLoad("data/dump_3.rdb")
+	// rdb.RDBLoad("../tinyredislib/data/dump.rdb")
+	// rdb.RDBLoad("../tinyredislib/data/dump_2.rdb")
+	rdb.RDBLoad("../tinyredislib/data/dump_3.rdb")
 }
 
 func main() {

@@ -1,2 +1,3 @@
 
-record redis design Philosophy for reading redis source code
+记录 redis 服务的主流程分析
+
