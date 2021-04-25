@@ -33,7 +33,7 @@ func Run(localAddress string, serverAddress string) {
 	}
 
 	// send login message
-	udpConn.WriteToUDP(common.MakeV1ProtoData("Login"), serverAddr)
+	udpConn.WriteToUDP(common.V1ProtoMsgMaker("Login"), serverAddr)
 	// wait for udp connection and read welcome message
 	data := make([]byte, 4096)
 	n, _, err := udpConn.ReadFromUDP(data)
@@ -78,7 +78,7 @@ func Run(localAddress string, serverAddress string) {
 				continue
 			}
 
-			_, err = udpConn.WriteToUDP(common.MakeV1ProtoData(text), serverAddr)
+			_, err = udpConn.WriteToUDP(common.V1ProtoMsgMaker(text), serverAddr)
 			if err != nil {
 				log.Fatal("[ERROR] write connetion error:", err)
 			}
