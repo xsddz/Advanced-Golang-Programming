@@ -10,15 +10,7 @@ func init() {
 }
 
 func main() {
-	defer func() {
-		fmt.Println("=====main")
-		if r := recover(); r != nil {
-			fmt.Printf("++++recover: %T, %v\n", r, r)
-		}
-	}()
-
-	foobar.PRD()
-
-	for {
-	}
+	foobar.MachineEndian()
+	foobar.MachineBit()
+	foobar.USMem()
 }

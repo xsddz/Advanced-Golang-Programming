@@ -82,7 +82,7 @@ func Run(address string) {
 			c, ok := registerClient(address)
 			if ok {
 				welcomeDetail := fmt.Sprintf("Welcome, your name is <%v>.", c.name)
-				n, err := udpConn.WriteToUDP(common.MakeV1ProtoData(welcomeDetail), c.addr)
+				n, err := udpConn.WriteToUDP(common.V1ProtoMsgMaker(welcomeDetail), c.addr)
 				fmt.Printf("Send message to <%v>: %v,%v,%v\n", c.addr.String(), welcomeDetail, n, err)
 			}
 
@@ -94,7 +94,7 @@ func Run(address string) {
 			clientInfoListMap.Range(func(key, value interface{}) bool {
 				sc := value.(*clientInfo)
 				if sc.addr != c.addr {
-					n, err := udpConn.WriteToUDP(common.MakeV1ProtoData(recvDetail), sc.addr)
+					n, err := udpConn.WriteToUDP(common.V1ProtoMsgMaker(recvDetail), sc.addr)
 					fmt.Printf("Send message to <%v>: %v,%v,%v\n", sc.name, recvDetail, n, err)
 				}
 

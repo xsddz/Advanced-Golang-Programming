@@ -3,7 +3,7 @@ package common
 import "fmt"
 
 const (
-	colorNone    = "\033[0m"
+	colorClean   = "\033[0m"
 	colorBlack   = "\033[0;30m"
 	colorRed     = "\033[0;31m"
 	colorGreen   = "\033[0;32m"
@@ -25,67 +25,67 @@ const (
 
 // BlackString Black String
 func BlackString(s string) string {
-	return colorBlack + s + colorNone
+	return colorBlack + s + colorClean
 }
 
 // RedString Red String
 func RedString(s string) string {
-	return colorRed + s + colorNone
+	return colorRed + s + colorClean
 }
 
 // GreenString  Green String
 func GreenString(s string) string {
-	return colorGreen + s + colorNone
+	return colorGreen + s + colorClean
 }
 
 // YellowString Yellow String
 func YellowString(s string) string {
-	return colorYellow + s + colorNone
+	return colorYellow + s + colorClean
 }
 
 // BuleString Bule String
 func BuleString(s string) string {
-	return colorBule + s + colorNone
+	return colorBule + s + colorClean
 }
 
 // MagentaString Magenta String
 func MagentaString(s string) string {
-	return colorMagenta + s + colorNone
+	return colorMagenta + s + colorClean
 }
 
 // CyanString Cyan String
 func CyanString(s string) string {
-	return colorCyan + s + colorNone
+	return colorCyan + s + colorClean
 }
 
 // GrayString Gray String
 func GrayString(s string) string {
-	return colorGray + s + colorNone
+	return colorGray + s + colorClean
 }
 
 // BoldString Bold String
 func BoldString(s string) string {
-	return fontBold + s + colorNone
+	return fontBold + s + colorClean
 }
 
 // UnderlineString Underline String
 func UnderlineString(s string) string {
-	return fontUnderline + s + colorNone
+	return fontUnderline + s + colorClean
 }
 
 // BlinkString Blink String
 func BlinkString(s string) string {
-	return fontBlink + s + colorNone
+	return fontBlink + s + colorClean
 }
 
 // ReverseString Reverse String
 func ReverseString(s string) string {
-	return fontReverse + s + colorNone
+	return fontReverse + s + colorClean
 }
 
 // HideString Hide String
 func HideString(s string) string {
-	return fontHide + s + colorNone
+	return fontHide + s + colorClean
 }
 
 // ScreenClear Clear Screen

@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// GenerateUsername GenerateUsername
+// GenerateUsername -
 func GenerateUsername(account string) (name string) {
 	// TODO: generate uniq random meaningful name
 	hash := md5.Sum([]byte(account))

@@ -5,54 +5,12 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"sync"
-	"time"
 )
 
 const (
 	// Protocol Protocol
 	Protocol = "tcp"
 )
-
-var (
-	// clientInfoListMap login client map
-	clientInfoListMap sync.Map
-)
-
-type clientInfo struct {
-	name      string
-	address   string
-	conn      net.Conn
-	loginTime time.Time
-}
-
-func registerClient(conn net.Conn) *clientInfo {
-	address := conn.RemoteAddr().String()
-	name := common.GenerateUsername(address)
-
-	// TODO: read login message
-	// send welcome message
-	welcomeDetail := fmt.Sprintf("Welcome, your name is <%v>.", name)
-	n, err := common.WriteData(conn, welcomeDetail)
-	fmt.Printf("Send message to <%v>: %v,%v,%v\n", address, welcomeDetail, n, err)
-
-	c := &clientInfo{
-		name:      name,
-		address:   address,
-		conn:      conn,
-		loginTime: time.Now(),
-	}
-	clientInfoListMap.Store(name, c)
-	return c
-}
-
-func cleanClient(c *clientInfo) {
-	// clean from map
-	clientInfoListMap.Delete(c.name)
-
-	// close connection
-	c.conn.Close()
-}
 
 // Run run a tcp server on tcp address
 func Run(address string) {
@@ -95,7 +53,7 @@ func Run(address string) {
 				fmt.Printf("Receive message: %v\n", recvDetail)
 
 				// send client message to other login client
-				clientInfoListMap.Range(func(key, value interface{}) bool {
+				clientInfoMap.Range(func(key, value interface{}) bool {
 					sc := value.(*clientInfo)
 					if sc.conn != c.conn {
 						n, err := common.WriteData(sc.conn, recvDetail)
