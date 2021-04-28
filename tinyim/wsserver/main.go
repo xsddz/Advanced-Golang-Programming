@@ -1,10 +1,6 @@
 package main
 
 import (
-	"Advanced-Golang-Programming/tinyim/wsserver/asset"
-	"Advanced-Golang-Programming/tinyim/wsserver/auth"
-	"Advanced-Golang-Programming/tinyim/wsserver/client"
-	"Advanced-Golang-Programming/tinyim/wsserver/msg"
 	"flag"
 	"fmt"
 	"log"
@@ -14,6 +10,11 @@ import (
 
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
+
+	"Advanced-Golang-Programming/tinyim/wsserver/asset"
+	"Advanced-Golang-Programming/tinyim/wsserver/auth"
+	"Advanced-Golang-Programming/tinyim/wsserver/client"
+	"Advanced-Golang-Programming/tinyim/wsserver/msg"
 )
 
 var (
