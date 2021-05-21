@@ -4,10 +4,7 @@ import (
 	"Advanced-Golang-Programming/tinyredislib/rdb"
 )
 
-type redisServer struct {
-	supervised bool // int supervised; /* 1 if supervised, 0 otherwise. */
-	daemonize  bool // int daemonize; /* True if running as a daemon */
-}
+type redisServer struct{}
 
 var server redisServer
 
@@ -67,10 +64,7 @@ func loadDataFromDisk() {
 }
 
 func main() {
-	background := server.daemonize && !server.supervised
-	if background {
-		daemonize()
-	}
+	daemonize()
 
 	initServer()
 	checkTcpBacklogSettings()
