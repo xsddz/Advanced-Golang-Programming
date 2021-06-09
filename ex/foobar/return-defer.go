@@ -1,10 +1,12 @@
 package foobar
 
-// ReturnDefer -
-func ReturnDefer() int {
-	a := 3
+import "fmt"
+
+func ReturnDefer(nums []int) {
 	defer func() {
-		a = 4
+		fmt.Println("======defer before:", nums)
+		nums[0] = 1223
+		fmt.Println("======defer  after:", nums)
 	}()
-	return a
+	nums[0] = 1111
 }

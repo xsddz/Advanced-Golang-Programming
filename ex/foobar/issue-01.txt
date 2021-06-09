@@ -1,0 +1,49 @@
+
+
+
+
+
+
+	a 
+	
+b 	<-	c
+
+type Tree struct {
+  val int
+  leftNode *Tree
+  rightNode *Tree
+}
+
+func judge(t *Tree) bool {
+  valMap := make(map[int]struct{})
+  return treeIter(valmap, t)
+}
+
+func treeIter(valmap map[int]struct{}, t *Tree) bool {
+    if t == nil {
+        return false
+    }
+
+    if t.leftNode != nil {
+        leftEdge := fmt.Sprintf("%v->%v", t.val, r.leftNode.val)
+        if _, ok := valMap[leftEdge]; ok {
+            return true
+        }
+        valMap[leftEdge] = struct{}
+    }
+
+    if t.rightNode != nil {
+        rightEdge = fmt.Sprintf("%v->%v", t.val, r.rightNode.val)
+        if _, ok := valMap[rightEdge]; ok {
+            return true
+        }
+        valMap[rightEdge] = struct{}
+    }
+
+    treeIter(valMap, t.leftNode)
+    treeIter(valMap, t.rightNode)
+}
+
+
+
+
