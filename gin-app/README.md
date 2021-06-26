@@ -21,7 +21,7 @@
 ```
 app1 | app2 | ... | appn
 ------------------------
-    gin framework
+    gin | GRPC
 ```
 
 #### 逻辑层次规范
