@@ -1,13 +1,13 @@
 package main
 
 import (
-	"gin-app/library/app"
+	"gin-app/library/server"
 	"gin-app/router"
 )
 
 func main() {
-	a := app.Init()
-	a.RegisterServer(app.HTTPServerMaker(router.SetGinRouter))
-	a.RegisterServer(app.RCPServerMaker(router.SetGRPCRouter))
-	a.Run()
+	app := server.Init()
+	app.RegisterServer(server.HTTPServerMaker(router.SetGinRouter))
+	app.RegisterServer(server.RCPServerMaker(router.SetGRPCRouter))
+	app.Run()
 }
