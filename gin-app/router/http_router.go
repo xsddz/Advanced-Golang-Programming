@@ -9,6 +9,5 @@ import (
 
 func SetGinRouter(app *gin.Engine) {
 	app.NoRoute(middleware.RouterNotFound)
-
 	app.GET("/", controller.Demo)
 }

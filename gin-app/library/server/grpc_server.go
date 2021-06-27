@@ -16,12 +16,12 @@ func RCPServerMaker(routerSetter func(*grpc.Server)) ServerHandle {
 			wg.Done()
 		}()
 
-		// 初始化 RPC app
+		// 初始化 GRPC server
 		var opts []grpc.ServerOption
-		app := grpc.NewServer(opts...)
+		srv := grpc.NewServer(opts...)
 
 		// 设置路由
-		routerSetter(app)
+		routerSetter(srv)
 
 		// 启动服务
 		address := ":8081"
@@ -30,7 +30,7 @@ func RCPServerMaker(routerSetter func(*grpc.Server)) ServerHandle {
 		if err != nil {
 			log.Fatalf("failed to listen: %v", err)
 		}
-		if err := app.Serve(lis); err != nil {
+		if err := srv.Serve(lis); err != nil {
 			log.Fatalf("failed to serve GRPC: %v", err)
 		}
 	}
