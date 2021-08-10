@@ -2,12 +2,11 @@ package router
 
 import (
 	"gin-app/controller"
+	"gin-app/library/server"
 	"gin-app/middleware"
-
-	"github.com/gin-gonic/gin"
 )
 
-func SetGinRouter(app *gin.Engine) {
-	app.NoRoute(middleware.RouterNotFound)
-	app.GET("/", controller.Demo)
+func HTTPRouter(app *server.App) {
+	app.ServerHTTP.NoRoute(middleware.RouterNotFound)
+	app.ServerHTTP.GET("/", controller.Foobar)
 }

@@ -7,7 +7,7 @@ import (
 
 func main() {
 	app := server.Init()
-	app.RegisterServer(server.HTTPServerMaker(router.SetGinRouter))
-	app.RegisterServer(server.RCPServerMaker(router.SetGRPCRouter))
+	app.RegisterServer(server.NewHTTPServer(router.HTTPRouter))
+	app.RegisterServer(server.NewGRPCServer(router.GRPCRouter))
 	app.Run()
 }

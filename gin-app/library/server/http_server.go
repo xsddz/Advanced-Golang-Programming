@@ -8,26 +8,35 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func HTTPServerMaker(routerSetter func(*gin.Engine)) ServerHandle {
-	return func(wg *sync.WaitGroup) {
-		defer func() {
-			fmt.Println("http server end.")
-			wg.Done()
-		}()
+type HTTPServer struct {
+	routerSetter func(*App)
+}
 
-		// 初始化gin server
-		srv := gin.New()
-		srv.Use(gin.Logger(), gin.Recovery())
+func NewHTTPServer(rs func(*App)) *HTTPServer {
+	return &HTTPServer{
+		routerSetter: rs,
+	}
+}
 
-		// 设置路由
-		routerSetter(srv)
+func (s *HTTPServer) Run(app *App, wg *sync.WaitGroup) {
+	defer func() {
+		fmt.Println("http server end.")
+		wg.Done()
+	}()
 
-		// 启动服务
-		address := ":8080"
-		fmt.Printf("Listening and serving HTTP on %s\n", address)
-		err := http.ListenAndServe(address, srv)
-		if err != nil {
-			fmt.Println("failed to serve HTTP:", err)
-		}
+	// 初始化gin server
+	srv := gin.New()
+	srv.Use(gin.Logger(), gin.Recovery())
+
+	// 设置路由
+	app.ServerHTTP = srv
+	s.routerSetter(app)
+
+	// 启动服务
+	address := ":8080"
+	fmt.Printf("Listening and serving HTTP on %s\n", address)
+	err := http.ListenAndServe(address, srv)
+	if err != nil {
+		fmt.Println("failed to serve HTTP:", err)
 	}
 }

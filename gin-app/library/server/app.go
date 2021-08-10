@@ -3,28 +3,41 @@ package server
 import (
 	"fmt"
 	"sync"
+
+	"github.com/gin-gonic/gin"
+	"google.golang.org/grpc"
 )
 
-type ServerHandle func(*sync.WaitGroup)
+type ServerI interface {
+	Run(*App, *sync.WaitGroup)
+}
+
+type AppContex struct {
+	*gin.Context
+}
 
 type App struct {
-	srvs []ServerHandle
+	ServerHTTP *gin.Engine
+	ServerGRPC *grpc.Server
+
+	serverCollector []ServerI
 }
 
 func Init() *App {
 	return &App{}
 }
 
-func (e *App) RegisterServer(s ServerHandle) {
-	e.srvs = append(e.srvs, s)
+func (a *App) RegisterServer(s ServerI) {
+	a.serverCollector = append(a.serverCollector, s)
 }
 
-func (e *App) Run() {
+func (a *App) Run() {
+	fmt.Println("run app ...")
 	var wg sync.WaitGroup
-	wg.Add(len(e.srvs))
+	wg.Add(len(a.serverCollector))
 
-	for _, sh := range e.srvs {
-		go sh(&wg)
+	for _, sh := range a.serverCollector {
+		go sh.Run(a, &wg)
 	}
 
 	wg.Wait()
