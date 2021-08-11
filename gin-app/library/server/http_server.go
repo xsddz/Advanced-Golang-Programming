@@ -29,7 +29,7 @@ func (s *HTTPServer) Run(app *App, wg *sync.WaitGroup) {
 	srv.Use(gin.Logger(), gin.Recovery())
 
 	// 设置路由
-	app.ServerHTTP = srv
+	app.HTTPServer = srv
 	s.routerSetter(app)
 
 	// 启动服务

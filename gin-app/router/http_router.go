@@ -7,6 +7,6 @@ import (
 )
 
 func HTTPRouter(app *server.App) {
-	app.ServerHTTP.NoRoute(middleware.RouterNotFound)
-	app.ServerHTTP.GET("/", controller.Foobar)
+	app.HTTPServer.NoRoute(middleware.RouterNotFound)
+	app.HTTPServer.GET("/", controller.Index)
 }

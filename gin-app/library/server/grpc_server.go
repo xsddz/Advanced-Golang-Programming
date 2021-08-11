@@ -31,10 +31,14 @@ func (s *GRCPServer) Run(app *App, wg *sync.WaitGroup) {
 	srv := grpc.NewServer(opts...)
 
 	// 设置路由
-	app.ServerGRPC = srv
+	app.GRPCServer = srv
 	s.routerSetter(app)
 
 	// 注册反射服务 这个服务是CLI使用的 跟服务本身没有关系
+	// 可使用grpcui测试
+	// - go get github.com/fullstorydev/grpcui/...
+	// - go install github.com/fullstorydev/grpcui/cmd/grpcui
+	// - grpcui -plaintext 127.0.0.1:8081
 	reflection.Register(srv)
 
 	// 启动服务

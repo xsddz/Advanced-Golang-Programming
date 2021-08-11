@@ -2,17 +2,42 @@ package controller
 
 import (
 	"context"
+	"encoding/json"
+	"gin-app/entity"
 	"gin-app/entity/pb"
+	"gin-app/library/server"
+	"gin-app/model/page"
 )
 
-// FooController 定义我们的服务
-type FooController struct{}
+// FoobarController 定义服务
+type FoobarController struct{}
 
-// Bar 实现Bar方法
-func (s *FooController) Bar(ctx context.Context, req *pb.BarRequest) (*pb.BarResponse, error) {
-	res := pb.BarResponse{
-		Code:  200,
-		Value: "hello " + req.Data,
+// Index 实现 Index 方法
+func (s *FoobarController) Index(ctx context.Context, req *pb.RequestIndex) (*pb.ResponseIndex, error) {
+	appContext := &server.WebContext{}
+	response := pb.ResponseIndex{}
+
+	// 业务逻辑请求参数初始化
+	reqEntity := entity.ReqIndex{}
+	resEntity := entity.ResIndex{}
+
+	// 请求参数转换
+	reqJson, _ := json.Marshal(req)
+	err := json.Unmarshal(reqJson, &reqEntity)
+	if err != nil {
+		response.Code = -1
+		response.Message = "参数错误：" + err.Error()
+		return &response, nil
 	}
-	return &res, nil
+
+	// 执行业务逻辑
+	appErr := page.NewIndexPage(appContext).Execute(reqEntity, &resEntity)
+
+	// 返回
+	response.Code = int32(appErr.Code())
+	response.Message = appErr.Message()
+	// 返回数据转换
+	resJson, _ := json.Marshal(resEntity)
+	json.Unmarshal(resJson, &response.Data)
+	return &response, nil
 }

@@ -1,0 +1,33 @@
+syntax = "proto3"; // 版本声明，使用Protocol Buffers v3版本
+
+option go_package = "entity/pb"; // full import path of the Go package
+// option java_package = "com.example.foobar";
+// option php_metadata_namespace = "Protobuf\\Example\\Foobar";
+
+package pb; // 包名
+
+
+// 定义我们的服务（可定义多个服务,每个服务可定义多个接口）
+service Foobar {
+    rpc index(RequestIndex) returns (ResponseIndex) {};
+}
+
+// 定义请求参数，采用驼峰命名方式，小写加下划线，如：student_name
+message RequestIndex {
+    // [repeated|optional|required] 参数类型 参数名 = 标识号(不可重复) [fieldOptions];
+    string name = 1;
+}
+
+// 定义响应的参数::外层标准结构
+message ResponseIndex {
+    // [repeated|optional|required] 参数类型 参数名 = 标识号(不可重复) [fieldOptions];
+    int32 code = 1;              // 状态码
+    string message = 2;          // 状态信息
+    ResponseIndexData data = 3;  // 响应数据
+}
+
+// 定义响应的参数::内层数据
+message ResponseIndexData {
+    // [repeated|optional|required] 参数类型 参数名 = 标识号(不可重复) [fieldOptions];
+    string words  = 1;
+}

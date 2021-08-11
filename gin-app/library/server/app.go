@@ -12,13 +12,13 @@ type ServerI interface {
 	Run(*App, *sync.WaitGroup)
 }
 
-type AppContex struct {
+type WebContext struct {
 	*gin.Context
 }
 
 type App struct {
-	ServerHTTP *gin.Engine
-	ServerGRPC *grpc.Server
+	HTTPServer *gin.Engine
+	GRPCServer *grpc.Server
 
 	serverCollector []ServerI
 }

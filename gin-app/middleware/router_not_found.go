@@ -1,7 +1,13 @@
 package middleware
 
-import "github.com/gin-gonic/gin"
+import (
+	"gin-app/library/server"
+
+	"github.com/gin-gonic/gin"
+)
 
 func RouterNotFound(ctx *gin.Context) {
-	ctx.JSON(400, "404 not found.")
+	response := server.HttpResponse{}
+	response.Error(ctx, server.NewAppError(400, "404 not found"))
+	ctx.Abort()
 }
