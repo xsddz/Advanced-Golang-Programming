@@ -1,7 +1,5 @@
 package server
 
-import "github.com/gin-gonic/gin"
-
 type HttpResponse struct {
 	TraceID string      `json:"trace_id"`
 	Code    int         `json:"code"`
@@ -9,7 +7,7 @@ type HttpResponse struct {
 	Data    interface{} `json:"data"`
 }
 
-func (res *HttpResponse) Success(ctx *gin.Context, data interface{}) {
+func (res *HttpResponse) Success(ctx *WebContext, data interface{}) {
 	res.TraceID = ctx.GetString("trace_id")
 	res.Code = 0
 	res.Message = "ok"
@@ -18,7 +16,7 @@ func (res *HttpResponse) Success(ctx *gin.Context, data interface{}) {
 	ctx.JSON(200, res)
 }
 
-func (res *HttpResponse) Error(ctx *gin.Context, ae AppErrorI) {
+func (res *HttpResponse) Error(ctx *WebContext, ae ErrorI) {
 	res.TraceID = ctx.GetString("trace_id")
 	res.Code = ae.Code()
 	res.Message = ae.Message()

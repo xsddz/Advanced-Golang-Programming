@@ -3,7 +3,7 @@ package controller
 import (
 	"gin-app/entity"
 	"gin-app/library/server"
-	"gin-app/model/page"
+	"gin-app/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,18 +20,18 @@ func Index(ctx *gin.Context) {
 	// 请求参数解析
 	err := ctx.ShouldBind(&reqEntity)
 	if err != nil {
-		response.Error(ctx, server.NewAppError(-1, "参数错误："+err.Error()))
+		response.Error(appContext, server.NewError(-1, "参数错误："+err.Error()))
 		return
 	}
 
 	// 执行业务逻辑
-	appErr := page.NewIndexPage(appContext).Execute(reqEntity, &resEntity)
-	if appErr != server.AppErrorNone {
+	appErr := service.NewIndexService(appContext).Execute(reqEntity, &resEntity)
+	if appErr != server.ErrorNone {
 		// 错误返回
-		response.Error(ctx, appErr)
+		response.Error(appContext, appErr)
 		return
 	}
 
 	// 正常返回
-	response.Success(ctx, resEntity)
+	response.Success(appContext, resEntity)
 }

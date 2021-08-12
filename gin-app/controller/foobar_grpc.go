@@ -6,7 +6,7 @@ import (
 	"gin-app/entity"
 	"gin-app/entity/pb"
 	"gin-app/library/server"
-	"gin-app/model/page"
+	"gin-app/service"
 )
 
 // FoobarController 定义服务
@@ -29,9 +29,15 @@ func (s *FoobarController) Index(ctx context.Context, req *pb.RequestIndex) (*pb
 		response.Message = "参数错误：" + err.Error()
 		return &response, nil
 	}
+	// 必传参数
+	if reqEntity.Name == "" {
+		response.Code = -1
+		response.Message = "参数错误：name"
+		return &response, nil
+	}
 
 	// 执行业务逻辑
-	appErr := page.NewIndexPage(appContext).Execute(reqEntity, &resEntity)
+	appErr := service.NewIndexService(appContext).Execute(reqEntity, &resEntity)
 
 	// 返回
 	response.Code = int32(appErr.Code())

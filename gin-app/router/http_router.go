@@ -6,7 +6,7 @@ import (
 	"gin-app/library/server"
 )
 
-func HTTPRouter(app *server.App) {
+func HTTPRouter(app *server.Engine) {
 	app.HTTPServer.NoRoute(middleware.RouterNotFound)
 
 	// 路由组

@@ -2,42 +2,57 @@ package server
 
 import (
 	"fmt"
+	"gin-app/library/storage"
 	"sync"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
 )
 
+type Router func(*Engine)
+
 type ServerI interface {
-	Run(*App, *sync.WaitGroup)
+	Run(*Engine, *sync.WaitGroup)
 }
 
-type WebContext struct {
-	*gin.Context
-}
-
-type App struct {
+type Engine struct {
 	HTTPServer *gin.Engine
 	GRPCServer *grpc.Server
 
 	serverCollector []ServerI
 }
 
-func Init() *App {
-	return &App{}
+func NewAPP() *Engine {
+	app := &Engine{}
+
+	app.InitEnv()
+
+	return app
 }
 
-func (a *App) RegisterServer(s ServerI) {
-	a.serverCollector = append(a.serverCollector, s)
+func (app *Engine) InitEnv() {
+	var err error
+	SQLite, err = storage.NewSQLite()
+	if err != nil {
+		panic(fmt.Sprint("init sqlite error: ", err))
+	}
+	MySQL, err = storage.NewSQLite()
+	if err != nil {
+		panic(fmt.Sprint("init mysql error: ", err))
+	}
 }
 
-func (a *App) Run() {
+func (app *Engine) RegisterServer(s ServerI) {
+	app.serverCollector = append(app.serverCollector, s)
+}
+
+func (app *Engine) Run() {
 	fmt.Println("run app ...")
 	var wg sync.WaitGroup
-	wg.Add(len(a.serverCollector))
+	wg.Add(len(app.serverCollector))
 
-	for _, sh := range a.serverCollector {
-		go sh.Run(a, &wg)
+	for _, sh := range app.serverCollector {
+		go sh.Run(app, &wg)
 	}
 
 	wg.Wait()

@@ -1,31 +1,31 @@
 package server
 
-type AppErrorI interface {
+var (
+	ErrorNone = NewError(0, "ok")
+)
+
+type ErrorI interface {
 	Code() int
 	Message() string
 }
 
-type AppError struct {
+type Error struct {
 	code    int
 	message string
 }
 
-func NewAppError(code int, message string) AppError {
-	return AppError{code, message}
+func NewError(code int, message string) Error {
+	return Error{code, message}
 }
 
-func (e AppError) Code() int {
+func (e Error) Code() int {
 	return e.code
 }
 
-func (e AppError) Message() string {
+func (e Error) Message() string {
 	return e.message
 }
 
-func (e AppError) Error() string {
+func (e Error) Error() string {
 	return e.message
 }
-
-var (
-	AppErrorNone = NewAppError(0, "ok")
-)

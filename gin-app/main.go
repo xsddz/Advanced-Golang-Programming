@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	app := server.Init()
+	app := server.NewAPP()
 	app.RegisterServer(server.NewHTTPServer(router.HTTPRouter))
 	app.RegisterServer(server.NewGRPCServer(router.GRPCRouter))
 	app.Run()

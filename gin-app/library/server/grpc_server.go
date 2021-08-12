@@ -11,16 +11,16 @@ import (
 )
 
 type GRCPServer struct {
-	routerSetter func(*App)
+	router Router
 }
 
-func NewGRPCServer(rs func(*App)) *GRCPServer {
+func NewGRPCServer(r Router) *GRCPServer {
 	return &GRCPServer{
-		routerSetter: rs,
+		router: r,
 	}
 }
 
-func (s *GRCPServer) Run(app *App, wg *sync.WaitGroup) {
+func (s *GRCPServer) Run(app *Engine, wg *sync.WaitGroup) {
 	defer func() {
 		fmt.Println("rpc server end.")
 		wg.Done()
@@ -32,10 +32,9 @@ func (s *GRCPServer) Run(app *App, wg *sync.WaitGroup) {
 
 	// 设置路由
 	app.GRPCServer = srv
-	s.routerSetter(app)
+	s.router(app)
 
-	// 注册反射服务 这个服务是CLI使用的 跟服务本身没有关系
-	// 可使用grpcui测试
+	// 注册反射服务，这个服务是 CLI 使用的，跟服务本身没有关系，可使用 grpcui 测试接口
 	// - go get github.com/fullstorydev/grpcui/...
 	// - go install github.com/fullstorydev/grpcui/cmd/grpcui
 	// - grpcui -plaintext 127.0.0.1:8081

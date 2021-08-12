@@ -9,18 +9,18 @@ package pb; // 包名
 
 // 定义我们的服务（可定义多个服务,每个服务可定义多个接口）
 service Foobar {
-    rpc index(RequestIndex) returns (ResponseIndex) {};
+    rpc index(RequestIndex) returns (ResponseIndex);
 }
 
 // 定义请求参数，采用驼峰命名方式，小写加下划线，如：student_name
 message RequestIndex {
-    // [repeated|optional|required] 参数类型 参数名 = 标识号(不可重复) [fieldOptions];
+    // [repeated] 参数类型 参数名 = 标识号(不可重复);
     string name = 1;
 }
 
 // 定义响应的参数::外层标准结构
 message ResponseIndex {
-    // [repeated|optional|required] 参数类型 参数名 = 标识号(不可重复) [fieldOptions];
+    // [repeated] 参数类型 参数名 = 标识号(不可重复);
     int32 code = 1;              // 状态码
     string message = 2;          // 状态信息
     ResponseIndexData data = 3;  // 响应数据
@@ -28,6 +28,6 @@ message ResponseIndex {
 
 // 定义响应的参数::内层数据
 message ResponseIndexData {
-    // [repeated|optional|required] 参数类型 参数名 = 标识号(不可重复) [fieldOptions];
+    // [repeated] 参数类型 参数名 = 标识号(不可重复);
     string words  = 1;
 }

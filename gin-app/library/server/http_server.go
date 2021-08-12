@@ -9,16 +9,16 @@ import (
 )
 
 type HTTPServer struct {
-	routerSetter func(*App)
+	router Router
 }
 
-func NewHTTPServer(rs func(*App)) *HTTPServer {
+func NewHTTPServer(r Router) *HTTPServer {
 	return &HTTPServer{
-		routerSetter: rs,
+		router: r,
 	}
 }
 
-func (s *HTTPServer) Run(app *App, wg *sync.WaitGroup) {
+func (s *HTTPServer) Run(app *Engine, wg *sync.WaitGroup) {
 	defer func() {
 		fmt.Println("http server end.")
 		wg.Done()
@@ -30,7 +30,7 @@ func (s *HTTPServer) Run(app *App, wg *sync.WaitGroup) {
 
 	// 设置路由
 	app.HTTPServer = srv
-	s.routerSetter(app)
+	s.router(app)
 
 	// 启动服务
 	address := ":8080"
