@@ -8,6 +8,6 @@ OLD_DIR=`pwd`
 CUR_DIR=`dirname $0`
 cd $CUR_DIR
 
-protoc --go_out=plugins=grpc:../ pb_protos/*.proto
+protoc --go_out=plugins=grpc:../ grpc_protos/*.proto
 
 cd $OLD_DIR

@@ -7,6 +7,10 @@ type HttpResponse struct {
 	Data    interface{} `json:"data"`
 }
 
+func NewHTTPResponse() *HttpResponse {
+	return &HttpResponse{}
+}
+
 func (res *HttpResponse) Success(ctx *WebContext, data interface{}) {
 	res.TraceID = ctx.GetString("trace_id")
 	res.Code = 0
@@ -16,10 +20,12 @@ func (res *HttpResponse) Success(ctx *WebContext, data interface{}) {
 	ctx.JSON(200, res)
 }
 
-func (res *HttpResponse) Error(ctx *WebContext, ae ErrorI) {
+func (res *HttpResponse) Error(ctx *WebContext, e error) {
+	code, message := ParseError(e)
+
 	res.TraceID = ctx.GetString("trace_id")
-	res.Code = ae.Code()
-	res.Message = ae.Message()
+	res.Code = code
+	res.Message = message
 
 	ctx.JSON(200, res)
 }

@@ -29,10 +29,10 @@ func (s *GRCPServer) Run(app *Engine, wg *sync.WaitGroup) {
 	// 初始化 GRPC server
 	var opts []grpc.ServerOption
 	srv := grpc.NewServer(opts...)
+	app.GRPCServer = srv
 
 	// 设置路由
-	app.GRPCServer = srv
-	s.router(app)
+	s.router()
 
 	// 注册反射服务，这个服务是 CLI 使用的，跟服务本身没有关系，可使用 grpcui 测试接口
 	// - go get github.com/fullstorydev/grpcui/...

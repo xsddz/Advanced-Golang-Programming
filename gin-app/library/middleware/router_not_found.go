@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"errors"
 	"gin-app/library/server"
 
 	"github.com/gin-gonic/gin"
@@ -8,6 +9,6 @@ import (
 
 func RouterNotFound(ctx *gin.Context) {
 	response := server.HttpResponse{}
-	response.Error(&server.WebContext{Context: ctx}, server.NewError(400, "404 not found"))
+	response.Error(&server.WebContext{Context: ctx}, errors.New("[404] not found"))
 	ctx.Abort()
 }

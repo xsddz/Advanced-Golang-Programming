@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.25.0
 // 	protoc        v3.17.3
-// source: pb_protos/foobar.proto
+// source: grpc_protos/foobar.proto
 
 // option java_package = "com.example.foobar";
 // option php_metadata_namespace = "Protobuf\\Example\\Foobar";
@@ -33,32 +33,32 @@ const (
 const _ = proto.ProtoPackageIsVersion4
 
 // 定义请求参数，采用驼峰命名方式，小写加下划线，如：student_name
-type RequestIndex struct {
+type RequestGitUser struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// [repeated|optional|required] 参数类型 参数名 = 标识号(不可重复) [fieldOptions];
+	// [repeated] 参数类型 参数名 = 标识号(不可重复);
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
-func (x *RequestIndex) Reset() {
-	*x = RequestIndex{}
+func (x *RequestGitUser) Reset() {
+	*x = RequestGitUser{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pb_protos_foobar_proto_msgTypes[0]
+		mi := &file_grpc_protos_foobar_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *RequestIndex) String() string {
+func (x *RequestGitUser) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RequestIndex) ProtoMessage() {}
+func (*RequestGitUser) ProtoMessage() {}
 
-func (x *RequestIndex) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_protos_foobar_proto_msgTypes[0]
+func (x *RequestGitUser) ProtoReflect() protoreflect.Message {
+	mi := &file_grpc_protos_foobar_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -69,12 +69,12 @@ func (x *RequestIndex) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RequestIndex.ProtoReflect.Descriptor instead.
-func (*RequestIndex) Descriptor() ([]byte, []int) {
-	return file_pb_protos_foobar_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use RequestGitUser.ProtoReflect.Descriptor instead.
+func (*RequestGitUser) Descriptor() ([]byte, []int) {
+	return file_grpc_protos_foobar_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RequestIndex) GetName() string {
+func (x *RequestGitUser) GetName() string {
 	if x != nil {
 		return x.Name
 	}
@@ -82,34 +82,34 @@ func (x *RequestIndex) GetName() string {
 }
 
 // 定义响应的参数::外层标准结构
-type ResponseIndex struct {
+type ResponseGitUser struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// [repeated|optional|required] 参数类型 参数名 = 标识号(不可重复) [fieldOptions];
-	Code    int32              `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`      // 状态码
-	Message string             `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"` // 状态信息
-	Data    *ResponseIndexData `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`       // 响应数据
+	// [repeated] 参数类型 参数名 = 标识号(不可重复);
+	Code    int32                `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`      // 状态码
+	Message string               `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"` // 状态信息
+	Data    *ResponseGitUserData `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`       // 响应数据
 }
 
-func (x *ResponseIndex) Reset() {
-	*x = ResponseIndex{}
+func (x *ResponseGitUser) Reset() {
+	*x = ResponseGitUser{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pb_protos_foobar_proto_msgTypes[1]
+		mi := &file_grpc_protos_foobar_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *ResponseIndex) String() string {
+func (x *ResponseGitUser) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ResponseIndex) ProtoMessage() {}
+func (*ResponseGitUser) ProtoMessage() {}
 
-func (x *ResponseIndex) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_protos_foobar_proto_msgTypes[1]
+func (x *ResponseGitUser) ProtoReflect() protoreflect.Message {
+	mi := &file_grpc_protos_foobar_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -120,26 +120,26 @@ func (x *ResponseIndex) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ResponseIndex.ProtoReflect.Descriptor instead.
-func (*ResponseIndex) Descriptor() ([]byte, []int) {
-	return file_pb_protos_foobar_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use ResponseGitUser.ProtoReflect.Descriptor instead.
+func (*ResponseGitUser) Descriptor() ([]byte, []int) {
+	return file_grpc_protos_foobar_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ResponseIndex) GetCode() int32 {
+func (x *ResponseGitUser) GetCode() int32 {
 	if x != nil {
 		return x.Code
 	}
 	return 0
 }
 
-func (x *ResponseIndex) GetMessage() string {
+func (x *ResponseGitUser) GetMessage() string {
 	if x != nil {
 		return x.Message
 	}
 	return ""
 }
 
-func (x *ResponseIndex) GetData() *ResponseIndexData {
+func (x *ResponseGitUser) GetData() *ResponseGitUserData {
 	if x != nil {
 		return x.Data
 	}
@@ -147,32 +147,32 @@ func (x *ResponseIndex) GetData() *ResponseIndexData {
 }
 
 // 定义响应的参数::内层数据
-type ResponseIndexData struct {
+type ResponseGitUserData struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// [repeated|optional|required] 参数类型 参数名 = 标识号(不可重复) [fieldOptions];
-	Words string `protobuf:"bytes,1,opt,name=words,proto3" json:"words,omitempty"`
+	// [repeated] 参数类型 参数名 = 标识号(不可重复);
+	Info string `protobuf:"bytes,1,opt,name=info,proto3" json:"info,omitempty"`
 }
 
-func (x *ResponseIndexData) Reset() {
-	*x = ResponseIndexData{}
+func (x *ResponseGitUserData) Reset() {
+	*x = ResponseGitUserData{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_pb_protos_foobar_proto_msgTypes[2]
+		mi := &file_grpc_protos_foobar_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *ResponseIndexData) String() string {
+func (x *ResponseGitUserData) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ResponseIndexData) ProtoMessage() {}
+func (*ResponseGitUserData) ProtoMessage() {}
 
-func (x *ResponseIndexData) ProtoReflect() protoreflect.Message {
-	mi := &file_pb_protos_foobar_proto_msgTypes[2]
+func (x *ResponseGitUserData) ProtoReflect() protoreflect.Message {
+	mi := &file_grpc_protos_foobar_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -183,64 +183,64 @@ func (x *ResponseIndexData) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ResponseIndexData.ProtoReflect.Descriptor instead.
-func (*ResponseIndexData) Descriptor() ([]byte, []int) {
-	return file_pb_protos_foobar_proto_rawDescGZIP(), []int{2}
+// Deprecated: Use ResponseGitUserData.ProtoReflect.Descriptor instead.
+func (*ResponseGitUserData) Descriptor() ([]byte, []int) {
+	return file_grpc_protos_foobar_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ResponseIndexData) GetWords() string {
+func (x *ResponseGitUserData) GetInfo() string {
 	if x != nil {
-		return x.Words
+		return x.Info
 	}
 	return ""
 }
 
-var File_pb_protos_foobar_proto protoreflect.FileDescriptor
+var File_grpc_protos_foobar_proto protoreflect.FileDescriptor
 
-var file_pb_protos_foobar_proto_rawDesc = []byte{
-	0x0a, 0x16, 0x70, 0x62, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x66, 0x6f, 0x6f, 0x62,
-	0x61, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x02, 0x70, 0x62, 0x22, 0x22, 0x0a, 0x0c,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x12, 0x12, 0x0a, 0x04,
-	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65,
-	0x22, 0x68, 0x0a, 0x0d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x49, 0x6e, 0x64, 0x65,
-	0x78, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12,
-	0x29, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e,
-	0x70, 0x62, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78,
-	0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x29, 0x0a, 0x11, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x44, 0x61, 0x74, 0x61, 0x12,
-	0x14, 0x0a, 0x05, 0x77, 0x6f, 0x72, 0x64, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
-	0x77, 0x6f, 0x72, 0x64, 0x73, 0x32, 0x38, 0x0a, 0x06, 0x46, 0x6f, 0x6f, 0x62, 0x61, 0x72, 0x12,
-	0x2e, 0x0a, 0x05, 0x69, 0x6e, 0x64, 0x65, 0x78, 0x12, 0x10, 0x2e, 0x70, 0x62, 0x2e, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x1a, 0x11, 0x2e, 0x70, 0x62, 0x2e,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x22, 0x00, 0x42,
-	0x0b, 0x5a, 0x09, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x2f, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+var file_grpc_protos_foobar_proto_rawDesc = []byte{
+	0x0a, 0x18, 0x67, 0x72, 0x70, 0x63, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x66, 0x6f,
+	0x6f, 0x62, 0x61, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x02, 0x70, 0x62, 0x22, 0x24,
+	0x0a, 0x0e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x47, 0x69, 0x74, 0x55, 0x73, 0x65, 0x72,
+	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x22, 0x6c, 0x0a, 0x0f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x47, 0x69, 0x74, 0x55, 0x73, 0x65, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x2b, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x70, 0x62, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x47, 0x69, 0x74, 0x55, 0x73, 0x65, 0x72, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x64, 0x61,
+	0x74, 0x61, 0x22, 0x29, 0x0a, 0x13, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x47, 0x69,
+	0x74, 0x55, 0x73, 0x65, 0x72, 0x44, 0x61, 0x74, 0x61, 0x12, 0x12, 0x0a, 0x04, 0x69, 0x6e, 0x66,
+	0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x32, 0x3a, 0x0a,
+	0x06, 0x46, 0x6f, 0x6f, 0x62, 0x61, 0x72, 0x12, 0x30, 0x0a, 0x05, 0x69, 0x6e, 0x64, 0x65, 0x78,
+	0x12, 0x12, 0x2e, 0x70, 0x62, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x47, 0x69, 0x74,
+	0x55, 0x73, 0x65, 0x72, 0x1a, 0x13, 0x2e, 0x70, 0x62, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x47, 0x69, 0x74, 0x55, 0x73, 0x65, 0x72, 0x42, 0x0b, 0x5a, 0x09, 0x65, 0x6e, 0x74,
+	0x69, 0x74, 0x79, 0x2f, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_pb_protos_foobar_proto_rawDescOnce sync.Once
-	file_pb_protos_foobar_proto_rawDescData = file_pb_protos_foobar_proto_rawDesc
+	file_grpc_protos_foobar_proto_rawDescOnce sync.Once
+	file_grpc_protos_foobar_proto_rawDescData = file_grpc_protos_foobar_proto_rawDesc
 )
 
-func file_pb_protos_foobar_proto_rawDescGZIP() []byte {
-	file_pb_protos_foobar_proto_rawDescOnce.Do(func() {
-		file_pb_protos_foobar_proto_rawDescData = protoimpl.X.CompressGZIP(file_pb_protos_foobar_proto_rawDescData)
+func file_grpc_protos_foobar_proto_rawDescGZIP() []byte {
+	file_grpc_protos_foobar_proto_rawDescOnce.Do(func() {
+		file_grpc_protos_foobar_proto_rawDescData = protoimpl.X.CompressGZIP(file_grpc_protos_foobar_proto_rawDescData)
 	})
-	return file_pb_protos_foobar_proto_rawDescData
+	return file_grpc_protos_foobar_proto_rawDescData
 }
 
-var file_pb_protos_foobar_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_pb_protos_foobar_proto_goTypes = []interface{}{
-	(*RequestIndex)(nil),      // 0: pb.RequestIndex
-	(*ResponseIndex)(nil),     // 1: pb.ResponseIndex
-	(*ResponseIndexData)(nil), // 2: pb.ResponseIndexData
+var file_grpc_protos_foobar_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_grpc_protos_foobar_proto_goTypes = []interface{}{
+	(*RequestGitUser)(nil),      // 0: pb.RequestGitUser
+	(*ResponseGitUser)(nil),     // 1: pb.ResponseGitUser
+	(*ResponseGitUserData)(nil), // 2: pb.ResponseGitUserData
 }
-var file_pb_protos_foobar_proto_depIdxs = []int32{
-	2, // 0: pb.ResponseIndex.data:type_name -> pb.ResponseIndexData
-	0, // 1: pb.Foobar.index:input_type -> pb.RequestIndex
-	1, // 2: pb.Foobar.index:output_type -> pb.ResponseIndex
+var file_grpc_protos_foobar_proto_depIdxs = []int32{
+	2, // 0: pb.ResponseGitUser.data:type_name -> pb.ResponseGitUserData
+	0, // 1: pb.Foobar.index:input_type -> pb.RequestGitUser
+	1, // 2: pb.Foobar.index:output_type -> pb.ResponseGitUser
 	2, // [2:3] is the sub-list for method output_type
 	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -248,14 +248,14 @@ var file_pb_protos_foobar_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_pb_protos_foobar_proto_init() }
-func file_pb_protos_foobar_proto_init() {
-	if File_pb_protos_foobar_proto != nil {
+func init() { file_grpc_protos_foobar_proto_init() }
+func file_grpc_protos_foobar_proto_init() {
+	if File_grpc_protos_foobar_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_pb_protos_foobar_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RequestIndex); i {
+		file_grpc_protos_foobar_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RequestGitUser); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -266,8 +266,8 @@ func file_pb_protos_foobar_proto_init() {
 				return nil
 			}
 		}
-		file_pb_protos_foobar_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResponseIndex); i {
+		file_grpc_protos_foobar_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ResponseGitUser); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -278,8 +278,8 @@ func file_pb_protos_foobar_proto_init() {
 				return nil
 			}
 		}
-		file_pb_protos_foobar_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ResponseIndexData); i {
+		file_grpc_protos_foobar_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ResponseGitUserData); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -295,20 +295,20 @@ func file_pb_protos_foobar_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_pb_protos_foobar_proto_rawDesc,
+			RawDescriptor: file_grpc_protos_foobar_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_pb_protos_foobar_proto_goTypes,
-		DependencyIndexes: file_pb_protos_foobar_proto_depIdxs,
-		MessageInfos:      file_pb_protos_foobar_proto_msgTypes,
+		GoTypes:           file_grpc_protos_foobar_proto_goTypes,
+		DependencyIndexes: file_grpc_protos_foobar_proto_depIdxs,
+		MessageInfos:      file_grpc_protos_foobar_proto_msgTypes,
 	}.Build()
-	File_pb_protos_foobar_proto = out.File
-	file_pb_protos_foobar_proto_rawDesc = nil
-	file_pb_protos_foobar_proto_goTypes = nil
-	file_pb_protos_foobar_proto_depIdxs = nil
+	File_grpc_protos_foobar_proto = out.File
+	file_grpc_protos_foobar_proto_rawDesc = nil
+	file_grpc_protos_foobar_proto_goTypes = nil
+	file_grpc_protos_foobar_proto_depIdxs = nil
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -323,7 +323,7 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type FoobarClient interface {
-	Index(ctx context.Context, in *RequestIndex, opts ...grpc.CallOption) (*ResponseIndex, error)
+	Index(ctx context.Context, in *RequestGitUser, opts ...grpc.CallOption) (*ResponseGitUser, error)
 }
 
 type foobarClient struct {
@@ -334,8 +334,8 @@ func NewFoobarClient(cc grpc.ClientConnInterface) FoobarClient {
 	return &foobarClient{cc}
 }
 
-func (c *foobarClient) Index(ctx context.Context, in *RequestIndex, opts ...grpc.CallOption) (*ResponseIndex, error) {
-	out := new(ResponseIndex)
+func (c *foobarClient) Index(ctx context.Context, in *RequestGitUser, opts ...grpc.CallOption) (*ResponseGitUser, error) {
+	out := new(ResponseGitUser)
 	err := c.cc.Invoke(ctx, "/pb.Foobar/index", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -345,14 +345,14 @@ func (c *foobarClient) Index(ctx context.Context, in *RequestIndex, opts ...grpc
 
 // FoobarServer is the server API for Foobar service.
 type FoobarServer interface {
-	Index(context.Context, *RequestIndex) (*ResponseIndex, error)
+	Index(context.Context, *RequestGitUser) (*ResponseGitUser, error)
 }
 
 // UnimplementedFoobarServer can be embedded to have forward compatible implementations.
 type UnimplementedFoobarServer struct {
 }
 
-func (*UnimplementedFoobarServer) Index(context.Context, *RequestIndex) (*ResponseIndex, error) {
+func (*UnimplementedFoobarServer) Index(context.Context, *RequestGitUser) (*ResponseGitUser, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Index not implemented")
 }
 
@@ -361,7 +361,7 @@ func RegisterFoobarServer(s *grpc.Server, srv FoobarServer) {
 }
 
 func _Foobar_Index_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestIndex)
+	in := new(RequestGitUser)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -373,7 +373,7 @@ func _Foobar_Index_Handler(srv interface{}, ctx context.Context, dec func(interf
 		FullMethod: "/pb.Foobar/Index",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FoobarServer).Index(ctx, req.(*RequestIndex))
+		return srv.(FoobarServer).Index(ctx, req.(*RequestGitUser))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -388,5 +388,5 @@ var _Foobar_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "pb_protos/foobar.proto",
+	Metadata: "grpc_protos/foobar.proto",
 }

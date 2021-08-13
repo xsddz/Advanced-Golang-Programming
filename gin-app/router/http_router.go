@@ -1,17 +1,18 @@
 package router
 
 import (
-	"gin-app/controller"
+	"gin-app/controllers/http/demo"
+	"gin-app/library/app"
 	"gin-app/library/middleware"
-	"gin-app/library/server"
 )
 
-func HTTPRouter(app *server.Engine) {
-	app.HTTPServer.NoRoute(middleware.RouterNotFound)
+func HTTPRouter() {
+	httpServer := app.GetHTTPServer()
+	httpServer.NoRoute(middleware.RouterNotFound)
 
 	// 路由组
-	foobarGr := app.HTTPServer.Group("/foobar")
+	DemoGr := httpServer.Group("/demo")
 	{
-		foobarGr.GET("/index", controller.Index)
+		DemoGr.GET("/gituser", demo.GitUser)
 	}
 }

@@ -1,0 +1,4 @@
+app_id = "xxxxx"
+cluster = "default"
+namespace_names = ["application"]
+host = "yyyyyyyy"
