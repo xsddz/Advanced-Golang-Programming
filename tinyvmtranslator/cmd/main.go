@@ -17,4 +17,6 @@ func main() {
 	sourceFile := filepath.Base(os.Args[1])
 	targetFile := strings.TrimSuffix(sourceFile, filepath.Ext(sourceFile)) + ".hack"
 
+	fmt.Println(targetFileDir, sourceFile, targetFile)
+
 }
