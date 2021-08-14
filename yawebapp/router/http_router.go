@@ -1,9 +1,9 @@
 package router
 
 import (
-	"gin-app/controllers/http/demo"
-	"gin-app/library/app"
-	"gin-app/library/middleware"
+	"yawebapp/Illuminate/app"
+	"yawebapp/Illuminate/middleware"
+	"yawebapp/controllers/http/demo"
 )
 
 func HTTPRouter() {

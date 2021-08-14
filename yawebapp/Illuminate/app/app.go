@@ -2,8 +2,8 @@ package app
 
 import (
 	"fmt"
-	"gin-app/library/server"
 	"strings"
+	"yawebapp/Illuminate/server"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"
@@ -22,9 +22,10 @@ var (
 	DB     *gorm.DB
 )
 
-func Init(keys []string) {
+func Init() {
 	initApollo()
 
+	keys := []string{}
 	for _, key := range keys {
 		if init, ok := initTable[strings.ToLower(key)]; ok {
 			fmt.Println("init: ", key)

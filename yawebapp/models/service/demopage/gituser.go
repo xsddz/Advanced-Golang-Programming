@@ -3,10 +3,10 @@ package demopage
 import (
 	"encoding/json"
 	"fmt"
-	"gin-app/entity/demoentity"
-	"gin-app/library/app"
-	"gin-app/library/server"
-	"gin-app/models/data"
+	"yawebapp/Illuminate/app"
+	"yawebapp/Illuminate/server"
+	"yawebapp/entity/demoentity"
+	"yawebapp/models/dao"
 
 	"gorm.io/gorm"
 )
@@ -20,7 +20,7 @@ func NewGitUserPage(ctx *server.WebContext) *GitUserPage {
 }
 
 func (s *GitUserPage) Execute(req demoentity.ReqGitUser, res *demoentity.ResGitUser) error {
-	var data data.CommonConfig
+	var data dao.CommonConfig
 	result := app.SQLITE.First(&data, "name = ?", req.Name)
 	if result.Error == nil {
 		j, _ := json.Marshal(data)

@@ -2,10 +2,10 @@ package app
 
 import (
 	"fmt"
-	"gin-app/library/config"
-	"gin-app/library/storage"
 	"strconv"
 	"strings"
+	"yawebapp/Illuminate/config"
+	"yawebapp/Illuminate/storage"
 )
 
 var initTable = map[string]func(){

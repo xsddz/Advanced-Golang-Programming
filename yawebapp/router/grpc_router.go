@@ -1,9 +1,9 @@
 package router
 
 import (
-	"gin-app/controllers/grpc"
-	"gin-app/entity/pb"
-	"gin-app/library/app"
+	"yawebapp/Illuminate/app"
+	"yawebapp/controllers/grpc"
+	"yawebapp/entity/pb"
 )
 
 func GRPCRouter() {

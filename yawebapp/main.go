@@ -1,13 +1,13 @@
 package main
 
 import (
-	"gin-app/library/app"
-	"gin-app/library/server"
-	"gin-app/router"
+	"yawebapp/Illuminate/app"
+	"yawebapp/Illuminate/server"
+	"yawebapp/router"
 )
 
 func main() {
-	app.Init([]string{"mysql", "redis"})
+	app.Init()
 	app.RegisterServer(server.NewHTTPServer(router.HTTPRouter))
 	app.RegisterServer(server.NewGRPCServer(router.GRPCRouter))
 	app.Run()

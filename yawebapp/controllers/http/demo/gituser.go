@@ -1,9 +1,9 @@
 package demo
 
 import (
-	"gin-app/entity/demoentity"
-	"gin-app/library/server"
-	"gin-app/models/page/demopage"
+	"yawebapp/Illuminate/server"
+	"yawebapp/entity/demoentity"
+	"yawebapp/models/service/demopage"
 
 	"github.com/gin-gonic/gin"
 )

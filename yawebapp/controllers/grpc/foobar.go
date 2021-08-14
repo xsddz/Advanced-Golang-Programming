@@ -2,10 +2,10 @@ package grpc
 
 import (
 	"context"
-	"gin-app/entity/demoentity"
-	"gin-app/entity/pb"
-	"gin-app/library/server"
-	"gin-app/models/page/demopage"
+	"yawebapp/Illuminate/server"
+	"yawebapp/entity/demoentity"
+	"yawebapp/entity/pb"
+	"yawebapp/models/service/demopage"
 )
 
 // Foobar 定义服务
