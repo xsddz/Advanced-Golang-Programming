@@ -1,7 +1,6 @@
 package udpclient
 
 import (
-	"Advanced-Golang-Programming/tinyecho/common"
 	"bufio"
 	"bytes"
 	"fmt"
@@ -10,6 +9,7 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"tinyecho/common"
 )
 
 const (

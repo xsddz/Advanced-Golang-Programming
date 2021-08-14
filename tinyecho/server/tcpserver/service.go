@@ -1,10 +1,10 @@
 package tcpserver
 
 import (
-	"Advanced-Golang-Programming/tinyecho/common"
 	"fmt"
 	"log"
 	"net"
+	"tinyecho/common"
 )
 
 const (

@@ -1,11 +1,11 @@
 package tcpserver
 
 import (
-	"Advanced-Golang-Programming/tinyecho/common"
 	"fmt"
 	"net"
 	"sync"
 	"time"
+	"tinyecho/common"
 )
 
 var (

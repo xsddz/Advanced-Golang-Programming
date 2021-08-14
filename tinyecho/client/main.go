@@ -1,10 +1,10 @@
 package main
 
 import (
-	"Advanced-Golang-Programming/tinyecho/client/tcpclient"
-	"Advanced-Golang-Programming/tinyecho/client/udpclient"
 	"flag"
 	"fmt"
+	"tinyecho/client/tcpclient"
+	"tinyecho/client/udpclient"
 )
 
 var (

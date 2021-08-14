@@ -1,13 +1,13 @@
 package udpserver
 
 import (
-	"Advanced-Golang-Programming/tinyecho/common"
 	"bytes"
 	"fmt"
 	"log"
 	"net"
 	"sync"
 	"time"
+	"tinyecho/common"
 )
 
 const (

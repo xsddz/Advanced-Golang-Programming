@@ -1,7 +1,6 @@
 package tcpclient
 
 import (
-	"Advanced-Golang-Programming/tinyecho/common"
 	"bufio"
 	"fmt"
 	"log"
@@ -9,6 +8,7 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"tinyecho/common"
 )
 
 const (
