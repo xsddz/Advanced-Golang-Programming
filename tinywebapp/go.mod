@@ -1,4 +1,4 @@
-module gin-app
+module tinywebapp
 
 go 1.16
 

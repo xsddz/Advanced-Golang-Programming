@@ -18,9 +18,9 @@ func aaa() (err error) {
 }
 
 func main() {
-	// foobar.MachineEndian()
-	// foobar.MachineBit()
-	// foobar.USMem()
+	foobar.MachineEndian()
+	foobar.MachineBit()
+	foobar.USMem()
 
 	aaa()
 }
