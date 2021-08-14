@@ -1,11 +1,11 @@
 package main
 
 import (
-	"Advanced-Golang-Programming/tinyassembler"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
+	"tinyassembler"
 )
 
 func main() {
