@@ -1,8 +1,6 @@
 package main
 
-import (
-	"Advanced-Golang-Programming/tinyredislib/rdb"
-)
+import "tinyredis/lib/rdb"
 
 type redisServer struct{}
 

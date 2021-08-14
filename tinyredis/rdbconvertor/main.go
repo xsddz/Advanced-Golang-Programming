@@ -1,10 +1,10 @@
 package main
 
 import (
-	"Advanced-Golang-Programming/tinyredislib/rdb"
 	"flag"
 	"fmt"
 	"path/filepath"
+	"tinyredis/lib/rdb"
 )
 
 var (
