@@ -1,4 +1,4 @@
-package demoentity
+package entitydemo
 
 type ReqGitUser struct {
 	Name string `form:"name" binding:"required"`

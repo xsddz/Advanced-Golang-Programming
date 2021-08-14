@@ -1,14 +1,14 @@
 package main
 
 import (
-	"yawebapp/Illuminate/app"
-	"yawebapp/Illuminate/server"
-	"yawebapp/router"
+	"yawebapp/library/common/app"
+	"yawebapp/library/common/server"
+	"yawebapp/routers"
 )
 
 func main() {
 	app.Init()
-	app.RegisterServer(server.NewHTTPServer(router.HTTPRouter))
-	app.RegisterServer(server.NewGRPCServer(router.GRPCRouter))
+	app.RegisterServer(server.NewHTTPServer(routers.HTTPRouter))
+	app.RegisterServer(server.NewGRPCServer(routers.GRPCRouter))
 	app.Run()
 }

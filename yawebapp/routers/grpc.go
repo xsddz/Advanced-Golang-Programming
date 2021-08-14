@@ -1,9 +1,9 @@
-package router
+package routers
 
 import (
-	"yawebapp/Illuminate/app"
 	"yawebapp/controllers/grpc"
-	"yawebapp/entity/pb"
+	"yawebapp/entities/pb"
+	"yawebapp/library/common/app"
 )
 
 func GRPCRouter() {

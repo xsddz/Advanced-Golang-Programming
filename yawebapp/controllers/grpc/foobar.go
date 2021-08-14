@@ -2,10 +2,10 @@ package grpc
 
 import (
 	"context"
-	"yawebapp/Illuminate/server"
-	"yawebapp/entity/demoentity"
-	"yawebapp/entity/pb"
-	"yawebapp/models/service/demopage"
+	"yawebapp/entities/entitydemo"
+	"yawebapp/entities/pb"
+	"yawebapp/library/common/server"
+	"yawebapp/models/service/pagedemo"
 )
 
 // Foobar 定义服务
@@ -17,8 +17,8 @@ func (s *Foobar) Index(ctx context.Context, req *pb.RequestGitUser) (*pb.Respons
 	response := server.NewGRPCResponse(&pb.ResponseGitUser{})
 
 	// 业务逻辑请求参数初始化
-	reqEntity := demoentity.ReqGitUser{}
-	resEntity := demoentity.ResGitUser{}
+	reqEntity := entitydemo.ReqGitUser{}
+	resEntity := entitydemo.ResGitUser{}
 
 	// 请求参数解析
 	err := appContext.ShouldBindGRPC(req, &reqEntity)
@@ -29,7 +29,7 @@ func (s *Foobar) Index(ctx context.Context, req *pb.RequestGitUser) (*pb.Respons
 	}
 
 	// 执行业务逻辑
-	err = demopage.NewGitUserPage(appContext).Execute(reqEntity, &resEntity)
+	err = pagedemo.NewGitUserPage(appContext).Execute(reqEntity, &resEntity)
 	if err != nil {
 		// 错误提前返回
 		response.Error(appContext, err)

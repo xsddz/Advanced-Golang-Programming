@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-	"yawebapp/Illuminate/config"
-	"yawebapp/Illuminate/storage"
+	"yawebapp/library/common/config"
+	"yawebapp/library/common/storage"
 )
 
 var initTable = map[string]func(){

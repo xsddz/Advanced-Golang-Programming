@@ -3,7 +3,7 @@ package app
 import (
 	"fmt"
 	"strings"
-	"yawebapp/Illuminate/server"
+	"yawebapp/library/common/server"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"

@@ -1,9 +1,9 @@
 package demo
 
 import (
-	"yawebapp/Illuminate/server"
-	"yawebapp/entity/demoentity"
-	"yawebapp/models/service/demopage"
+	"yawebapp/entities/entitydemo"
+	"yawebapp/library/common/server"
+	"yawebapp/models/service/pagedemo"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,8 +14,8 @@ func GitUser(ctx *gin.Context) {
 	response := server.NewHTTPResponse()
 
 	// 业务逻辑请求参数初始化
-	reqEntity := demoentity.ReqGitUser{}
-	resEntity := demoentity.ResGitUser{}
+	reqEntity := entitydemo.ReqGitUser{}
+	resEntity := entitydemo.ResGitUser{}
 
 	// 请求参数解析
 	err := appContext.ShouldBind(&reqEntity)
@@ -26,7 +26,7 @@ func GitUser(ctx *gin.Context) {
 	}
 
 	// 执行业务逻辑
-	err = demopage.NewGitUserPage(appContext).Execute(reqEntity, &resEntity)
+	err = pagedemo.NewGitUserPage(appContext).Execute(reqEntity, &resEntity)
 	if err != nil {
 		// 错误提前返回
 		response.Error(appContext, err)

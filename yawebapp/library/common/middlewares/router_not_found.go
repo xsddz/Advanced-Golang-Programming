@@ -1,8 +1,8 @@
-package middleware
+package middlewares
 
 import (
 	"errors"
-	"yawebapp/Illuminate/server"
+	"yawebapp/library/common/server"
 
 	"github.com/gin-gonic/gin"
 )
