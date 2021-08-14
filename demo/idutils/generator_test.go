@@ -1,7 +1,7 @@
 package idutils_test
 
 import (
-	"Advanced-Golang-Programming/tinylib/idutils"
+	"demo/idutils"
 	"fmt"
 	"sync"
 	"testing"

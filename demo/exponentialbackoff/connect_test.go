@@ -1,7 +1,7 @@
 package exponentialbackoff_test
 
 import (
-	"Advanced-Golang-Programming/tinylib/exponentialbackoff"
+	"demo/exponentialbackoff"
 	"fmt"
 	"testing"
 )
