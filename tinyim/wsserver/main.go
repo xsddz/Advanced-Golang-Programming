@@ -7,14 +7,13 @@ import (
 	"net"
 	"net/http"
 	"time"
+	"tinyim/wsserver/asset"
+	"tinyim/wsserver/auth"
+	"tinyim/wsserver/client"
+	"tinyim/wsserver/msg"
 
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
-
-	"Advanced-Golang-Programming/tinyim/wsserver/asset"
-	"Advanced-Golang-Programming/tinyim/wsserver/auth"
-	"Advanced-Golang-Programming/tinyim/wsserver/client"
-	"Advanced-Golang-Programming/tinyim/wsserver/msg"
 )
 
 var (

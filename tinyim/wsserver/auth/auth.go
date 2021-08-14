@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"Advanced-Golang-Programming/tinyim/wsserver/client"
 	"net/http"
+	"tinyim/wsserver/client"
 )
 
 // Login 认证请求
