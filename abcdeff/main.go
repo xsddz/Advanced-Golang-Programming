@@ -1,6 +1,7 @@
 package main
 
 import (
+	"abcdeff/foobar"
 	"errors"
 	"fmt"
 )

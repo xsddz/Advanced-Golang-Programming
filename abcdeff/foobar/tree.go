@@ -14,10 +14,10 @@ type TreeItem struct {
 }
 
 var tree = &Tree{
-	level: 3
+	level: 3,
 	data: &TreeItem{
-		val: 
-	}
+		val: 21,
+	},
 }
 
 // SPrintTree -
