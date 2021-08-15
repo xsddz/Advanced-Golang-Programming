@@ -2,7 +2,7 @@ package middlewares
 
 import (
 	"errors"
-	"yawebapp/library/common/server"
+	"yawebapp/library/inner/server"
 
 	"github.com/gin-gonic/gin"
 )

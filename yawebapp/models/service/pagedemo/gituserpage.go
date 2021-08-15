@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"yawebapp/entities/entitydemo"
-	"yawebapp/library/common/app"
-	"yawebapp/library/common/server"
+	"yawebapp/library/inner/app"
+	"yawebapp/library/inner/server"
 	"yawebapp/models/dao"
 
 	"gorm.io/gorm"

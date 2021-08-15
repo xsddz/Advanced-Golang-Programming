@@ -3,7 +3,7 @@ package server_test
 import (
 	"errors"
 	"testing"
-	"yawebapp/library/common/server"
+	"yawebapp/library/inner/server"
 )
 
 // go test -run "TestParseError"

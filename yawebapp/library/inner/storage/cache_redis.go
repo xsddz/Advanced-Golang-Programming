@@ -13,7 +13,11 @@ type RedisConf struct {
 	DB         int
 }
 
-func NewRedis(conf RedisConf) (*redis.Client, error) {
+type Redis struct {
+	redisCli *redis.Client
+}
+
+func NewRedis(conf RedisConf) (*Redis, error) {
 	failoverOptions := redis.FailoverOptions{
 		MasterName:    conf.MasterName,
 		SentinelAddrs: conf.Hosts,
@@ -41,5 +45,7 @@ func NewRedis(conf RedisConf) (*redis.Client, error) {
 		MaxRetryBackoff: 512 * time.Millisecond, //每次计算重试间隔时间的上限，默认512毫秒，-1表示取消间隔
 	}
 
-	return redis.NewFailoverClient(&failoverOptions), nil
+	redisCli := redis.NewFailoverClient(&failoverOptions)
+
+	return &Redis{redisCli: redisCli}, nil
 }

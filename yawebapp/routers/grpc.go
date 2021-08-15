@@ -3,7 +3,7 @@ package routers
 import (
 	"yawebapp/controllers/grpc"
 	"yawebapp/entities/pb"
-	"yawebapp/library/common/app"
+	"yawebapp/library/inner/app"
 )
 
 func GRPCRouter() {
