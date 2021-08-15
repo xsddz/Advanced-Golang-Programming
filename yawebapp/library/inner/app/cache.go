@@ -6,7 +6,7 @@ import (
 
 var (
 	cacheDriver = "file"
-	cacheTable  = make(map[string]storage.Cacher)
+	cacheTable  = make(map[string]*cache)
 )
 
 func initCacheDriver(driver string) {
@@ -16,14 +16,13 @@ func initCacheDriver(driver string) {
 	dbDriver = driver
 }
 
-// cache 通过storage.Cacher接口提供统一的缓存操作方法，支持redis、文件等缓存
+// cache 通过 storage.Cacher 接口提供统一的缓存操作方法，支持redis、文件等缓存
 type cache struct {
-	driver    string
-	redis     *storage.Redis
-	fileCache *storage.FileCache
+	storage.Cacher
 }
 
-func Cache() storage.Cacher {
+// Cache 提供延迟初始化对应资源连接的能力，及连接复用能力
+func Cache() *cache {
 	if c, ok := cacheTable[cacheDriver]; ok {
 		return c
 	}
@@ -31,15 +30,9 @@ func Cache() storage.Cacher {
 	var c *cache
 	switch cacheDriver {
 	case "file":
-		c = &cache{
-			driver:    cacheDriver,
-			fileCache: initFileCache(),
-		}
+		c = &cache{initFileCache()}
 	case "redis":
-		c = &cache{
-			driver: cacheDriver,
-			redis:  initRedis(),
-		}
+		c = &cache{initRedis()}
 	}
 	cacheTable[cacheDriver] = c
 
