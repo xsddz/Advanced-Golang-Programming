@@ -1,0 +1,10 @@
+[Default]
+master_name = "Default"
+password = ""
+default_db = 1
+[[Default.Host]]
+ip = "127.0.0.1"
+port = 6379
+[[Default.Host]]
+ip = "127.0.0.1"
+port = 6380

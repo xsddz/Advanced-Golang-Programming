@@ -1,0 +1,9 @@
+use_apollo = false
+
+################################################################################
+# 当 use_apollo 为 false 时，将使用 conf 目录中配置文件的配置，包括本文件
+app_name = "yawebapp"
+app_env = "dev"
+
+db_driver = "sqlite"
+cache_driver = "redis"

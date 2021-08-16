@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"yawebapp/library/inner/utils"
 )
 
 var appRootPath = ""
@@ -25,16 +26,16 @@ func ConfPath() string {
 
 func LogPath() string {
 	logPath := RootPath() + "/log"
-	if !IsExist(logPath) {
-		os.MkdirAll(logPath, os.ModePerm)
+	if !utils.IsExist(logPath) {
+		utils.MakeDirP(logPath)
 	}
 	return logPath
 }
 
 func DataPath() string {
 	dataPath := RootPath() + "/data"
-	if !IsExist(dataPath) {
-		os.MkdirAll(dataPath, os.ModePerm)
+	if !utils.IsExist(dataPath) {
+		utils.MakeDirP(dataPath)
 	}
 	return dataPath
 }
@@ -51,7 +52,7 @@ func detectRootPath() string {
 	}
 
 	// check conf
-	if IsDir(dir + "/conf") {
+	if utils.IsDir(dir + "/conf") {
 		return dir
 	}
 
@@ -61,17 +62,4 @@ func detectRootPath() string {
 		panic(fmt.Sprintf("detect root path for current error: %v", err))
 	}
 	return currDir
-}
-
-func IsDir(path string) bool {
-	fileInfo, err := os.Stat(path)
-	if !os.IsNotExist(err) && fileInfo.IsDir() {
-		return true
-	}
-	return false
-}
-
-func IsExist(path string) bool {
-	_, err := os.Stat(path)
-	return !os.IsNotExist(err)
 }

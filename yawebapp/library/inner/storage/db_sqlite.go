@@ -1,14 +1,25 @@
 package storage
 
 import (
+	"fmt"
+	"path/filepath"
+	"strings"
 	"time"
+	"yawebapp/library/inner/utils"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
-func NewSQLite(path string) (*gorm.DB, error) {
-	db, err := gorm.Open(sqlite.Open(path+"/app.db"), &gorm.Config{})
+func NewSQLite(dataPath string, conf DBConf) ([]*gorm.DB, error) {
+	// ruler:: data/db_{{clustername}}/{{dbname}}.db
+	dbFile := fmt.Sprintf("%v/db_%v/%v.db", dataPath, strings.ToLower(conf.ClusterName), conf.DefaultDB)
+	dbFileDir := filepath.Dir(dbFile)
+	if !utils.IsDir(dbFileDir) {
+		utils.MakeDirP(dbFileDir)
+	}
+
+	db, err := gorm.Open(sqlite.Open(dbFile), &gorm.Config{})
 	if err != nil {
 		return nil, err
 	}
@@ -18,12 +29,12 @@ func NewSQLite(path string) (*gorm.DB, error) {
 		return nil, err
 	}
 
-	// SetMaxIdleConns 设置空闲连接池中连接的最大数量
-	sqlDB.SetMaxIdleConns(10)
-	// SetMaxOpenConns 设置打开数据库连接的最大数量。
-	sqlDB.SetMaxOpenConns(100)
-	// SetConnMaxLifetime 设置了连接可复用的最大时间。
-	sqlDB.SetConnMaxLifetime(time.Hour)
+	// SetMaxOpenConns 设置最大的并发打开连接数，设置这个数小于等于0则表示没有限制，也就是默认设置。
+	sqlDB.SetMaxOpenConns(conf.MaxOpenConns)
+	// SetMaxIdleConns 设置最大的空闲连接数，设置小于等于0的数意味着不保留空闲连接。
+	sqlDB.SetMaxIdleConns(conf.MaxIdleConns)
+	// SetConnMaxLifetime 设置连接的最大生命周期，设置为0的话意味着没有最大生命周期，连接总是可重用(默认行为)。
+	sqlDB.SetConnMaxLifetime(time.Duration(conf.ConnMaxLifetimeMs) * time.Millisecond)
 
-	return db, err
+	return []*gorm.DB{db}, nil
 }

@@ -11,11 +11,20 @@ var (
 	defaultApp *server.Engine
 )
 
-func Init() {
-	initDBDriver(Apollo().Get("DB_DRIVER"))
-	initCacheDriver(Apollo().Get("CACHE_DRIVER"))
+func Name() string {
+	if appConf == nil {
+		return ""
+	}
+	return appConf.AppName
+}
 
-	defaultApp = server.NewEngine(Apollo().Get("APP_ENV"))
+func Init() {
+	loadAppConf()
+
+	initDBDriver(appConf.DBDriver)
+	initCacheDriver(appConf.CacheDriver)
+
+	defaultApp = server.NewEngine(appConf.AppEnv)
 }
 
 func RegisterServer(s server.ServerI) {

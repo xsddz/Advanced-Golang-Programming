@@ -1,12 +1,15 @@
 package app
 
 import (
+	"math/rand"
+	"time"
+
 	"gorm.io/gorm"
 )
 
 var (
 	dbDriver = "sqlite"
-	dbTable  = make(map[string]*db)
+	dbTable  = make(map[string][]*gorm.DB)
 )
 
 func initDBDriver(driver string) {
@@ -22,19 +25,30 @@ type db struct {
 }
 
 // DB 提供延迟初始化对应资源连接的能力，及连接复用能力
-func DB(database string) *db {
-	if d, ok := dbTable[database]; ok {
-		return d
+// 利用 ... 提供可选参数能力，只取第一个或走默认的
+func DB(clusterNames ...string) *db {
+	var clusterName string
+	if len(clusterNames) == 0 {
+		clusterName = "Default"
+	} else {
+		clusterName = clusterNames[0]
 	}
 
-	var d *db
-	switch dbDriver {
-	case "sqlite":
-		d = &db{initSQLite(database)}
-	case "mysql":
-		d = &db{initMySQL(database)}
+	if _, ok := dbTable[clusterName]; !ok {
+		var dbs []*gorm.DB
+		switch dbDriver {
+		case "sqlite":
+			dbs = initSQLite(clusterName)
+		case "mysql":
+			dbs = initMySQL(clusterName)
+		}
+		dbTable[clusterName] = dbs
 	}
-	dbTable[database] = d
 
-	return dbTable[database]
+	return randDB(dbTable[clusterName])
+}
+
+func randDB(dbs []*gorm.DB) *db {
+	rand.Seed(time.Now().UnixNano())
+	return &db{dbs[rand.Intn(len(dbs))]}
 }
