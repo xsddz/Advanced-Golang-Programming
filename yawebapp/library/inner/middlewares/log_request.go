@@ -3,42 +3,38 @@ package middlewares
 import (
 	"fmt"
 	"time"
-	"yawebapp/library/inner/server"
+	"yawebapp/library/inner/app"
 
 	"github.com/gin-gonic/gin"
 )
 
-func LogRequest() gin.HandlerFunc {
-	log := server.NewLogger()
-	return func(ctx *gin.Context) {
-		appContext := server.NewWebContext(ctx)
-		// Start timer
-		start := time.Now()
-		path := appContext.Request.URL.Path
-		raw := appContext.Request.URL.RawQuery
-		if raw != "" {
-			path = path + "?" + raw
-		}
-
-		// 处理请求
-		ctx.Next()
-
-		param := gin.LogFormatterParams{
-			Request:      appContext.Request,
-			StatusCode:   appContext.Writer.Status(),
-			ClientIP:     appContext.ClientIP(),
-			Method:       appContext.Request.Method,
-			Path:         path,
-			ErrorMessage: appContext.Errors.ByType(gin.ErrorTypePrivate).String(),
-			BodySize:     appContext.Writer.Size(),
-			Keys:         appContext.Keys,
-		}
-		// Stop timer
-		param.TimeStamp = time.Now()
-		param.Latency = param.TimeStamp.Sub(start)
-
-		log.Info(*appContext, defaultLogFormatter(param))
+func LogRequest(ctx *gin.Context) {
+	// Start timer
+	start := time.Now()
+	path := ctx.Request.URL.Path
+	raw := ctx.Request.URL.RawQuery
+	if raw != "" {
+		path = path + "?" + raw
 	}
+
+	// 处理请求
+	ctx.Next()
+
+	param := gin.LogFormatterParams{
+		Request:      ctx.Request,
+		StatusCode:   ctx.Writer.Status(),
+		ClientIP:     ctx.ClientIP(),
+		Method:       ctx.Request.Method,
+		Path:         path,
+		ErrorMessage: ctx.Errors.ByType(gin.ErrorTypePrivate).String(),
+		BodySize:     ctx.Writer.Size(),
+		Keys:         ctx.Keys,
+	}
+	// Stop timer
+	param.TimeStamp = time.Now()
+	param.Latency = param.TimeStamp.Sub(start)
+
+	app.Logger.Info(ctx, defaultLogFormatter(param))
 }
 
 // defaultLogFormatter is the default log format function Logger middleware uses.

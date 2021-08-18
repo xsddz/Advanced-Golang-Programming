@@ -3,12 +3,17 @@ package app
 import (
 	"fmt"
 	"yawebapp/library/inner/config"
+	"yawebapp/library/inner/logger"
 	"yawebapp/library/inner/storage"
 
 	"github.com/go-redis/redis"
 	"github.com/shima-park/agollo"
 	"gorm.io/gorm"
 )
+
+func initLogger() *logger.Logger {
+	return logger.NewLogger()
+}
 
 func initAgollo() agollo.Agollo {
 	var apolloConf config.ApolloConf
