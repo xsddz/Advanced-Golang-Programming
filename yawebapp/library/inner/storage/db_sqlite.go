@@ -9,9 +9,10 @@ import (
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
-func NewSQLite(dataPath string, conf DBConf) ([]*gorm.DB, error) {
+func NewSQLite(dataPath string, conf DBConf, l logger.Interface) ([]*gorm.DB, error) {
 	// ruler:: data/db_{{clustername}}/{{dbname}}.db
 	dbFile := fmt.Sprintf("%v/db_%v/%v.db", dataPath, strings.ToLower(conf.ClusterName), conf.DefaultDB)
 	dbFileDir := filepath.Dir(dbFile)
@@ -19,7 +20,9 @@ func NewSQLite(dataPath string, conf DBConf) ([]*gorm.DB, error) {
 		utils.MakeDirP(dbFileDir)
 	}
 
-	db, err := gorm.Open(sqlite.Open(dbFile), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open(dbFile), &gorm.Config{
+		Logger: l,
+	})
 	if err != nil {
 		return nil, err
 	}

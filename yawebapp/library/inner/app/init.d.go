@@ -32,7 +32,7 @@ func initSQLite(clusterName string) []*gorm.DB {
 		panic(fmt.Sprint("[initSQLite] cluster conf not exist:", clusterName))
 	}
 
-	dbs, err := storage.NewSQLite(DataPath(), *appDBConf[clusterName])
+	dbs, err := storage.NewSQLite(DataPath(), *appDBConf[clusterName], Logger)
 	if err != nil {
 		panic(fmt.Sprint("[initSQLite] init sqlite error: ", err))
 	}
@@ -45,11 +45,7 @@ func initMySQL(clusterName string) []*gorm.DB {
 		panic(fmt.Sprint("[initMySQL] cluster conf not exist:", clusterName))
 	}
 
-	// j, _ := json.Marshal(*appDBConf[clusterName])
-	// Logger.Write(j)
-	// Logger.Write([]byte("\n"))
-
-	dbs, err := storage.NewMySQL(*appDBConf[clusterName])
+	dbs, err := storage.NewMySQL(*appDBConf[clusterName], Logger)
 	if err != nil {
 		panic(fmt.Sprint("[initMySQL] init mysql error: ", err))
 	}
@@ -74,10 +70,6 @@ func initRedis() []*redis.Client {
 	if _, ok := appCacheConf["Default"]; !ok {
 		panic(fmt.Sprint("[initRedis] cluster conf not exist:", "Default"))
 	}
-
-	// j, _ := json.Marshal(*appCacheConf["Default"])
-	// Logger.Write(j)
-	// Logger.Write([]byte("\n"))
 
 	var caches []*redis.Client
 	var err error

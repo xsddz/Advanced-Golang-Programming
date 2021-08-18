@@ -6,6 +6,7 @@ import (
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
 type DBConf struct {
@@ -32,10 +33,12 @@ func (c *DBConf) DSN(index int) string {
 	return dsn
 }
 
-func NewMySQL(conf DBConf) ([]*gorm.DB, error) {
+func NewMySQL(conf DBConf, l logger.Interface) ([]*gorm.DB, error) {
 	var dbs []*gorm.DB
 	for index := range conf.Hosts {
-		db, err := gorm.Open(mysql.Open(conf.DSN(index)), &gorm.Config{})
+		db, err := gorm.Open(mysql.Open(conf.DSN(index)), &gorm.Config{
+			Logger: l,
+		})
 		if err != nil {
 			return nil, err
 		}

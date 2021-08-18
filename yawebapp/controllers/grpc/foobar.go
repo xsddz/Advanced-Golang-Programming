@@ -13,7 +13,7 @@ type Foobar struct{}
 
 // Index 实现 Index 方法
 func (s *Foobar) Index(ctx context.Context, req *pb.RequestGitUser) (*pb.ResponseGitUser, error) {
-	appContext := server.NewWebContext(nil)
+	appContext := server.NewWebContextViaGRPC(ctx)
 	response := server.NewGRPCResponse(&pb.ResponseGitUser{})
 
 	// 业务逻辑请求参数初始化

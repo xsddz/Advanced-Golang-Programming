@@ -8,7 +8,6 @@ import (
 	"yawebapp/library/inner/server"
 	"yawebapp/models/dao"
 
-	"github.com/go-redis/redis"
 	"gorm.io/gorm"
 )
 
@@ -21,26 +20,28 @@ func NewGitUserPage(ctx *server.WebContext) *GitUserPage {
 }
 
 func (p *GitUserPage) Execute(req entitydemo.ReqGitUser, res *entitydemo.ResGitUser) error {
-	key := "dzh:test"
-	val, err := app.Cache().Get(key).Result()
-	app.Logger.Debug(*p.ctx, fmt.Sprint(val, err))
-	if err == redis.Nil {
-		app.Logger.Info(*p.ctx, "key does not exist")
-	} else if err != nil {
-		app.Logger.Error(*p.ctx, err)
-	} else {
-		app.Logger.Debug(*p.ctx, "key:"+val)
-	}
+	// key := "dzh:test"
+	// val, err := app.Cache().Get(key).Result()
+	// app.Logger.Debug(*p.ctx, fmt.Sprint(val, err))
+	// if err == redis.Nil {
+	// 	app.Logger.Info(*p.ctx, "key does not exist")
+	// } else if err != nil {
+	// 	app.Logger.Error(*p.ctx, err)
+	// } else {
+	// 	app.Logger.Debug(*p.ctx, "key:"+val)
+	// }
 
 	var data dao.CommonConfig
-	result := app.DB().First(&data, "name = ?", req.Name)
+	result := app.DB().WithContext(p.ctx).First(&data, "name = ?", req.Name)
 	if result.Error == nil {
 		j, _ := json.Marshal(data)
 		res.Info = fmt.Sprintf("你好：%v", string(j))
 		return nil
 	}
 	if result.Error != gorm.ErrRecordNotFound {
-		return fmt.Errorf("查询数据出错：%v", result.Error.Error())
+		err := fmt.Errorf("查询数据出错：%v", result.Error.Error())
+		app.Logger.Error(p.ctx, err.Error())
+		return err
 	}
 	return result.Error
 }

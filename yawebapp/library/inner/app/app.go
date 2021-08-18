@@ -41,7 +41,7 @@ func GetGRPCServer() *grpc.Server {
 }
 
 func Run() {
-	// 提前验证一次默认资源
+	// 提前验证一次默认资源连接
 	if err := DB().Ping(); err != nil {
 		panic(fmt.Sprint("ping default db error:", err))
 	}

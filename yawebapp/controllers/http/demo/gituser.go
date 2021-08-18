@@ -10,7 +10,7 @@ import (
 
 // GitUser -
 func GitUser(ctx *gin.Context) {
-	appContext := server.NewWebContext(ctx)
+	appContext := server.NewWebContextViaHTTP(ctx)
 	response := server.NewHTTPResponse()
 
 	// 业务逻辑请求参数初始化

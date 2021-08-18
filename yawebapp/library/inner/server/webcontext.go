@@ -1,20 +1,42 @@
 package server
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"reflect"
 	"strings"
+	"yawebapp/library/inner/utils"
 
 	"github.com/gin-gonic/gin"
+	"google.golang.org/grpc/metadata"
 )
 
 type WebContext struct {
 	*gin.Context
 }
 
-func NewWebContext(ctx *gin.Context) *WebContext {
+func NewWebContextViaHTTP(ctx *gin.Context) *WebContext {
 	return &WebContext{Context: ctx}
+}
+
+func NewWebContextViaGRPC(ctx context.Context) *WebContext {
+	ginCTX := gin.Context{}
+
+	foundTraceID := false
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		for key, val := range md {
+			if key == "trace_id" {
+				foundTraceID = true
+			}
+			ginCTX.Set(key, val)
+		}
+	}
+	if !foundTraceID {
+		ginCTX.Set("trace_id", utils.GenrateRequestID())
+	}
+
+	return &WebContext{&ginCTX}
 }
 
 func (wctx *WebContext) ShouldBind(obj interface{}) error {
