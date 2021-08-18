@@ -1,6 +1,7 @@
 package app
 
 import (
+	"fmt"
 	"yawebapp/library/inner/server"
 
 	"github.com/gin-gonic/gin"
@@ -40,5 +41,13 @@ func GetGRPCServer() *grpc.Server {
 }
 
 func Run() {
+	// 提前验证一次默认资源
+	if err := DB().Ping(); err != nil {
+		panic(fmt.Sprint("ping default db error:", err))
+	}
+	if _, err := Cache().Ping().Result(); err != nil {
+		panic(fmt.Sprint("ping default cache error:", err))
+	}
+
 	defaultApp.Run()
 }

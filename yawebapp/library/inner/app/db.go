@@ -24,6 +24,14 @@ type db struct {
 	*gorm.DB
 }
 
+func (d *db) Ping() error {
+	sqlDB, err := d.DB.DB()
+	if err != nil {
+		return err
+	}
+	return sqlDB.Ping()
+}
+
 // DB 提供延迟初始化对应资源连接的能力，及连接复用能力
 // 利用 ... 提供可选参数能力，只取第一个或走默认的
 func DB(clusterNames ...string) *db {

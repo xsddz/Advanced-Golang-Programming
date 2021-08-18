@@ -23,7 +23,6 @@ func initAgollo() agollo.Agollo {
 }
 
 func initSQLite(clusterName string) []*gorm.DB {
-	fmt.Println("[initSQLite]:", appDBConf)
 	if _, ok := appDBConf[clusterName]; !ok {
 		panic(fmt.Sprint("[initSQLite] cluster conf not exist:", clusterName))
 	}
@@ -37,10 +36,13 @@ func initSQLite(clusterName string) []*gorm.DB {
 }
 
 func initMySQL(clusterName string) []*gorm.DB {
-	fmt.Println("[initMySQL]:", appDBConf)
 	if _, ok := appDBConf[clusterName]; !ok {
 		panic(fmt.Sprint("[initMySQL] cluster conf not exist:", clusterName))
 	}
+
+	// j, _ := json.Marshal(*appDBConf[clusterName])
+	// Logger.Write(j)
+	// Logger.Write([]byte("\n"))
 
 	dbs, err := storage.NewMySQL(*appDBConf[clusterName])
 	if err != nil {
@@ -51,7 +53,6 @@ func initMySQL(clusterName string) []*gorm.DB {
 }
 
 func initFileCache() []*redis.Client {
-	fmt.Println("[initFileCache]:", appCacheConf)
 	if _, ok := appCacheConf["Default"]; !ok {
 		panic(fmt.Sprint("[initFileCache] cluster conf not exist:", "Default"))
 	}
@@ -65,10 +66,13 @@ func initFileCache() []*redis.Client {
 }
 
 func initRedis() []*redis.Client {
-	fmt.Println("[initRedis]:", appCacheConf)
 	if _, ok := appCacheConf["Default"]; !ok {
 		panic(fmt.Sprint("[initRedis] cluster conf not exist:", "Default"))
 	}
+
+	// j, _ := json.Marshal(*appCacheConf["Default"])
+	// Logger.Write(j)
+	// Logger.Write([]byte("\n"))
 
 	var caches []*redis.Client
 	var err error

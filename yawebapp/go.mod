@@ -7,6 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.7.3
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/golang/protobuf v1.5.2
+	github.com/google/uuid v1.1.2
 	github.com/onsi/gomega v1.15.0 // indirect
 	github.com/shima-park/agollo v1.2.11
 	google.golang.org/grpc v1.40.0

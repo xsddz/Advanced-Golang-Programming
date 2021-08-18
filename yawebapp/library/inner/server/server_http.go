@@ -24,19 +24,21 @@ func (s *HTTPServer) Run(app *Engine, wg *sync.WaitGroup) {
 		wg.Done()
 	}()
 
-	// 初始化gin server
+	// 设置模式
 	switch app.env {
-	case "dev":
+	case "dev", "test":
 		gin.SetMode("debug")
-	case "test":
-		gin.SetMode("debug")
+		// 开启颜色模式
+		gin.ForceConsoleColor()
 	case "prod":
 		gin.SetMode("release")
 	default:
 		gin.SetMode("debug")
+		// 开启颜色模式
+		gin.ForceConsoleColor()
 	}
+	// 初始化gin server
 	srv := gin.New()
-	srv.Use(gin.Logger(), gin.Recovery())
 	app.HTTPServer = srv
 
 	// 设置路由

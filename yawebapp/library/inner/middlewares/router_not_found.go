@@ -8,7 +8,8 @@ import (
 )
 
 func RouterNotFound(ctx *gin.Context) {
+	appContext := server.NewWebContext(ctx)
 	response := server.HttpResponse{}
-	response.Error(&server.WebContext{Context: ctx}, errors.New("[404] not found"))
+	response.Error(appContext, errors.New("[404] not found"))
 	ctx.Abort()
 }
