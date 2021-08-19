@@ -3,18 +3,31 @@ package trace
 import (
 	"context"
 	"fmt"
+	"runtime"
+	"strconv"
+	"strings"
 	"time"
 	"yawebapp/library/inner/helper"
 
 	"gorm.io/gorm/logger"
-	"gorm.io/gorm/utils"
 )
 
+var (
+	logSourceFile string
+)
+
+func init() {
+	_, logSourceFile, _, _ = runtime.Caller(0)
+}
+
 type Logger struct {
+	WithFileNum bool // 输出日志中含调用logger的代码位置
 }
 
 func NewLogger() *Logger {
-	return &Logger{}
+	return &Logger{
+		WithFileNum: false,
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -63,8 +76,8 @@ func (l *Logger) Trace(ctx context.Context, begin time.Time, fc func() (sql stri
 	elapsed := time.Since(begin)
 	sql, rows := fc()
 
-	colorFormat := "[trace] [%v] " + helper.YellowBold + "[%vms] " + helper.BlueBold + "[rows:%v] " + helper.RedBold + "%v " + helper.MagentaBold + "%v" + helper.Reset + ": %v\n"
-	msg := fmt.Sprintf(colorFormat, traceID, float64(elapsed.Nanoseconds())/1e6, rows, utils.FileWithLineNum(), err, sql)
+	colorFormat := "[trace] [%v] " + helper.YellowBold + "[%vms] " + helper.BlueBold + "[rows:%v] " + helper.MagentaBold + "%v" + helper.Reset + ": %v\n"
+	msg := fmt.Sprintf(colorFormat, traceID, float64(elapsed.Nanoseconds())/1e6, rows, err, sql)
 
 	l.Write([]byte(msg))
 }
@@ -76,7 +89,28 @@ func (l *Logger) Trace(ctx context.Context, begin time.Time, fc func() (sql stri
 // }
 
 func (l *Logger) Write(p []byte) (n int, err error) {
-	return fmt.Print(string(p))
+	filenum := ""
+	if l.WithFileNum {
+		filenum = fileWithLineNum()
+	}
+	return fmt.Print(filenum, string(p))
+}
+
+func fileWithLineNum() string {
+	for i := 0; i < 7; i++ {
+		_, file, line, ok := runtime.Caller(i)
+		if !ok {
+			break
+		}
+		if file == logSourceFile {
+			continue
+		}
+		if strings.Index(file, "/pkg/") > 0 {
+			continue
+		}
+		return file + ":" + strconv.FormatInt(int64(line), 10) + " "
+	}
+	return ""
 }
 
 ////////////////////////////////////////////////////////////////////////////////
