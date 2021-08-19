@@ -3,16 +3,16 @@ package app
 import (
 	"fmt"
 	"yawebapp/library/inner/config"
-	"yawebapp/library/inner/logger"
 	"yawebapp/library/inner/storage"
+	"yawebapp/library/inner/trace"
 
 	"github.com/go-redis/redis"
 	"github.com/shima-park/agollo"
 	"gorm.io/gorm"
 )
 
-func initLogger() *logger.Logger {
-	return logger.NewLogger()
+func initLogger() *trace.Logger {
+	return trace.NewLogger()
 }
 
 func initAgollo() agollo.Agollo {

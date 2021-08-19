@@ -1,11 +1,13 @@
-package logger
+package trace
 
 import (
 	"context"
 	"fmt"
 	"time"
+	"yawebapp/library/inner/helper"
 
 	"gorm.io/gorm/logger"
+	"gorm.io/gorm/utils"
 )
 
 type Logger struct {
@@ -61,7 +63,8 @@ func (l *Logger) Trace(ctx context.Context, begin time.Time, fc func() (sql stri
 	elapsed := time.Since(begin)
 	sql, rows := fc()
 
-	msg := fmt.Sprintf("[trace] [%v] [%v] [rows:%v] [%v] %v\n", traceID, float64(elapsed.Nanoseconds())/1e6, rows, err, sql)
+	colorFormat := "[trace] [%v] " + helper.YellowBold + "[%vms] " + helper.BlueBold + "[rows:%v] " + helper.RedBold + "%v " + helper.MagentaBold + "%v" + helper.Reset + ": %v\n"
+	msg := fmt.Sprintf(colorFormat, traceID, float64(elapsed.Nanoseconds())/1e6, rows, utils.FileWithLineNum(), err, sql)
 
 	l.Write([]byte(msg))
 }
@@ -77,26 +80,31 @@ func (l *Logger) Write(p []byte) (n int, err error) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-func (l *Logger) Debug(ctx context.Context, message interface{}) (n int, err error) {
+// 补充实现其他方法
+
+func (l *Logger) Debug(ctx context.Context, message string, vals ...interface{}) {
 	traceID := ctx.Value("trace_id")
 
-	msg := fmt.Sprintf("[debug] [%v] %v\n", traceID, message)
+	msg := fmt.Sprint(vals...)
+	msg = fmt.Sprintf("[debug] [%v] %v, %v\n", traceID, message, msg)
 
-	return l.Write([]byte(msg))
+	l.Write([]byte(msg))
 }
 
-func (l *Logger) Critical(ctx context.Context, message interface{}) (n int, err error) {
+func (l *Logger) Critical(ctx context.Context, message string, vals ...interface{}) {
 	traceID := ctx.Value("trace_id")
 
-	msg := fmt.Sprintf("[critical] [%v] %v\n", traceID, message)
+	msg := fmt.Sprint(vals...)
+	msg = fmt.Sprintf("[critical] [%v] %v, %v\n", traceID, message, msg)
 
-	return l.Write([]byte(msg))
+	l.Write([]byte(msg))
 }
 
-func (l *Logger) Audit(ctx context.Context, message interface{}) (n int, err error) {
+func (l *Logger) Audit(ctx context.Context, message string, vals ...interface{}) {
 	traceID := ctx.Value("trace_id")
 
-	msg := fmt.Sprintf("[audit] [%v] %v\n", traceID, message)
+	msg := fmt.Sprint(vals...)
+	msg = fmt.Sprintf("[audit] [%v] %v, %v\n", traceID, message, msg)
 
-	return l.Write([]byte(msg))
+	l.Write([]byte(msg))
 }

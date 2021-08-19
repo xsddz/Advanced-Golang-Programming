@@ -1,6 +1,7 @@
 package app
 
 import (
+	"context"
 	"math/rand"
 	"time"
 
@@ -32,9 +33,14 @@ func (d *db) Ping() error {
 	return sqlDB.Ping()
 }
 
+func (d *db) WithContext(ctx context.Context) *db {
+	d.DB = d.DB.WithContext(ctx)
+	return d
+}
+
 // DB 提供延迟初始化对应资源连接的能力，及连接复用能力
 // 利用 ... 提供可选参数能力，只取第一个或走默认的
-func DB(clusterNames ...string) *db {
+func DB(ctx context.Context, clusterNames ...string) *db {
 	var clusterName string
 	if len(clusterNames) == 0 {
 		clusterName = "Default"
@@ -53,7 +59,7 @@ func DB(clusterNames ...string) *db {
 		dbTable[clusterName] = dbs
 	}
 
-	return randDB(dbTable[clusterName])
+	return randDB(dbTable[clusterName]).WithContext(ctx)
 }
 
 func randDB(dbs []*gorm.DB) *db {

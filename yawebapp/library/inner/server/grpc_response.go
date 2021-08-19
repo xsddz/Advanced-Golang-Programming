@@ -18,9 +18,10 @@ func (res *GRPCResponse) PB() interface{} {
 
 func (res *GRPCResponse) Success(ctx *WebContext, data interface{}) {
 	j, _ := json.Marshal(map[string]interface{}{
-		"code":    0,
-		"message": "ok",
-		"data":    data,
+		"trace_id": ctx.Value("trace_id"),
+		"code":     0,
+		"message":  "ok",
+		"data":     data,
 	})
 
 	json.Unmarshal(j, res.pb)
@@ -29,8 +30,9 @@ func (res *GRPCResponse) Success(ctx *WebContext, data interface{}) {
 func (res *GRPCResponse) Error(ctx *WebContext, e error) {
 	code, message := ParseError(e)
 	j, _ := json.Marshal(map[string]interface{}{
-		"code":    code,
-		"message": message,
+		"trace_id": ctx.Value("trace_id"),
+		"code":     code,
+		"message":  message,
 	})
 
 	json.Unmarshal(j, res.pb)

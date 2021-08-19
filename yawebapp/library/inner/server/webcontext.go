@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"yawebapp/library/inner/utils"
+	"yawebapp/library/inner/helper"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc/metadata"
@@ -28,12 +28,14 @@ func NewWebContextViaGRPC(ctx context.Context) *WebContext {
 		for key, val := range md {
 			if key == "trace_id" {
 				foundTraceID = true
+				ginCTX.Set(key, val[0])
+			} else {
+				ginCTX.Set(key, val)
 			}
-			ginCTX.Set(key, val)
 		}
 	}
 	if !foundTraceID {
-		ginCTX.Set("trace_id", utils.GenrateRequestID())
+		ginCTX.Set("trace_id", helper.GenrateRequestID())
 	}
 
 	return &WebContext{&ginCTX}

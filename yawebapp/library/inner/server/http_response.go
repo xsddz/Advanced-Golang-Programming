@@ -20,8 +20,8 @@ func (res *HttpResponse) Success(ctx *WebContext, data interface{}) {
 	ctx.JSON(200, res)
 }
 
-func (res *HttpResponse) Error(ctx *WebContext, e error) {
-	code, message := ParseError(e)
+func (res *HttpResponse) Error(ctx *WebContext, err error) {
+	code, message := ParseError(err)
 
 	res.TraceID = ctx.GetString("trace_id")
 	res.Code = code

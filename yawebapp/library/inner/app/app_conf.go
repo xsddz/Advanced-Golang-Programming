@@ -22,6 +22,12 @@ var (
 	appCacheConf = make(map[string]*storage.RedisConf)
 )
 
+func loadConf() {
+	loadAppConf()
+	loadDBConf()
+	loadCacheConf()
+}
+
 func loadAppConf() {
 	var c AppConf
 	err := config.LoadConf(ConfPath()+"/app.toml", &c)
@@ -36,9 +42,6 @@ func loadAppConf() {
 		appConf.DBDriver = Apollo().Get("DB_DRIVER")
 		appConf.CacheDriver = Apollo().Get("CACHE_DRIVER")
 	}
-
-	loadDBConf()
-	loadCacheConf()
 }
 
 func loadDBConf() {

@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"yawebapp/library/inner/utils"
+	"yawebapp/library/inner/helper"
 
 	"github.com/go-redis/redis"
 )
@@ -15,8 +15,8 @@ func NewFileCache(dataPath string, conf RedisConf) ([]*redis.Client, error) {
 	// ruler:: data/cache_{{mastername}}/{{db}}.cache
 	cacheFile := fmt.Sprintf("%v/cache_%v/%v.cache", dataPath, conf.MasterName, conf.DefaultDB)
 	cacheFileDir := filepath.Dir(cacheFile)
-	if !utils.IsDir(cacheFileDir) {
-		utils.MakeDirP(cacheFileDir)
+	if !helper.IsDir(cacheFileDir) {
+		helper.MakeDirP(cacheFileDir)
 	}
 
 	data, err := ioutil.ReadFile(cacheFile)

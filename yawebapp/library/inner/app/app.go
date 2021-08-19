@@ -1,7 +1,9 @@
 package app
 
 import (
+	"context"
 	"fmt"
+	"path/filepath"
 	"yawebapp/library/inner/server"
 
 	"github.com/gin-gonic/gin"
@@ -14,16 +16,25 @@ var (
 
 func Name() string {
 	if appConf == nil {
-		return ""
+		appConf.AppName = filepath.Base(RootPath())
 	}
 	return appConf.AppName
 }
 
 func Init() {
-	loadAppConf()
+	loadConf()
 
 	initDBDriver(appConf.DBDriver)
+	// 提前验证一次默认数据库资源连接
+	if err := DB(context.TODO()).Ping(); err != nil {
+		panic(fmt.Sprint("ping default db error:", err))
+	}
+
 	initCacheDriver(appConf.CacheDriver)
+	// 提前验证一次默认缓存资源连接
+	if _, err := Cache().Ping().Result(); err != nil {
+		panic(fmt.Sprint("ping default cache error:", err))
+	}
 
 	defaultApp = server.NewEngine(appConf.AppEnv)
 }
@@ -41,13 +52,5 @@ func GetGRPCServer() *grpc.Server {
 }
 
 func Run() {
-	// 提前验证一次默认资源连接
-	if err := DB().Ping(); err != nil {
-		panic(fmt.Sprint("ping default db error:", err))
-	}
-	if _, err := Cache().Ping().Result(); err != nil {
-		panic(fmt.Sprint("ping default cache error:", err))
-	}
-
 	defaultApp.Run()
 }

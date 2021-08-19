@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
-	"yawebapp/library/inner/utils"
+	"yawebapp/library/inner/helper"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -16,8 +16,8 @@ func NewSQLite(dataPath string, conf DBConf, l logger.Interface) ([]*gorm.DB, er
 	// ruler:: data/db_{{clustername}}/{{dbname}}.db
 	dbFile := fmt.Sprintf("%v/db_%v/%v.db", dataPath, strings.ToLower(conf.ClusterName), conf.DefaultDB)
 	dbFileDir := filepath.Dir(dbFile)
-	if !utils.IsDir(dbFileDir) {
-		utils.MakeDirP(dbFileDir)
+	if !helper.IsDir(dbFileDir) {
+		helper.MakeDirP(dbFileDir)
 	}
 
 	db, err := gorm.Open(sqlite.Open(dbFile), &gorm.Config{

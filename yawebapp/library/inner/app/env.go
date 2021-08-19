@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"yawebapp/library/inner/utils"
+	"yawebapp/library/inner/helper"
 )
 
 var appRootPath = ""
@@ -26,16 +26,16 @@ func ConfPath() string {
 
 func LogPath() string {
 	logPath := RootPath() + "/log"
-	if !utils.IsExist(logPath) {
-		utils.MakeDirP(logPath)
+	if !helper.IsExist(logPath) {
+		helper.MakeDirP(logPath)
 	}
 	return logPath
 }
 
 func DataPath() string {
 	dataPath := RootPath() + "/data"
-	if !utils.IsExist(dataPath) {
-		utils.MakeDirP(dataPath)
+	if !helper.IsExist(dataPath) {
+		helper.MakeDirP(dataPath)
 	}
 	return dataPath
 }
@@ -52,7 +52,7 @@ func detectRootPath() string {
 	}
 
 	// check conf
-	if utils.IsDir(dir + "/conf") {
+	if helper.IsDir(dir + "/conf") {
 		return dir
 	}
 

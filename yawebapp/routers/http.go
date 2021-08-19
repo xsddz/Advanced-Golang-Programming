@@ -10,7 +10,6 @@ func HTTPRouter() {
 	httpServer := app.GetHTTPServer()
 
 	httpServer.Use(middlewares.Trace)
-	httpServer.Use(middlewares.LogRequest)
 	httpServer.Use(middlewares.Recover())
 
 	httpServer.NoRoute(middlewares.RouterNotFound)
