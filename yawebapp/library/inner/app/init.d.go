@@ -12,7 +12,11 @@ import (
 )
 
 func initLogger() *trace.Logger {
-	return trace.NewLogger()
+	return trace.NewLogger(trace.LogConf{
+		FilePrefix: LogPath() + "/" + Name(),
+		Rotate:     1,
+		KeepDays:   7,
+	})
 }
 
 func initAgollo() agollo.Agollo {

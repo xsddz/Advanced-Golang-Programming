@@ -20,12 +20,20 @@ func init() {
 	_, logSourceFile, _, _ = runtime.Caller(0)
 }
 
+type LogConf struct {
+	FilePrefix string
+	Rotate     int // 1:hourly | 2:daily | 3:weekly | 4:monthly
+	KeepDays   int
+}
+
 type Logger struct {
+	conf        LogConf
 	WithFileNum bool // 输出日志中含调用logger的代码位置
 }
 
-func NewLogger() *Logger {
+func NewLogger(conf LogConf) *Logger {
 	return &Logger{
+		conf:        conf,
 		WithFileNum: false,
 	}
 }

@@ -24,6 +24,8 @@ func Name() string {
 func Init() {
 	loadConf()
 
+	loadLogger()
+
 	initDBDriver(appConf.DBDriver)
 	// 提前验证一次默认数据库资源连接
 	if err := DB(context.TODO()).Ping(); err != nil {
