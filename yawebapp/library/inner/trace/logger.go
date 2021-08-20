@@ -14,10 +14,12 @@ import (
 
 var (
 	logSourceFile string
+	goRootPath    string
 )
 
 func init() {
 	_, logSourceFile, _, _ = runtime.Caller(0)
+	goRootPath = runtime.GOROOT()
 }
 
 type LogConf struct {
@@ -101,7 +103,8 @@ func (l *Logger) Write(p []byte) (n int, err error) {
 	if l.WithFileNum {
 		filenum = fileWithLineNum()
 	}
-	return fmt.Print(filenum, string(p))
+	logmsg := strings.TrimRight(string(p), "\n")
+	return fmt.Print(logmsg, filenum, "\n")
 }
 
 func fileWithLineNum() string {
@@ -111,6 +114,12 @@ func fileWithLineNum() string {
 			break
 		}
 		if file == logSourceFile {
+			continue
+		}
+		if strings.HasPrefix(file, goRootPath) {
+			continue
+		}
+		if strings.HasSuffix(file, "middlewares/recover.go") {
 			continue
 		}
 		if strings.Index(file, "/pkg/") > 0 {
@@ -124,20 +133,22 @@ func fileWithLineNum() string {
 ////////////////////////////////////////////////////////////////////////////////
 // 补充实现其他方法
 
-func (l *Logger) Debug(ctx context.Context, message string, vals ...interface{}) {
-	traceID := ctx.Value("trace_id")
-
-	msg := fmt.Sprint(vals...)
-	msg = fmt.Sprintf("[debug] [%v] %v, %v\n", traceID, message, msg)
-
-	l.Write([]byte(msg))
-}
-
 func (l *Logger) Critical(ctx context.Context, message string, vals ...interface{}) {
 	traceID := ctx.Value("trace_id")
 
 	msg := fmt.Sprint(vals...)
 	msg = fmt.Sprintf("[critical] [%v] %v, %v\n", traceID, message, msg)
+
+	// 单独输出，强制打印文件
+	filenum := fileWithLineNum()
+	fmt.Print(strings.TrimRight(msg, "\n"), filenum, "\n")
+}
+
+func (l *Logger) Debug(ctx context.Context, message string, vals ...interface{}) {
+	traceID := ctx.Value("trace_id")
+
+	msg := fmt.Sprint(vals...)
+	msg = fmt.Sprintf("[debug] [%v] %v, %v\n", traceID, message, msg)
 
 	l.Write([]byte(msg))
 }
