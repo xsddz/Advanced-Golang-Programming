@@ -3,7 +3,7 @@ package demo
 import (
 	"yawebapp/entities/entitydemo"
 	"yawebapp/library/infra/server"
-	"yawebapp/models/service/pagedemo"
+	"yawebapp/models/service/page/demo"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,7 +26,7 @@ func GitUser(ctx *gin.Context) {
 	}
 
 	// 执行业务逻辑
-	err = pagedemo.NewGitUserPage(appContext).Execute(reqEntity, &resEntity)
+	err = demo.NewGitUserPage(appContext).Execute(reqEntity, &resEntity)
 	if err != nil {
 		// 错误提前返回
 		response.Error(appContext, err)

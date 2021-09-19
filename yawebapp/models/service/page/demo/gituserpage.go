@@ -1,4 +1,4 @@
-package pagedemo
+package demo
 
 import (
 	"encoding/json"
