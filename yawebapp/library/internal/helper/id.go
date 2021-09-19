@@ -2,6 +2,6 @@ package helper
 
 import "github.com/google/uuid"
 
-func GenrateRequestID() string {
+func NextRequestID() string {
 	return uuid.New().String()
 }

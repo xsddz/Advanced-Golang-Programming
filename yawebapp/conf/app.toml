@@ -6,4 +6,4 @@ app_name = "yawebapp"
 app_env = "dev"
 
 db_driver = "sqlite"
-cache_driver = "redis"
+cache_driver = "file"
