@@ -5,7 +5,7 @@ import (
 	"yawebapp/entities/entitydemo"
 	"yawebapp/entities/pb"
 	"yawebapp/library/infra/server"
-	"yawebapp/models/service/pagedemo"
+	"yawebapp/models/service/page/demo"
 )
 
 // Foobar 定义服务
@@ -29,7 +29,7 @@ func (s *Foobar) Index(ctx context.Context, req *pb.RequestGitUser) (*pb.Respons
 	}
 
 	// 执行业务逻辑
-	err = pagedemo.NewGitUserPage(appContext).Execute(reqEntity, &resEntity)
+	err = demo.NewGitUserPage(appContext).Execute(reqEntity, &resEntity)
 	if err != nil {
 		// 错误提前返回
 		response.Error(appContext, err)
