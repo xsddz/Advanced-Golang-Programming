@@ -1,0 +1,858 @@
+[fatal] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] [trace/logger.go:123] fatallllll
+[fatal] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] errorrrrrr
+[error] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] warnnnnnnnn
+[warn] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] infoooooooo
+[info] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] debugggggg
+[debug] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632039289867] [055ed474-da8d-4c2b-89a3-325266297b73] [33;1m[0.000259ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] [trace/logger.go:123] fatallllll
+[fatal] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] errorrrrrr
+[error] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] warnnnnnnnn
+[warn] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] infoooooooo
+[info] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] debugggggg
+[debug] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632039289868] [1383e5d0-4990-4e81-9dab-1a240b920c5a] [0.00014ms] [rows:1] <nil>: select 1
+[fatal] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] fatallllll
+[fatal] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] errorrrrrr
+[error] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] warnnnnnnnn
+[warn] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] infoooooooo
+[info] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] debugggggg
+[debug] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632039289868] [cb4d603e-d879-413e-b564-8c04bd5ad8e5] [trace/logger.go:123] [0.000142ms] [rows:1] <nil>: select 1
+[fatal] [1632039890300] [88715805-1229-4a67-bfa6-f506c82ac8c6] [trace/logger.go:123] fatallllll
+[fatal] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] errorrrrrr
+[error] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] warnnnnnnnn
+[warn] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] infoooooooo
+[info] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] debugggggg
+[debug] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632039890301] [88715805-1229-4a67-bfa6-f506c82ac8c6] [33;1m[0.000324ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] [trace/logger.go:123] fatallllll
+[fatal] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] errorrrrrr
+[error] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] warnnnnnnnn
+[warn] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] infoooooooo
+[info] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] debugggggg
+[debug] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632039890301] [abc3d461-8ea7-449f-80db-341ca31d53ff] [0.000146ms] [rows:1] <nil>: select 1
+[fatal] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] fatallllll
+[fatal] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] errorrrrrr
+[error] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] warnnnnnnnn
+[warn] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] infoooooooo
+[info] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] debugggggg
+[debug] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632039890301] [eefb82ba-fffc-4c97-9010-2e7b6fd39459] [trace/logger.go:123] [0.000148ms] [rows:1] <nil>: select 1
+[fatal] [1632039959360] [94dc0a57-d7a9-4051-b34d-05016fe17455] [trace/logger.go:123] fatallllll
+[fatal] [1632039959360] [94dc0a57-d7a9-4051-b34d-05016fe17455] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632039959360] [94dc0a57-d7a9-4051-b34d-05016fe17455] errorrrrrr
+[error] [1632039959360] [94dc0a57-d7a9-4051-b34d-05016fe17455] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632039959361] [94dc0a57-d7a9-4051-b34d-05016fe17455] warnnnnnnnn
+[warn] [1632039959361] [94dc0a57-d7a9-4051-b34d-05016fe17455] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632039959361] [94dc0a57-d7a9-4051-b34d-05016fe17455] infoooooooo
+[info] [1632039959361] [94dc0a57-d7a9-4051-b34d-05016fe17455] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632039959361] [94dc0a57-d7a9-4051-b34d-05016fe17455] debugggggg
+[debug] [1632039959361] [94dc0a57-d7a9-4051-b34d-05016fe17455] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632039959361] [94dc0a57-d7a9-4051-b34d-05016fe17455] [33;1m[0.00028ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] [trace/logger.go:123] fatallllll
+[fatal] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] errorrrrrr
+[error] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] warnnnnnnnn
+[warn] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] infoooooooo
+[info] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] debugggggg
+[debug] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632039959361] [2b320450-ed1f-4a5e-b196-309c5759af69] [0.00017ms] [rows:1] <nil>: select 1
+[fatal] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] fatallllll
+[fatal] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] errorrrrrr
+[error] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] warnnnnnnnn
+[warn] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] infoooooooo
+[info] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] debugggggg
+[debug] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632039959361] [a5a10771-87ee-42a7-b260-fa80063e2e40] [trace/logger.go:123] [0.000145ms] [rows:1] <nil>: select 1
+[fatal] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] [trace/logger.go:123] fatallllll
+[fatal] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] errorrrrrr
+[error] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] warnnnnnnnn
+[warn] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] infoooooooo
+[info] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] debugggggg
+[debug] [1632040070997] [c0688527-5a0c-4404-9465-62bbd075e308] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040070998] [c0688527-5a0c-4404-9465-62bbd075e308] [33;1m[0.000278ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] [trace/logger.go:123] fatallllll
+[fatal] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] errorrrrrr
+[error] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] warnnnnnnnn
+[warn] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] infoooooooo
+[info] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] debugggggg
+[debug] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040070998] [85004913-ae14-4515-8b33-e2a1e650942f] [0.000153ms] [rows:1] <nil>: select 1
+[fatal] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] fatallllll
+[fatal] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] errorrrrrr
+[error] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] warnnnnnnnn
+[warn] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] infoooooooo
+[info] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] debugggggg
+[debug] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040070998] [8468bf37-2df1-47be-bb69-9efc802a1f43] [trace/logger.go:123] [0.000149ms] [rows:1] <nil>: select 1
+[fatal] [1632040162119] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] [trace/logger.go:123] fatallllll
+[fatal] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] errorrrrrr
+[error] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] warnnnnnnnn
+[warn] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] infoooooooo
+[info] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] debugggggg
+[debug] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040162120] [9787d9b3-f4b1-4fe9-97eb-5c3e7b43da6f] [33;1m[0.000291ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] [trace/logger.go:123] fatallllll
+[fatal] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] errorrrrrr
+[error] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] warnnnnnnnn
+[warn] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] infoooooooo
+[info] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] debugggggg
+[debug] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040162120] [2bda69d7-87b1-444c-95d9-b9729879be08] [0.000135ms] [rows:1] <nil>: select 1
+[fatal] [1632040162120] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] fatallllll
+[fatal] [1632040162120] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040162120] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] errorrrrrr
+[error] [1632040162120] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040162120] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] warnnnnnnnn
+[warn] [1632040162120] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040162120] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] infoooooooo
+[info] [1632040162121] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040162121] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] debugggggg
+[debug] [1632040162121] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040162121] [e13a0d0d-e60c-41e7-89dc-11e14bce50fc] [trace/logger.go:123] [0.000177ms] [rows:1] <nil>: select 1
+[fatal] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] [trace/logger.go:123] fatallllll
+[fatal] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] errorrrrrr
+[error] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] warnnnnnnnn
+[warn] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] infoooooooo
+[info] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] debugggggg
+[debug] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040186601] [b613c000-55b1-4c3a-a72d-8a492c9107da] [33;1m[0.000302ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632040186601] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] [trace/logger.go:123] fatallllll
+[fatal] [1632040186601] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040186601] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] errorrrrrr
+[error] [1632040186601] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040186601] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] warnnnnnnnn
+[warn] [1632040186601] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040186601] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] infoooooooo
+[info] [1632040186601] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040186601] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] debugggggg
+[debug] [1632040186602] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040186602] [8738f357-bb0f-4ecb-a8ca-4e82ff85435d] [0.000148ms] [rows:1] <nil>: select 1
+[fatal] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] fatallllll
+[fatal] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] errorrrrrr
+[error] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] warnnnnnnnn
+[warn] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] infoooooooo
+[info] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] debugggggg
+[debug] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040186602] [40f44d66-3349-4ee7-a111-ff87ca8fb097] [trace/logger.go:123] [0.000148ms] [rows:1] <nil>: select 1
+[fatal] [1632040486737] [5fa5c294-9423-4191-96e0-fd60abdef433] [trace/logger_test.go:24] fatallllll
+[fatal] [1632040486737] [5fa5c294-9423-4191-96e0-fd60abdef433] [trace/logger_test.go:25] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040486737] [5fa5c294-9423-4191-96e0-fd60abdef433] errorrrrrr
+[error] [1632040486737] [5fa5c294-9423-4191-96e0-fd60abdef433] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040486737] [5fa5c294-9423-4191-96e0-fd60abdef433] warnnnnnnnn
+[warn] [1632040486737] [5fa5c294-9423-4191-96e0-fd60abdef433] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040486737] [5fa5c294-9423-4191-96e0-fd60abdef433] infoooooooo
+[info] [1632040486737] [5fa5c294-9423-4191-96e0-fd60abdef433] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040486737] [5fa5c294-9423-4191-96e0-fd60abdef433] debugggggg
+[debug] [1632040486738] [5fa5c294-9423-4191-96e0-fd60abdef433] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040486738] [5fa5c294-9423-4191-96e0-fd60abdef433] [33;1m[0.000201ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] [trace/logger_test.go:24] fatallllll
+[fatal] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] [trace/logger_test.go:25] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] errorrrrrr
+[error] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] warnnnnnnnn
+[warn] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] infoooooooo
+[info] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] debugggggg
+[debug] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040486738] [a487b814-8340-48a7-a12e-a18004f34e95] [0.000174ms] [rows:1] <nil>: select 1
+[fatal] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:24] fatallllll
+[fatal] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:25] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:26] errorrrrrr
+[error] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:27] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:28] warnnnnnnnn
+[warn] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:29] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:30] infoooooooo
+[info] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:31] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:32] debugggggg
+[debug] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:33] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040486738] [5673646e-f576-4a58-96d1-8cdd8d856cbe] [trace/logger_test.go:34] [0.000154ms] [rows:1] <nil>: select 1
+[fatal] [1632040590582] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] [trace/logger_test.go:24] fatallllll
+[fatal] [1632040590582] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] [trace/logger_test.go:25] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040590583] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] errorrrrrr
+[error] [1632040590583] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040590583] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] warnnnnnnnn
+[warn] [1632040590583] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040590583] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] infoooooooo
+[info] [1632040590583] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040590583] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] debugggggg
+[debug] [1632040590583] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040590583] [8fbf9002-cd18-4852-9db6-0f1cc91fe284] [33;1m[0.000197ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] [trace/logger_test.go:24] fatallllll
+[fatal] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] [trace/logger_test.go:25] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] errorrrrrr
+[error] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] warnnnnnnnn
+[warn] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] infoooooooo
+[info] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] debugggggg
+[debug] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040590583] [259ea79b-86e5-447a-bb4d-c138b879796f] [0.000159ms] [rows:1] <nil>: select 1
+[fatal] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:24] fatallllll
+[fatal] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:25] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:26] errorrrrrr
+[error] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:27] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:28] warnnnnnnnn
+[warn] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:29] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:30] infoooooooo
+[info] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:31] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:32] debugggggg
+[debug] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:33] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632040590583] [d8f3c9ec-d4b5-4650-95fa-bad210dd6c33] [trace/logger_test.go:34] [0.000155ms] [rows:1] <nil>: select 1
+[fatal] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] [trace/logger_test.go:24] fatallllll
+[fatal] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] [trace/logger_test.go:25] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] errorrrrrr
+[error] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] warnnnnnnnn
+[warn] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] infoooooooo
+[info] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] debugggggg
+[debug] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041344912] [c8e17180-8fbf-472b-b6e9-740d925bc973] [33;1m[0.000451ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] [trace/logger_test.go:24] fatallllll
+[fatal] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] [trace/logger_test.go:25] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] errorrrrrr
+[error] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] warnnnnnnnn
+[warn] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] infoooooooo
+[info] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] debugggggg
+[debug] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041344912] [b29e0500-9a4c-4bdc-91cc-efd86166104b] [0.000158ms] [rows:1] <nil>: select 1
+[fatal] [1632041344912] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:24] fatallllll
+[fatal] [1632041344912] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:25] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041344912] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:26] errorrrrrr
+[error] [1632041344912] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:27] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041344912] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:28] warnnnnnnnn
+[warn] [1632041344912] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:29] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041344912] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:30] infoooooooo
+[info] [1632041344912] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:31] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041344913] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:32] debugggggg
+[debug] [1632041344913] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:33] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041344913] [36f5c981-92e6-4592-b9d6-65d2c352c97f] [trace/logger_test.go:34] [0.00018ms] [rows:1] <nil>: select 1
+[fatal] [1632041521338] [840967e1-6798-45e1-b9a6-aa6bb059847c] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] errorrrrrr
+[error] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] warnnnnnnnn
+[warn] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] infoooooooo
+[info] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] debugggggg
+[debug] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041521339] [840967e1-6798-45e1-b9a6-aa6bb059847c] [33;1m[0.000276ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] errorrrrrr
+[error] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] warnnnnnnnn
+[warn] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] infoooooooo
+[info] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] debugggggg
+[debug] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041521339] [be0d091c-3589-4019-8a16-037335650afb] [0.000263ms] [rows:1] <nil>: select 1
+[fatal] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:25] errorrrrrr
+[error] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:26] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:27] warnnnnnnnn
+[warn] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:28] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:29] infoooooooo
+[info] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:30] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:31] debugggggg
+[debug] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:32] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041521340] [5dae4291-4b20-42ed-8d75-e08256cb174d] [trace/logger_test.go:33] [0.000204ms] [rows:1] <nil>: select 1
+[fatal] [1632041552411] [febd3cd3-fafe-4f6b-b12f-341d158378ae] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041552411] [febd3cd3-fafe-4f6b-b12f-341d158378ae] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041552411] [febd3cd3-fafe-4f6b-b12f-341d158378ae] errorrrrrr
+[error] [1632041552411] [febd3cd3-fafe-4f6b-b12f-341d158378ae] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041552412] [febd3cd3-fafe-4f6b-b12f-341d158378ae] warnnnnnnnn
+[warn] [1632041552412] [febd3cd3-fafe-4f6b-b12f-341d158378ae] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041552412] [febd3cd3-fafe-4f6b-b12f-341d158378ae] infoooooooo
+[info] [1632041552412] [febd3cd3-fafe-4f6b-b12f-341d158378ae] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041552412] [febd3cd3-fafe-4f6b-b12f-341d158378ae] debugggggg
+[debug] [1632041552412] [febd3cd3-fafe-4f6b-b12f-341d158378ae] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041552412] [febd3cd3-fafe-4f6b-b12f-341d158378ae] [33;1m[0.000289ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] errorrrrrr
+[error] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] warnnnnnnnn
+[warn] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] infoooooooo
+[info] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] debugggggg
+[debug] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041552412] [b1c0a45a-51fc-40f3-bbdb-851fc527ab66] [0.000162ms] [rows:1] <nil>: select 1
+[fatal] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:25] errorrrrrr
+[error] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:26] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:27] warnnnnnnnn
+[warn] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:28] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:29] infoooooooo
+[info] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:30] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:31] debugggggg
+[debug] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:32] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041552412] [b50fe0b8-8c7f-40c2-9092-32a28bed26dc] [trace/logger_test.go:33] [0.000172ms] [rows:1] <nil>: select 1
+[fatal] [1632041580231] [fa6fbd93-2dde-4b55-824a-183a163ac989] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041580231] [fa6fbd93-2dde-4b55-824a-183a163ac989] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041580231] [fa6fbd93-2dde-4b55-824a-183a163ac989] errorrrrrr
+[error] [1632041580231] [fa6fbd93-2dde-4b55-824a-183a163ac989] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041580231] [fa6fbd93-2dde-4b55-824a-183a163ac989] warnnnnnnnn
+[warn] [1632041580232] [fa6fbd93-2dde-4b55-824a-183a163ac989] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041580232] [fa6fbd93-2dde-4b55-824a-183a163ac989] infoooooooo
+[info] [1632041580232] [fa6fbd93-2dde-4b55-824a-183a163ac989] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041580232] [fa6fbd93-2dde-4b55-824a-183a163ac989] debugggggg
+[debug] [1632041580232] [fa6fbd93-2dde-4b55-824a-183a163ac989] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041580232] [fa6fbd93-2dde-4b55-824a-183a163ac989] [33;1m[0.000181ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] errorrrrrr
+[error] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] warnnnnnnnn
+[warn] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] infoooooooo
+[info] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] debugggggg
+[debug] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041580232] [fd7c9288-f17a-4948-8bd4-76dc5bf8fde0] [0.000128ms] [rows:1] <nil>: select 1
+[fatal] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:25] errorrrrrr
+[error] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:26] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:27] warnnnnnnnn
+[warn] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:28] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:29] infoooooooo
+[info] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:30] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:31] debugggggg
+[debug] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:32] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041580232] [f0cf6db3-5ae7-480f-b429-d595b36218f3] [trace/logger_test.go:33] [0.000178ms] [rows:1] <nil>: select 1
+[fatal] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] errorrrrrr
+[error] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] warnnnnnnnn
+[warn] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] infoooooooo
+[info] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] debugggggg
+[debug] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041599934] [9cd30e40-c6d9-4640-86a0-1a162807783d] [33;1m[0.000234ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632041599934] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041599934] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041599935] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] errorrrrrr
+[error] [1632041599935] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041599935] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] warnnnnnnnn
+[warn] [1632041599935] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041599935] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] infoooooooo
+[info] [1632041599935] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041599935] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] debugggggg
+[debug] [1632041599935] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041599935] [d0a3560f-991c-44cd-94bf-0dcd0ac51979] [0.000144ms] [rows:1] <nil>: select 1
+[fatal] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:25] errorrrrrr
+[error] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:26] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:27] warnnnnnnnn
+[warn] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:28] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:29] infoooooooo
+[info] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:30] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:31] debugggggg
+[debug] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:32] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041599935] [6111e317-886f-44bb-b6ec-6923db2f7f1d] [trace/logger_test.go:33] [0.000147ms] [rows:1] <nil>: select 1
+[fatal] [1632041672767] [9af91a87-f600-4e54-abd9-a3c02865c8c4] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] errorrrrrr
+[error] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] warnnnnnnnn
+[warn] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] infoooooooo
+[info] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] debugggggg
+[debug] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041672769] [9af91a87-f600-4e54-abd9-a3c02865c8c4] [33;1m[0.000598ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] errorrrrrr
+[error] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] warnnnnnnnn
+[warn] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] infoooooooo
+[info] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] debugggggg
+[debug] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041672770] [0fe34914-a525-4f0f-8637-f1b8921decd9] [0.00032ms] [rows:1] <nil>: select 1
+[fatal] [1632041672770] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041672770] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041672770] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:25] errorrrrrr
+[error] [1632041672770] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:26] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041672770] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:27] warnnnnnnnn
+[warn] [1632041672770] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:28] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041672771] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:29] infoooooooo
+[info] [1632041672771] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:30] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041672771] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:31] debugggggg
+[debug] [1632041672771] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:32] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041672771] [853e0c6c-e820-49c9-a0a7-be44f9dac959] [trace/logger_test.go:33] [0.000358ms] [rows:1] <nil>: select 1
+[fatal] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] errorrrrrr
+[error] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] warnnnnnnnn
+[warn] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] infoooooooo
+[info] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] debugggggg
+[debug] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041723607] [64409b81-8cf8-4cf4-b076-efa4b2312d5c] [33;1m[0.000228ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632041723607] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] errorrrrrr
+[error] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] warnnnnnnnn
+[warn] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] infoooooooo
+[info] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] debugggggg
+[debug] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041723608] [4afb38bb-ba84-4bfa-a54c-3edada8092cf] [0.000192ms] [rows:1] <nil>: select 1
+[fatal] [1632041723608] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041723608] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041723608] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:25] errorrrrrr
+[error] [1632041723608] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:26] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041723608] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:27] warnnnnnnnn
+[warn] [1632041723608] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:28] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041723608] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:29] infoooooooo
+[info] [1632041723608] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:30] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041723608] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:31] debugggggg
+[debug] [1632041723609] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:32] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041723609] [7a2f5434-6438-41f9-835a-9a2b90fe071e] [trace/logger_test.go:33] [0.000226ms] [rows:1] <nil>: select 1
+[fatal] [1632041761717] [512cfd26-9c80-4156-ba73-2011ba1846cd] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041761717] [512cfd26-9c80-4156-ba73-2011ba1846cd] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041761717] [512cfd26-9c80-4156-ba73-2011ba1846cd] errorrrrrr
+[error] [1632041761717] [512cfd26-9c80-4156-ba73-2011ba1846cd] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041761718] [512cfd26-9c80-4156-ba73-2011ba1846cd] warnnnnnnnn
+[warn] [1632041761718] [512cfd26-9c80-4156-ba73-2011ba1846cd] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041761718] [512cfd26-9c80-4156-ba73-2011ba1846cd] infoooooooo
+[info] [1632041761718] [512cfd26-9c80-4156-ba73-2011ba1846cd] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041761718] [512cfd26-9c80-4156-ba73-2011ba1846cd] debugggggg
+[debug] [1632041761718] [512cfd26-9c80-4156-ba73-2011ba1846cd] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041761718] [512cfd26-9c80-4156-ba73-2011ba1846cd] [33;1m[0.000136ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] errorrrrrr
+[error] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] warnnnnnnnn
+[warn] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] infoooooooo
+[info] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] debugggggg
+[debug] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041761718] [b909c201-4aa3-4af6-966d-829e7f96c218] [0.00011ms] [rows:1] <nil>: select 1
+[fatal] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:23] fatallllll
+[fatal] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:25] errorrrrrr
+[error] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:26] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:27] warnnnnnnnn
+[warn] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:28] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:29] infoooooooo
+[info] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:30] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:31] debugggggg
+[debug] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:32] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632041761718] [fd989ac3-7d3a-4e05-91a5-ac74d1292bf0] [trace/logger_test.go:33] [0.000175ms] [rows:1] <nil>: select 1
+[fatal] [1632042119293] [696f040f-01ca-46d9-821a-141133a68234] [trace/logger.go:138] fatallllll
+[fatal] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] [trace/logger.go:138] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] errorrrrrr
+[error] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] warnnnnnnnn
+[warn] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] infoooooooo
+[info] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] debugggggg
+[debug] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042119294] [696f040f-01ca-46d9-821a-141133a68234] [33;1m[0.000268ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632042119294] [bdcae85e-4137-46d3-a0cf-c5128c267142] [trace/logger.go:138] fatallllll
+[fatal] [1632042119294] [bdcae85e-4137-46d3-a0cf-c5128c267142] [trace/logger.go:138] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042119295] [bdcae85e-4137-46d3-a0cf-c5128c267142] errorrrrrr
+[error] [1632042119295] [bdcae85e-4137-46d3-a0cf-c5128c267142] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042119295] [bdcae85e-4137-46d3-a0cf-c5128c267142] warnnnnnnnn
+[warn] [1632042119295] [bdcae85e-4137-46d3-a0cf-c5128c267142] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042119295] [bdcae85e-4137-46d3-a0cf-c5128c267142] infoooooooo
+[info] [1632042119295] [bdcae85e-4137-46d3-a0cf-c5128c267142] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042119295] [bdcae85e-4137-46d3-a0cf-c5128c267142] debugggggg
+[debug] [1632042119295] [bdcae85e-4137-46d3-a0cf-c5128c267142] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042119295] [bdcae85e-4137-46d3-a0cf-c5128c267142] [0.000202ms] [rows:1] <nil>: select 1
+[fatal] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] fatallllll
+[fatal] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] errorrrrrr
+[error] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] warnnnnnnnn
+[warn] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] infoooooooo
+[info] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] debugggggg
+[debug] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042119295] [4c5bdadf-6e53-4b04-9dff-08aee166aba1] [trace/logger.go:138] [0.00017ms] [rows:1] <nil>: select 1
+[fatal] [1632042271890] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] [trace/logger_test.go:23] fatallllll
+[fatal] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] errorrrrrr
+[error] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] warnnnnnnnn
+[warn] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] infoooooooo
+[info] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] debugggggg
+[debug] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042271891] [6d126079-69f1-4a9d-9ed1-e14ba63b4163] [33;1m[0.000405ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] [trace/logger_test.go:23] fatallllll
+[fatal] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] errorrrrrr
+[error] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] warnnnnnnnn
+[warn] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] infoooooooo
+[info] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] debugggggg
+[debug] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042271891] [87ee667d-2585-4324-b1df-78bcee2bad11] [0.000255ms] [rows:1] <nil>: select 1
+[fatal] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:23] fatallllll
+[fatal] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:25] errorrrrrr
+[error] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:26] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:27] warnnnnnnnn
+[warn] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:28] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:29] infoooooooo
+[info] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:30] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:31] debugggggg
+[debug] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:32] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042271892] [7ee2aeb4-0d96-4ae9-9ca9-3bc24dedf8b5] [trace/logger_test.go:33] [0.000184ms] [rows:1] <nil>: select 1
+[fatal] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] [trace/logger_test.go:23] fatallllll
+[fatal] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] errorrrrrr
+[error] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] warnnnnnnnn
+[warn] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] infoooooooo
+[info] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] debugggggg
+[debug] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042321711] [4cd74701-64bf-4a59-bd39-130f000ebbc9] [33;1m[0.000242ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] [trace/logger_test.go:23] fatallllll
+[fatal] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] errorrrrrr
+[error] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] warnnnnnnnn
+[warn] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] infoooooooo
+[info] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] debugggggg
+[debug] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042321711] [b04b8a0c-37cb-4f46-9193-dcf8a87b3b0c] [0.000158ms] [rows:1] <nil>: select 1
+[fatal] [1632042321711] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:23] fatallllll
+[fatal] [1632042321711] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:24] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042321711] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:25] errorrrrrr
+[error] [1632042321711] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:26] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042321712] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:27] warnnnnnnnn
+[warn] [1632042321712] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:28] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042321712] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:29] infoooooooo
+[info] [1632042321712] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:30] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042321712] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:31] debugggggg
+[debug] [1632042321712] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:32] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042321712] [64123834-9e5c-4323-b696-35697fd55475] [trace/logger_test.go:33] [0.000161ms] [rows:1] <nil>: select 1
+[fatal] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] [trace/logger_test.go:26] fatallllll
+[fatal] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] errorrrrrr
+[error] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] warnnnnnnnn
+[warn] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] infoooooooo
+[info] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] debugggggg
+[debug] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042719580] [53068b90-6f0b-4f97-84a6-269aa09cdba1] [33;1m[0.000236ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632042719580] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] [trace/logger_test.go:26] fatallllll
+[fatal] [1632042719580] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042719580] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] errorrrrrr
+[error] [1632042719580] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042719580] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] warnnnnnnnn
+[warn] [1632042719580] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042719580] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] infoooooooo
+[info] [1632042719580] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042719580] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] debugggggg
+[debug] [1632042719581] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042719581] [7e4b6ef0-fbaa-4a3c-8746-676a6481584a] [0.00015ms] [rows:1] <nil>: select 1
+[fatal] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:26] fatallllll
+[fatal] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:28] errorrrrrr
+[error] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:29] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:30] warnnnnnnnn
+[warn] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:31] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:32] infoooooooo
+[info] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:33] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:34] debugggggg
+[debug] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:35] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042719581] [94f2e94e-a60e-4cde-b165-1171bee7596d] [trace/logger_test.go:36] [0.000189ms] [rows:1] <nil>: select 1
+[fatal] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] [trace/logger_test.go:26] fatallllll
+[fatal] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] errorrrrrr
+[error] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] warnnnnnnnn
+[warn] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] infoooooooo
+[info] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] debugggggg
+[debug] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042748179] [5aff5e4d-462b-4c1f-9099-0e35fc20e57c] [33;1m[0.000298ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632042748179] [e7256726-a0f5-4d79-bf46-f29a63e9f260] [trace/logger_test.go:26] fatallllll
+[fatal] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] errorrrrrr
+[error] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] warnnnnnnnn
+[warn] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] infoooooooo
+[info] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] debugggggg
+[debug] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042748180] [e7256726-a0f5-4d79-bf46-f29a63e9f260] [0.000323ms] [rows:1] <nil>: select 1
+[fatal] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:26] fatallllll
+[fatal] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:28] errorrrrrr
+[error] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:29] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:30] warnnnnnnnn
+[warn] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:31] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:32] infoooooooo
+[info] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:33] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:34] debugggggg
+[debug] [1632042748180] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:35] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632042748181] [7d050cce-38fc-4126-bdb6-6faf4018d189] [trace/logger_test.go:36] [0.000279ms] [rows:1] <nil>: select 1
+[fatal] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] errorrrrrr
+[error] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] warnnnnnnnn
+[warn] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] infoooooooo
+[info] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] debugggggg
+[debug] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043001996] [8105cb22-7b25-42f9-9637-00ddaadd5037] [33;1m[0.000307ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] errorrrrrr
+[error] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] warnnnnnnnn
+[warn] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] infoooooooo
+[info] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] debugggggg
+[debug] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043001997] [101bed91-ad29-45c0-9504-b88cf7439df5] [0.000249ms] [rows:1] <nil>: select 1
+[fatal] [1632043001997] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043001997] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043001997] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:28] errorrrrrr
+[error] [1632043001997] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:29] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043001997] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:30] warnnnnnnnn
+[warn] [1632043001997] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:31] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043001997] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:32] infoooooooo
+[info] [1632043001997] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:33] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043001997] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:34] debugggggg
+[debug] [1632043001998] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:35] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043001998] [83c582fb-4237-43a4-8ebc-736cd98afc8e] [trace/logger_test.go:36] [0.000364ms] [rows:1] <nil>: select 1
+[fatal] [1632043022891] [3830f2c3-c423-495d-89a4-dbf49d3362d8] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043022891] [3830f2c3-c423-495d-89a4-dbf49d3362d8] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043022891] [3830f2c3-c423-495d-89a4-dbf49d3362d8] errorrrrrr
+[error] [1632043022891] [3830f2c3-c423-495d-89a4-dbf49d3362d8] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043022891] [3830f2c3-c423-495d-89a4-dbf49d3362d8] warnnnnnnnn
+[warn] [1632043022891] [3830f2c3-c423-495d-89a4-dbf49d3362d8] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043022896] [3830f2c3-c423-495d-89a4-dbf49d3362d8] infoooooooo
+[info] [1632043022896] [3830f2c3-c423-495d-89a4-dbf49d3362d8] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043022896] [3830f2c3-c423-495d-89a4-dbf49d3362d8] debugggggg
+[debug] [1632043022896] [3830f2c3-c423-495d-89a4-dbf49d3362d8] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043022896] [3830f2c3-c423-495d-89a4-dbf49d3362d8] [33;1m[0.000345ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632043022896] [7056bd96-4901-4aab-a284-87a635f0f3f2] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043022896] [7056bd96-4901-4aab-a284-87a635f0f3f2] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043022896] [7056bd96-4901-4aab-a284-87a635f0f3f2] errorrrrrr
+[error] [1632043022896] [7056bd96-4901-4aab-a284-87a635f0f3f2] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043022896] [7056bd96-4901-4aab-a284-87a635f0f3f2] warnnnnnnnn
+[warn] [1632043022897] [7056bd96-4901-4aab-a284-87a635f0f3f2] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043022897] [7056bd96-4901-4aab-a284-87a635f0f3f2] infoooooooo
+[info] [1632043022897] [7056bd96-4901-4aab-a284-87a635f0f3f2] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043022897] [7056bd96-4901-4aab-a284-87a635f0f3f2] debugggggg
+[debug] [1632043022897] [7056bd96-4901-4aab-a284-87a635f0f3f2] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043022897] [7056bd96-4901-4aab-a284-87a635f0f3f2] [0.000181ms] [rows:1] <nil>: select 1
+[fatal] [1632043022897] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043022897] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043022897] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:28] errorrrrrr
+[error] [1632043022897] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:29] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043022897] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:30] warnnnnnnnn
+[warn] [1632043022897] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:31] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043022897] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:32] infoooooooo
+[info] [1632043022898] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:33] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043022898] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:34] debugggggg
+[debug] [1632043022898] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:35] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043022898] [c96139ab-114f-452e-bc6b-1f8bee209c69] [trace/logger_test.go:36] [0.000154ms] [rows:1] <nil>: select 1
+[fatal] [1632043026851] [5d26eb22-9a20-46ec-ac24-7032681de79f] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] errorrrrrr
+[error] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] warnnnnnnnn
+[warn] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] infoooooooo
+[info] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] debugggggg
+[debug] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043026852] [5d26eb22-9a20-46ec-ac24-7032681de79f] [33;1m[0.000271ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] errorrrrrr
+[error] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] warnnnnnnnn
+[warn] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] infoooooooo
+[info] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] debugggggg
+[debug] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043026852] [73e3c255-954a-411f-9cbd-9e58977ee0af] [0.000324ms] [rows:1] <nil>: select 1
+[fatal] [1632043026852] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043026852] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043026853] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:28] errorrrrrr
+[error] [1632043026853] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:29] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043026853] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:30] warnnnnnnnn
+[warn] [1632043026853] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:31] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043026853] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:32] infoooooooo
+[info] [1632043026853] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:33] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043026853] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:34] debugggggg
+[debug] [1632043026853] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:35] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043026853] [f84fa8b0-4c86-4dd2-b253-aec1a68d6c6c] [trace/logger_test.go:36] [0.000254ms] [rows:1] <nil>: select 1
+[fatal] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] errorrrrrr
+[error] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] warnnnnnnnn
+[warn] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] infoooooooo
+[info] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] debugggggg
+[debug] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043131550] [4308d4c1-866b-4a7f-9daf-8e14c4e1b600] [33;1m[0.000534ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632043131550] [e27dcb6a-d7ce-4426-bb24-c92176159861] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] errorrrrrr
+[error] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] warnnnnnnnn
+[warn] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] infoooooooo
+[info] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] debugggggg
+[debug] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043131551] [e27dcb6a-d7ce-4426-bb24-c92176159861] [0.000184ms] [rows:1] <nil>: select 1
+[fatal] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:28] errorrrrrr
+[error] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:29] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:30] warnnnnnnnn
+[warn] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:31] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:32] infoooooooo
+[info] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:33] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:34] debugggggg
+[debug] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:35] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043131551] [585e05ca-c7ea-4a4a-bf7f-9c267d4918b6] [trace/logger_test.go:36] [0.000291ms] [rows:1] <nil>: select 1
+[fatal] [1632043150342] [18465cdc-6314-4d63-9a4d-26ec373881a0] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] errorrrrrr
+[error] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] warnnnnnnnn
+[warn] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] infoooooooo
+[info] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] debugggggg
+[debug] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043150343] [18465cdc-6314-4d63-9a4d-26ec373881a0] [33;1m[0.000322ms] [34;1m[rows:1] [35;1m<nil>[0m: select 1
+[fatal] [1632043150343] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043150343] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043150343] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] errorrrrrr
+[error] [1632043150343] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043150343] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] warnnnnnnnn
+[warn] [1632043150344] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043150344] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] infoooooooo
+[info] [1632043150344] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043150344] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] debugggggg
+[debug] [1632043150344] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043150344] [ae6c4048-f94b-4f6f-b36f-6945baf083e0] [0.000299ms] [rows:1] <nil>: select 1
+[fatal] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:26] fatallllll
+[fatal] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:27] fatallllll 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[error] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:28] errorrrrrr
+[error] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:29] errorrrrrr 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[warn] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:30] warnnnnnnnn
+[warn] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:31] warnnnnnnnn 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[info] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:32] infoooooooo
+[info] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:33] infoooooooo 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[debug] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:34] debugggggg
+[debug] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:35] debugggggg 12345 qwert [1,2,3] {"a":"sd","q":"we"}
+[trace] [1632043150344] [7f105df3-398a-4aa2-b5d2-845c58313f33] [trace/logger_test.go:36] [0.000194ms] [rows:1] <nil>: select 1

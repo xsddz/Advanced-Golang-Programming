@@ -1,6 +1,7 @@
 # - 当 use_apollo 为 false 时，将使用 conf 目录中配置文件的配置值，不包括本文件
 # - 当 use_apollo 为 true 时，将根据 conf 目录中配置文件的配置值去 apollo 取配置值，不包括本文件
 use_apollo = false
+
 app_id = "xxxxx"
 cluster = "default"
 namespace_names = ["application"]

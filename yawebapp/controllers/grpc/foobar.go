@@ -4,7 +4,7 @@ import (
 	"context"
 	"yawebapp/entities/entitydemo"
 	"yawebapp/entities/pb"
-	"yawebapp/library/inner/server"
+	"yawebapp/library/infra/server"
 	"yawebapp/models/service/pagedemo"
 )
 

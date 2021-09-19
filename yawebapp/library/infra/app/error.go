@@ -1,0 +1,55 @@
+package app
+
+import "errors"
+
+var (
+	// 通用错误码 [0-9]
+	ErrorNone     = errors.New("[0] OK")
+	ErrorParam    = errors.New("[6] 参数错误")
+	ErrorNotExist = errors.New("[7] 不存在")
+
+	// http错误码：[0-9]{3}
+	Error100 = errors.New("[100] Continue")
+	Error101 = errors.New("[101] Switching Protocols")
+	Error200 = errors.New("[200] OK")
+	Error201 = errors.New("[201] Created")
+	Error202 = errors.New("[202] Accepted")
+	Error203 = errors.New("[203] Non-Authoritative Information")
+	Error204 = errors.New("[204] No Content")
+	Error205 = errors.New("[205] Reset Content")
+	Error206 = errors.New("[206] Partial Content")
+	Error300 = errors.New("[300] Multiple Choices")
+	Error301 = errors.New("[301] Moved Permanently")
+	Error302 = errors.New("[302] Found")
+	Error303 = errors.New("[303] See Other")
+	Error304 = errors.New("[304] Not Modified")
+	Error305 = errors.New("[305] Use Proxy")
+	Error306 = errors.New("[306] Unused")
+	Error307 = errors.New("[307] Temporary Redirect")
+	Error400 = errors.New("[400] Bad Request")
+	Error401 = errors.New("[401] Unauthorized")
+	Error402 = errors.New("[402] Payment Required")
+	Error403 = errors.New("[403] Forbidden")
+	Error404 = errors.New("[404] Not Found")
+	Error405 = errors.New("[405] Method Not Allowed")
+	Error406 = errors.New("[406] Not Acceptable")
+	Error407 = errors.New("[407] Proxy Authentication Required")
+	Error408 = errors.New("[408] Request Time-out")
+	Error409 = errors.New("[409] Conflict")
+	Error410 = errors.New("[410] Gone")
+	Error411 = errors.New("[411] Length Required")
+	Error412 = errors.New("[412] Precondition Failed")
+	Error413 = errors.New("[413] Request Entity Too Large")
+	Error414 = errors.New("[414] Request-URI Too Large")
+	Error415 = errors.New("[415] Unsupported Media Type")
+	Error416 = errors.New("[416] Requested range not satisfiable")
+	Error417 = errors.New("[417] Expectation Failed")
+	Error500 = errors.New("[500] Internal Server Error")
+	Error501 = errors.New("[501] Not Implemented")
+	Error502 = errors.New("[502] Bad Gateway")
+	Error503 = errors.New("[503] Service Unavailable")
+	Error504 = errors.New("[504] Gateway Time-out")
+	Error505 = errors.New("[505] HTTP Version not supported")
+
+	// 业务错误码：>999
+)

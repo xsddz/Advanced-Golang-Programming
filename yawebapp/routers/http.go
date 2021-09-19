@@ -2,8 +2,8 @@ package routers
 
 import (
 	"yawebapp/controllers/http/demo"
-	"yawebapp/library/inner/app"
-	"yawebapp/library/inner/middlewares"
+	"yawebapp/library/infra/app"
+	"yawebapp/library/infra/app/middlewares"
 )
 
 func HTTPRouter() {

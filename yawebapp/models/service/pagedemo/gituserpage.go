@@ -4,11 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"yawebapp/entities/entitydemo"
-	"yawebapp/library/inner/app"
-	"yawebapp/library/inner/server"
+	"yawebapp/library/infra/app"
+	"yawebapp/library/infra/server"
 	"yawebapp/models/dao"
 
-	"github.com/go-redis/redis"
 	"gorm.io/gorm"
 )
 
@@ -22,14 +21,14 @@ func NewGitUserPage(ctx *server.WebContext) *GitUserPage {
 
 func (p *GitUserPage) Execute(req entitydemo.ReqGitUser, res *entitydemo.ResGitUser) error {
 	key := "dzh:test"
-	val, err := app.Cache().Get(key).Result()
-	app.Logger.Debug(*p.ctx, fmt.Sprint(val, err))
-	if err == redis.Nil {
+	val, err := app.Cache().Get(key)
+	app.Logger.Debug(*p.ctx, "get", key, val, err)
+	if err == app.ErrorNotExist {
 		app.Logger.Info(*p.ctx, "key does not exist")
 	} else if err != nil {
 		app.Logger.Error(*p.ctx, err.Error())
 	} else {
-		app.Logger.Debug(*p.ctx, "key:"+val)
+		app.Logger.Debug(*p.ctx, "get", key, val)
 	}
 
 	var data dao.CommonConfig

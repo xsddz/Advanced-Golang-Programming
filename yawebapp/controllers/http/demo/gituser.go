@@ -2,7 +2,7 @@ package demo
 
 import (
 	"yawebapp/entities/entitydemo"
-	"yawebapp/library/inner/server"
+	"yawebapp/library/infra/server"
 	"yawebapp/models/service/pagedemo"
 
 	"github.com/gin-gonic/gin"
