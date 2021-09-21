@@ -7,7 +7,7 @@ import (
 )
 
 func HTTPRouter() {
-	httpServer := app.GetHTTPServer()
+	httpServer := app.HTTPServer()
 
 	httpServer.Use(middlewares.Trace)
 	httpServer.Use(middlewares.Recover)

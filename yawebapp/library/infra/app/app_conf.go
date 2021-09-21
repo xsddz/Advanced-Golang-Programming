@@ -147,7 +147,8 @@ type AppConf struct {
 	AppEnv      string `toml:"app_env"`
 	OutputColor string `toml:"output_color"`
 	Server      map[string]struct {
-		Port string `toml:"port"`
+		Enable string `toml:"enable"`
+		Port   string `toml:"port"`
 	} `toml:"server"`
 }
 

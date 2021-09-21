@@ -1,15 +1,15 @@
 package app
 
 import (
+	"fmt"
+	"strconv"
 	"yawebapp/library/infra/server"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
 )
 
-var defaultApp *server.Engine
-
-// Init -
+// Init 初始化app
 func Init() {
 	// 1. 加载所有配置
 	loadConf()
@@ -20,25 +20,66 @@ func Init() {
 	// 3. 资源检查
 	resourcesCheck()
 
-	// 4. 初始化默认app服务
-	defaultApp = server.NewEngine()
+	// 4. 注册服务
+	registerServer()
 }
-
-func RegisterServer(srv server.ServerI) { defaultApp.RegisterServer(srv) }
-func GetHTTPServer() *gin.Engine        { return defaultApp.GetHTTPServer() }
-func GetGRPCServer() *grpc.Server       { return defaultApp.GetGRPCServer() }
-func Run()                              { defaultApp.Run() }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-func NewHTTPServer(router server.Router) *server.HTTPServer {
-	conf := server.HTTPConf{Env: ConfApp().AppEnv, Port: ConfApp().Server["http"].Port}
-	return server.NewHTTPServer(conf, router)
+var defaultEngine *server.Engine
+
+func registerServer() {
+	defaultEngine = server.NewEngine()
+
+	for name, conf := range ConfApp().Server {
+		fmt.Printf("register server: [%v] \t......", name)
+		if ok, err := strconv.ParseBool(conf.Enable); err != nil || !ok {
+			fmt.Printf("... [SKIP]\n")
+			continue
+		}
+
+		switch name {
+		case "http":
+			httpconf := server.HTTPConf{Env: ConfApp().AppEnv, Port: conf.Port}
+			defaultEngine.RegisterServer("http", server.NewHTTPServer(httpconf))
+		case "grpc":
+			grpcconf := server.GRPCConf{Port: conf.Port}
+			defaultEngine.RegisterServer("grpc", server.NewGRPCServer(grpcconf))
+		default:
+			panic(fmt.Errorf("unsupport server name: %v", name))
+		}
+		fmt.Printf("... [OK]\n")
+	}
 }
 
-func NewGRPCServer(router server.Router) *server.GRPCServer {
-	conf := server.GRPCConf{Port: ConfApp().Server["grpc"].Port}
-	return server.NewGRPCServer(conf, router)
+// HTTPServer 获取http服务实例
+func HTTPServer() *gin.Engine {
+	if srv := defaultEngine.HTTPServer(); srv != nil {
+		return srv
+	}
+
+	panic(fmt.Errorf("must register http server first"))
+}
+
+// GRPCServer 获取grpc服务实例
+func GRPCServer() *grpc.Server {
+	if srv := defaultEngine.GRPCServer(); srv != nil {
+		return srv
+	}
+
+	panic(fmt.Errorf("must register grpc server first"))
+}
+
+// AddServerRouter 添加服务路由
+func AddServerRouter(name string, router ...server.Router) {
+	if err := defaultEngine.AddServerRouter(name, router...); err != nil {
+		panic(err)
+	}
+}
+
+// Run 启动服务
+func Run() {
+	defaultEngine.Run()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -68,6 +109,4 @@ func Env() AppEnv {
 }
 
 // Name 获取当前app的name
-func Name() string {
-	return ConfApp().AppName
-}
+func Name() string { return ConfApp().AppName }

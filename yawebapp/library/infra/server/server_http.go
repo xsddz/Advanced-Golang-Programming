@@ -16,24 +16,16 @@ type HTTPConf struct {
 
 // HTTPServer -
 type HTTPServer struct {
-	conf   *HTTPConf
-	router Router
+	*gin.Engine
+
+	address string
+	routers []Router
 }
 
 // NewHTTPServer -
-func NewHTTPServer(conf HTTPConf, router Router) *HTTPServer {
-	return &HTTPServer{&conf, router}
-}
-
-// Run 实现ServerI接口
-func (s *HTTPServer) Run(app *Engine, wg *sync.WaitGroup) {
-	defer func() {
-		fmt.Println("http server end.")
-		wg.Done()
-	}()
-
+func NewHTTPServer(conf HTTPConf, routers ...Router) *HTTPServer {
 	// gin模式设置
-	switch s.conf.Env {
+	switch conf.Env {
 	case "prod", "Prod", "PROD":
 		gin.SetMode("release")
 	default:
@@ -42,17 +34,30 @@ func (s *HTTPServer) Run(app *Engine, wg *sync.WaitGroup) {
 		gin.ForceConsoleColor()
 	}
 
-	// gin server初始化
-	srv := gin.New()
-	app.SetHTTPServer(srv)
+	address := fmt.Sprintf(":%v", conf.Port)
+	return &HTTPServer{gin.New(), address, routers}
+}
+
+// RegisterRouter 实现ServerI接口
+func (s *HTTPServer) RegisterRouter(routers ...Router) {
+	s.routers = append(s.routers, routers...)
+}
+
+// Run 实现ServerI接口
+func (s *HTTPServer) Run(wg *sync.WaitGroup) {
+	defer func() {
+		fmt.Println("http server end.")
+		wg.Done()
+	}()
 
 	// gin路由设置
-	s.router()
+	for _, router := range s.routers {
+		router()
+	}
 
 	// gin服务启动
-	address := fmt.Sprintf(":%v", s.conf.Port)
-	fmt.Printf("Listening and serving HTTP on %s\n", address)
-	err := http.ListenAndServe(address, app.GetHTTPServer())
+	fmt.Printf("Listening and serving HTTP on %s\n", s.address)
+	err := http.ListenAndServe(s.address, s)
 	if err != nil {
 		panic(fmt.Errorf("failed to serve HTTP: %v", err))
 	}

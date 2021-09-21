@@ -8,36 +8,76 @@ import (
 	"google.golang.org/grpc"
 )
 
-// Router 服务的路由方法约定
+// Router 可注册服务的路由方法约定
 type Router func()
 
-// ServerI 服务标准
+// ServerI 可注册服务的方法约定
 type ServerI interface {
-	// Run 运行服务
-	Run(*Engine, *sync.WaitGroup)
+	// RegisterRouter 路由注册
+	RegisterRouter(...Router)
+	// Run 服务启动
+	Run(*sync.WaitGroup)
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
+// Engine -
 type Engine struct {
-	serverHoder []ServerI
-
-	httpServer *gin.Engine
-	grpcServer *grpc.Server
+	servers     []string
+	serverHoder map[string]ServerI
 }
 
-func NewEngine() *Engine                           { return &Engine{} }
-func (app *Engine) RegisterServer(srv ServerI)     { app.serverHoder = append(app.serverHoder, srv) }
-func (app *Engine) GetHTTPServer() *gin.Engine     { return app.httpServer }
-func (app *Engine) SetHTTPServer(srv *gin.Engine)  { app.httpServer = srv }
-func (app *Engine) GetGRPCServer() *grpc.Server    { return app.grpcServer }
-func (app *Engine) SetGRPCServer(srv *grpc.Server) { app.grpcServer = srv }
+// NewEngine -
+func NewEngine() *Engine {
+	return &Engine{
+		serverHoder: make(map[string]ServerI),
+	}
+}
 
-func (app *Engine) Run() {
-	fmt.Println("run app ...")
+// RegisterServer -
+func (e *Engine) RegisterServer(name string, server ServerI) {
+	if _, ok := e.serverHoder[name]; ok {
+		return
+	}
+
+	e.servers = append(e.servers, name)
+	e.serverHoder[name] = server
+}
+
+// HTTPServer -
+func (e *Engine) HTTPServer() *gin.Engine {
+	if server, ok := e.serverHoder["http"]; ok {
+		return server.(*HTTPServer).Engine
+	}
+	return nil
+}
+
+// GRPCServer -
+func (e *Engine) GRPCServer() *grpc.Server {
+	if server, ok := e.serverHoder["grpc"]; ok {
+		return server.(*GRPCServer).Server
+	}
+	return nil
+}
+
+// AddServerRouter -
+func (e *Engine) AddServerRouter(name string, routers ...Router) error {
+	if server, ok := e.serverHoder[name]; ok {
+		server.RegisterRouter(routers...)
+		return nil
+	}
+
+	return fmt.Errorf("must register %v server first", name)
+}
+
+// Run -
+func (e *Engine) Run() {
+	fmt.Println("\nrun app ...")
 	var wg sync.WaitGroup
-	wg.Add(len(app.serverHoder))
+	wg.Add(len(e.servers))
 
-	for _, srv := range app.serverHoder {
-		go srv.Run(app, &wg)
+	for _, name := range e.servers {
+		go e.serverHoder[name].Run(&wg)
 	}
 
 	wg.Wait()

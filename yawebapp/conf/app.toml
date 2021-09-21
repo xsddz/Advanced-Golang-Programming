@@ -5,6 +5,8 @@ output_color = "true"
 
 [server]
 [server.http]
+enable = "true"
 port = "8080"
-[server.gprc]
+[server.grpc]
+enable = "true"
 port = "8081"

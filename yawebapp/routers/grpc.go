@@ -7,7 +7,7 @@ import (
 )
 
 func GRPCRouter() {
-	grpcServer := app.GetGRPCServer()
+	grpcServer := app.GRPCServer()
 
 	// 为 Foobar 服务注册业务实现 将 Foobar 服务绑定到 RPC 服务容器上
 	pb.RegisterFoobarServer(grpcServer, &grpc.Foobar{})
