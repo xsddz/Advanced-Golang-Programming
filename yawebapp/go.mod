@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/BurntSushi/toml v0.4.1
-	github.com/gin-gonic/gin v1.7.4
+	github.com/gin-gonic/gin v1.7.7
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/golang/protobuf v1.5.2
 	github.com/google/uuid v1.3.0
